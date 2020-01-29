@@ -1,0 +1,10 @@
+{
+  "name": "ProductionBook",
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "prep-deploy": "rubocop && yarn --cwd client lint",
+    "build": "yarn --cwd client install && yarn --cwd client build",
+    "deploy": "cp -a client/build/. public/",
+    "ci-postbuild": "yarn build && yarn deploy"
+  }
+}
