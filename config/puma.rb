@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 preload_app!
 workers Integer(ENV['WEB_CONCURRENCY'] || 2)
 threads_count = ENV.fetch('RAILS_MAX_THREADS') { 5 }

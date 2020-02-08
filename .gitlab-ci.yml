@@ -1,0 +1,105 @@
+image: ruby:2.6.0
+
+services:
+  - postgres:10.1
+
+variables:
+  BUNDLE_PATH: vendor/bundle
+  DISABLE_SPRING: 1
+  DB_HOST: postgres
+  PASSWORD: test
+
+stages:
+  - test
+  - lint
+
+API_Test:
+  stage: test
+  cache:
+    key: production-book-rails
+    paths:
+      - vendor/bundle
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+      when: never
+    - when: always
+  script:
+    # database.yml.ci contains the configuration for the CI server
+    - cp config/database.yml.ci config/database.yml
+
+    - bundle check || bundle install --jobs $(nproc)
+    - bundle exec rails db:create RAILS_ENV=test
+    - bundle exec rails db:schema:load RAILS_ENV=test
+    - bundle exec rake
+  artifacts:
+    paths:
+      - coverage/
+    when: always
+    expire_in: 1 week
+
+React_Test:
+  stage: test
+  cache:
+    key: production-book-node
+    paths:
+      - client/node_modules
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+      when: never
+    - when: always
+  script:
+    # Install node and other deps
+    - curl -sL https://deb.nodesource.com/setup_13.x | bash -
+    - apt-get update -yq
+    - apt-get install -y apt-transport-https build-essential cmake nodejs software-properties-common unzip
+    # Install yarn
+    - wget -q -O - https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    - echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+    - apt-get update -yq
+    - apt-get install -y yarn git
+    - yarn --cwd client install
+    - yarn --cwd client test --ci
+  artifacts:
+    paths:
+      - client/coverage/
+    when: always
+    expire_in: 1 week
+
+API_Lint:
+  stage: lint
+  cache:
+    key: production-book-rails
+    paths:
+      - vendor/bundle
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+      when: never
+    - when: always
+  allow_failure: true
+  script:
+    - bundle check || bundle install --jobs $(nproc)
+    - bundle exec rubocop
+
+React_Lint:
+  stage: lint
+  cache:
+    key: production-book-node
+    paths:
+      - client/node_modules
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+      when: never
+    - when: always
+  allow_failure: true
+  script:
+    # Install node and other deps
+    - curl -sL https://deb.nodesource.com/setup_13.x | bash -
+    - apt-get update -yq
+    - apt-get install -y apt-transport-https build-essential cmake nodejs software-properties-common unzip
+    # Install yarn
+    - wget -q -O - https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    - echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+    - apt-get update -yq
+    - apt-get install -y yarn git
+    - yarn --cwd client install
+    - yarn --cwd client lint

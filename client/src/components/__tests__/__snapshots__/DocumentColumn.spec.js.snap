@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentColumn Displays correctly 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "column",
+      "height": "100%",
+      "overflow": "hidden",
+    }
+  }
+>
+  <Connect(SectionList) />
+  <Button
+    as="button"
+    basic={true}
+    icon={true}
+    id="openFileButton"
+    labelPosition="left"
+    onClick={[MockFunction]}
+    style={
+      Object {
+        "marginBottom": "0.5rem",
+        "maxHeight": "6rem",
+        "width": "12rem",
+      }
+    }
+  >
+    <Icon
+      as="i"
+      name="upload"
+    />
+    Upload File
+  </Button>
+  <Input
+    error={false}
+    id="sectionFieldInput"
+    label={
+      <Button
+        as="button"
+        basic={true}
+        disabled={true}
+        icon="plus"
+        id="submitSectionButton"
+        onClick={[Function]}
+      />
+    }
+    labelPosition="right"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder="Add a section"
+    type="text"
+    value=""
+  />
+  <Connect(FileModal) />
+</div>
+`;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentColumn Displays correctly 1`] = `
+<Grid
+  divided={true}
+  style={
+    Object {
+      "height": "100%",
+      "margin": "unset",
+    }
+  }
+>
+  <GridColumn
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+    width={4}
+  >
+    <Connect(DocumentColumn) />
+  </GridColumn>
+  <GridColumn
+    width={12}
+  >
+    <Connect(PDFViewer) />
+  </GridColumn>
+</Grid>
+`;
