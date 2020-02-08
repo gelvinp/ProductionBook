@@ -107,7 +107,7 @@ Deploy:
     name: production
     url: https://book.filmflow.app
   script:
-    - 'which ssh-agent || apt-get install -qq openssh-client )'
+    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
     - eval $(ssh-agent -s)
     - ssh-add <(base64 -d <(echo $SSH_PRIVATE_KEY))
     - ssh webapp@book.filmflow.app "./update.sh; exit"
