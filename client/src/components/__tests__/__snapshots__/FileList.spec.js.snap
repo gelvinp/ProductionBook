@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileList Renders provided files 1`] = `
+<ListList
+  className="ui selection relaxed"
+>
+  <ListItem
+    key="file-1"
+    onClick={[Function]}
+  >
+    <ListIcon
+      name="file"
+    />
+    <ListContent>
+      Sample File
+    </ListContent>
+  </ListItem>
+</ListList>
+`;

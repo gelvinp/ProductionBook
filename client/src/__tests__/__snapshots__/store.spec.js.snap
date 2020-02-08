@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createStore should initialize correctly 1`] = `
+Object {
+  "dispatch": [Function],
+  "getState": [Function],
+  "replaceReducer": [Function],
+  "subscribe": [Function],
+  Symbol(observable): [Function],
+}
+`;
+
+exports[`createStore should initialize correctly 2`] = `
+Object {
+  "documents": Object {
+    "selectedDocument": Object {
+      "section": -1,
+      "uuid": -1,
+    },
+  },
+  "modals": Object {
+    "fileOpen": false,
+  },
+  "password": "",
+  "sections": Object {},
+}
+`;

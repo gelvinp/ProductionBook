@@ -26,9 +26,13 @@
 # Place files for public in /client/public
 /public
 
-# Ignore specific documents
-/documents/*
-
 # Ignore secrets
 .env
 !/client/.env
+
+# Ignore yard
+.yardoc
+
+# Ignore coverage reports
+/coverage
+/client/coverage

@@ -1,0 +1,1460 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileModal Is visible when open 1`] = `
+<FileModal
+  closeModal={[MockFunction]}
+  createDocument={[MockFunction]}
+  modalOpen={true}
+  sections={Object {}}
+  sendFile={[MockFunction]}
+>
+  <Modal
+    centered={true}
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    eventPool="Modal"
+    onClose={[Function]}
+    open={true}
+  >
+    <Portal
+      closeOnDocumentClick={false}
+      closeOnEscape={true}
+      eventPool="Modal"
+      mountNode={
+        <body
+          class="dimmable dimmed"
+        >
+          <div
+            class="ui page modals dimmer transition visible active"
+            style="display: flex;"
+          >
+            <div
+              class="ui modal transition visible active"
+            >
+              <div
+                class="header"
+              >
+                Upload a document
+              </div>
+              <div
+                class="content"
+              >
+                <div
+                  class="description"
+                  style="padding-bottom: 2em;"
+                >
+                  <div
+                    class="ui header"
+                  >
+                    <div
+                      class="content"
+                    >
+                      Please select a document to upload
+                    </div>
+                    <div
+                      class="sub header"
+                      style="display: none;"
+                    >
+                      Please select a PDF file
+                    </div>
+                  </div>
+                  <form
+                    class="ui form"
+                    style="padding-bottom: 1em;"
+                  >
+                    <div
+                      class="six wide field"
+                    >
+                      <label>
+                        Section
+                      </label>
+                      <div
+                        aria-expanded="false"
+                        class="ui selection dropdown"
+                        role="listbox"
+                        tabindex="0"
+                      >
+                        <div
+                          aria-atomic="true"
+                          aria-live="polite"
+                          class="default text"
+                          role="alert"
+                        >
+                          Section
+                        </div>
+                        <i
+                          aria-hidden="true"
+                          class="dropdown icon"
+                        />
+                        <div
+                          class="menu transition"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="field"
+                    >
+                      <label>
+                        <label
+                          class="ui basic secondary button"
+                          for="file_upload_field"
+                          id="fileUploadLabel"
+                          role="button"
+                        >
+                          Select a file...
+                        </label>
+                      </label>
+                      <input
+                        id="file_upload_field"
+                        style="display: none;"
+                        type="file"
+                      />
+                    </div>
+                    <div
+                      class="disabled field"
+                    >
+                      <button
+                        class="ui disabled button"
+                        disabled=""
+                        id="uploadFileButton"
+                        tabindex="-1"
+                      >
+                        Upload
+                      </button>
+                    </div>
+                  </form>
+                  <h4
+                    class="ui header"
+                    style="display: none;"
+                  >
+                    An error occurred, please try again
+                  </h4>
+                  <button
+                    class="ui basic right floated button"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+      onClose={[Function]}
+      onMount={[Function]}
+      onOpen={[Function]}
+      onUnmount={[Function]}
+      open={true}
+      openOnTriggerClick={true}
+    >
+      <PortalInner
+        innerRef={
+          Object {
+            "current": <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Upload a document
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <div
+                      class="ui header"
+                    >
+                      <div
+                        class="content"
+                      >
+                        Please select a document to upload
+                      </div>
+                      <div
+                        class="sub header"
+                        style="display: none;"
+                      >
+                        Please select a PDF file
+                      </div>
+                    </div>
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Section
+                        </label>
+                        <div
+                          aria-expanded="false"
+                          class="ui selection dropdown"
+                          role="listbox"
+                          tabindex="0"
+                        >
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                            class="default text"
+                            role="alert"
+                          >
+                            Section
+                          </div>
+                          <i
+                            aria-hidden="true"
+                            class="dropdown icon"
+                          />
+                          <div
+                            class="menu transition"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="field"
+                      >
+                        <label>
+                          <label
+                            class="ui basic secondary button"
+                            for="file_upload_field"
+                            id="fileUploadLabel"
+                            role="button"
+                          >
+                            Select a file...
+                          </label>
+                        </label>
+                        <input
+                          id="file_upload_field"
+                          style="display: none;"
+                          type="file"
+                        />
+                      </div>
+                      <div
+                        class="disabled field"
+                      >
+                        <button
+                          class="ui disabled button"
+                          disabled=""
+                          id="uploadFileButton"
+                          tabindex="-1"
+                        >
+                          Upload
+                        </button>
+                      </div>
+                    </form>
+                    <h4
+                      class="ui header"
+                      style="display: none;"
+                    >
+                      An error occurred, please try again
+                    </h4>
+                    <button
+                      class="ui basic right floated button"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>,
+          }
+        }
+        mountNode={
+          <body
+            class="dimmable dimmed"
+          >
+            <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Upload a document
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <div
+                      class="ui header"
+                    >
+                      <div
+                        class="content"
+                      >
+                        Please select a document to upload
+                      </div>
+                      <div
+                        class="sub header"
+                        style="display: none;"
+                      >
+                        Please select a PDF file
+                      </div>
+                    </div>
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Section
+                        </label>
+                        <div
+                          aria-expanded="false"
+                          class="ui selection dropdown"
+                          role="listbox"
+                          tabindex="0"
+                        >
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                            class="default text"
+                            role="alert"
+                          >
+                            Section
+                          </div>
+                          <i
+                            aria-hidden="true"
+                            class="dropdown icon"
+                          />
+                          <div
+                            class="menu transition"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="field"
+                      >
+                        <label>
+                          <label
+                            class="ui basic secondary button"
+                            for="file_upload_field"
+                            id="fileUploadLabel"
+                            role="button"
+                          >
+                            Select a file...
+                          </label>
+                        </label>
+                        <input
+                          id="file_upload_field"
+                          style="display: none;"
+                          type="file"
+                        />
+                      </div>
+                      <div
+                        class="disabled field"
+                      >
+                        <button
+                          class="ui disabled button"
+                          disabled=""
+                          id="uploadFileButton"
+                          tabindex="-1"
+                        >
+                          Upload
+                        </button>
+                      </div>
+                    </form>
+                    <h4
+                      class="ui header"
+                      style="display: none;"
+                    >
+                      An error occurred, please try again
+                    </h4>
+                    <button
+                      class="ui basic right floated button"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </body>
+        }
+        onMount={[Function]}
+        onUnmount={[Function]}
+      >
+        <Portal
+          containerInfo={
+            <body
+              class="dimmable dimmed"
+            >
+              <div
+                class="ui page modals dimmer transition visible active"
+                style="display: flex;"
+              >
+                <div
+                  class="ui modal transition visible active"
+                >
+                  <div
+                    class="header"
+                  >
+                    Upload a document
+                  </div>
+                  <div
+                    class="content"
+                  >
+                    <div
+                      class="description"
+                      style="padding-bottom: 2em;"
+                    >
+                      <div
+                        class="ui header"
+                      >
+                        <div
+                          class="content"
+                        >
+                          Please select a document to upload
+                        </div>
+                        <div
+                          class="sub header"
+                          style="display: none;"
+                        >
+                          Please select a PDF file
+                        </div>
+                      </div>
+                      <form
+                        class="ui form"
+                        style="padding-bottom: 1em;"
+                      >
+                        <div
+                          class="six wide field"
+                        >
+                          <label>
+                            Section
+                          </label>
+                          <div
+                            aria-expanded="false"
+                            class="ui selection dropdown"
+                            role="listbox"
+                            tabindex="0"
+                          >
+                            <div
+                              aria-atomic="true"
+                              aria-live="polite"
+                              class="default text"
+                              role="alert"
+                            >
+                              Section
+                            </div>
+                            <i
+                              aria-hidden="true"
+                              class="dropdown icon"
+                            />
+                            <div
+                              class="menu transition"
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="field"
+                        >
+                          <label>
+                            <label
+                              class="ui basic secondary button"
+                              for="file_upload_field"
+                              id="fileUploadLabel"
+                              role="button"
+                            >
+                              Select a file...
+                            </label>
+                          </label>
+                          <input
+                            id="file_upload_field"
+                            style="display: none;"
+                            type="file"
+                          />
+                        </div>
+                        <div
+                          class="disabled field"
+                        >
+                          <button
+                            class="ui disabled button"
+                            disabled=""
+                            id="uploadFileButton"
+                            tabindex="-1"
+                          >
+                            Upload
+                          </button>
+                        </div>
+                      </form>
+                      <h4
+                        class="ui header"
+                        style="display: none;"
+                      >
+                        An error occurred, please try again
+                      </h4>
+                      <button
+                        class="ui basic right floated button"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </body>
+          }
+        >
+          <Ref
+            innerRef={[Function]}
+          >
+            <RefFindNode
+              innerRef={[Function]}
+            >
+              <div
+                className="ui page modals dimmer transition visible active"
+              >
+                <Ref
+                  innerRef={
+                    Object {
+                      "current": <div
+                        class="ui modal transition visible active"
+                      >
+                        <div
+                          class="header"
+                        >
+                          Upload a document
+                        </div>
+                        <div
+                          class="content"
+                        >
+                          <div
+                            class="description"
+                            style="padding-bottom: 2em;"
+                          >
+                            <div
+                              class="ui header"
+                            >
+                              <div
+                                class="content"
+                              >
+                                Please select a document to upload
+                              </div>
+                              <div
+                                class="sub header"
+                                style="display: none;"
+                              >
+                                Please select a PDF file
+                              </div>
+                            </div>
+                            <form
+                              class="ui form"
+                              style="padding-bottom: 1em;"
+                            >
+                              <div
+                                class="six wide field"
+                              >
+                                <label>
+                                  Section
+                                </label>
+                                <div
+                                  aria-expanded="false"
+                                  class="ui selection dropdown"
+                                  role="listbox"
+                                  tabindex="0"
+                                >
+                                  <div
+                                    aria-atomic="true"
+                                    aria-live="polite"
+                                    class="default text"
+                                    role="alert"
+                                  >
+                                    Section
+                                  </div>
+                                  <i
+                                    aria-hidden="true"
+                                    class="dropdown icon"
+                                  />
+                                  <div
+                                    class="menu transition"
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="field"
+                              >
+                                <label>
+                                  <label
+                                    class="ui basic secondary button"
+                                    for="file_upload_field"
+                                    id="fileUploadLabel"
+                                    role="button"
+                                  >
+                                    Select a file...
+                                  </label>
+                                </label>
+                                <input
+                                  id="file_upload_field"
+                                  style="display: none;"
+                                  type="file"
+                                />
+                              </div>
+                              <div
+                                class="disabled field"
+                              >
+                                <button
+                                  class="ui disabled button"
+                                  disabled=""
+                                  id="uploadFileButton"
+                                  tabindex="-1"
+                                >
+                                  Upload
+                                </button>
+                              </div>
+                            </form>
+                            <h4
+                              class="ui header"
+                              style="display: none;"
+                            >
+                              An error occurred, please try again
+                            </h4>
+                            <button
+                              class="ui basic right floated button"
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+                      </div>,
+                    }
+                  }
+                >
+                  <RefFindNode
+                    innerRef={
+                      Object {
+                        "current": <div
+                          class="ui modal transition visible active"
+                        >
+                          <div
+                            class="header"
+                          >
+                            Upload a document
+                          </div>
+                          <div
+                            class="content"
+                          >
+                            <div
+                              class="description"
+                              style="padding-bottom: 2em;"
+                            >
+                              <div
+                                class="ui header"
+                              >
+                                <div
+                                  class="content"
+                                >
+                                  Please select a document to upload
+                                </div>
+                                <div
+                                  class="sub header"
+                                  style="display: none;"
+                                >
+                                  Please select a PDF file
+                                </div>
+                              </div>
+                              <form
+                                class="ui form"
+                                style="padding-bottom: 1em;"
+                              >
+                                <div
+                                  class="six wide field"
+                                >
+                                  <label>
+                                    Section
+                                  </label>
+                                  <div
+                                    aria-expanded="false"
+                                    class="ui selection dropdown"
+                                    role="listbox"
+                                    tabindex="0"
+                                  >
+                                    <div
+                                      aria-atomic="true"
+                                      aria-live="polite"
+                                      class="default text"
+                                      role="alert"
+                                    >
+                                      Section
+                                    </div>
+                                    <i
+                                      aria-hidden="true"
+                                      class="dropdown icon"
+                                    />
+                                    <div
+                                      class="menu transition"
+                                    />
+                                  </div>
+                                </div>
+                                <div
+                                  class="field"
+                                >
+                                  <label>
+                                    <label
+                                      class="ui basic secondary button"
+                                      for="file_upload_field"
+                                      id="fileUploadLabel"
+                                      role="button"
+                                    >
+                                      Select a file...
+                                    </label>
+                                  </label>
+                                  <input
+                                    id="file_upload_field"
+                                    style="display: none;"
+                                    type="file"
+                                  />
+                                </div>
+                                <div
+                                  class="disabled field"
+                                >
+                                  <button
+                                    class="ui disabled button"
+                                    disabled=""
+                                    id="uploadFileButton"
+                                    tabindex="-1"
+                                  >
+                                    Upload
+                                  </button>
+                                </div>
+                              </form>
+                              <h4
+                                class="ui header"
+                                style="display: none;"
+                              >
+                                An error occurred, please try again
+                              </h4>
+                              <button
+                                class="ui basic right floated button"
+                              >
+                                Cancel
+                              </button>
+                            </div>
+                          </div>
+                        </div>,
+                      }
+                    }
+                  >
+                    <div
+                      className="ui modal transition visible active"
+                      style={Object {}}
+                    >
+                      <MountNode
+                        className="dimmable dimmed"
+                      />
+                      <ModalHeader>
+                        <div
+                          className="header"
+                        >
+                          Upload a document
+                        </div>
+                      </ModalHeader>
+                      <ModalContent>
+                        <div
+                          className="content"
+                        >
+                          <ModalDescription
+                            style={
+                              Object {
+                                "paddingBottom": "2em",
+                              }
+                            }
+                          >
+                            <div
+                              className="description"
+                              style={
+                                Object {
+                                  "paddingBottom": "2em",
+                                }
+                              }
+                            >
+                              <Header>
+                                <div
+                                  className="ui header"
+                                >
+                                  <HeaderContent>
+                                    <div
+                                      className="content"
+                                    >
+                                      Please select a document to upload
+                                    </div>
+                                  </HeaderContent>
+                                  <HeaderSubheader
+                                    style={
+                                      Object {
+                                        "display": "none",
+                                      }
+                                    }
+                                  >
+                                    <div
+                                      className="sub header"
+                                      style={
+                                        Object {
+                                          "display": "none",
+                                        }
+                                      }
+                                    >
+                                      Please select a PDF file
+                                    </div>
+                                  </HeaderSubheader>
+                                </div>
+                              </Header>
+                              <Form
+                                as="form"
+                                style={
+                                  Object {
+                                    "paddingBottom": "1em",
+                                  }
+                                }
+                              >
+                                <form
+                                  className="ui form"
+                                  onSubmit={[Function]}
+                                  style={
+                                    Object {
+                                      "paddingBottom": "1em",
+                                    }
+                                  }
+                                >
+                                  <FormSelect
+                                    as={[Function]}
+                                    control={[Function]}
+                                    label="Section"
+                                    onChange={[Function]}
+                                    options={Array []}
+                                    placeholder="Section"
+                                    width={6}
+                                  >
+                                    <FormField
+                                      control={[Function]}
+                                      label="Section"
+                                      onChange={[Function]}
+                                      options={Array []}
+                                      placeholder="Section"
+                                      width={6}
+                                    >
+                                      <div
+                                        className="six wide field"
+                                      >
+                                        <label>
+                                          Section
+                                        </label>
+                                        <Select
+                                          aria-describedby={null}
+                                          onChange={[Function]}
+                                          options={Array []}
+                                          placeholder="Section"
+                                        >
+                                          <Dropdown
+                                            additionLabel="Add "
+                                            additionPosition="top"
+                                            aria-describedby={null}
+                                            closeOnBlur={true}
+                                            closeOnEscape={true}
+                                            deburr={false}
+                                            icon="dropdown"
+                                            minCharacters={1}
+                                            noResultsMessage="No results found."
+                                            onChange={[Function]}
+                                            openOnFocus={true}
+                                            options={Array []}
+                                            placeholder="Section"
+                                            renderLabel={[Function]}
+                                            searchInput="text"
+                                            selectOnBlur={true}
+                                            selectOnNavigation={true}
+                                            selection={true}
+                                            wrapSelection={true}
+                                          >
+                                            <Ref
+                                              innerRef={
+                                                Object {
+                                                  "current": <div
+                                                    aria-expanded="false"
+                                                    class="ui selection dropdown"
+                                                    role="listbox"
+                                                    tabindex="0"
+                                                  >
+                                                    <div
+                                                      aria-atomic="true"
+                                                      aria-live="polite"
+                                                      class="default text"
+                                                      role="alert"
+                                                    >
+                                                      Section
+                                                    </div>
+                                                    <i
+                                                      aria-hidden="true"
+                                                      class="dropdown icon"
+                                                    />
+                                                    <div
+                                                      class="menu transition"
+                                                    />
+                                                  </div>,
+                                                }
+                                              }
+                                            >
+                                              <RefFindNode
+                                                innerRef={
+                                                  Object {
+                                                    "current": <div
+                                                      aria-expanded="false"
+                                                      class="ui selection dropdown"
+                                                      role="listbox"
+                                                      tabindex="0"
+                                                    >
+                                                      <div
+                                                        aria-atomic="true"
+                                                        aria-live="polite"
+                                                        class="default text"
+                                                        role="alert"
+                                                      >
+                                                        Section
+                                                      </div>
+                                                      <i
+                                                        aria-hidden="true"
+                                                        class="dropdown icon"
+                                                      />
+                                                      <div
+                                                        class="menu transition"
+                                                      />
+                                                    </div>,
+                                                  }
+                                                }
+                                              >
+                                                <div
+                                                  aria-describedby={null}
+                                                  aria-expanded={false}
+                                                  className="ui selection dropdown"
+                                                  onBlur={[Function]}
+                                                  onChange={[Function]}
+                                                  onClick={[Function]}
+                                                  onFocus={[Function]}
+                                                  onMouseDown={[Function]}
+                                                  role="listbox"
+                                                  tabIndex={0}
+                                                >
+                                                  <div
+                                                    aria-atomic={true}
+                                                    aria-live="polite"
+                                                    className="default text"
+                                                    role="alert"
+                                                  >
+                                                    Section
+                                                  </div>
+                                                  <Icon
+                                                    as="i"
+                                                    className=""
+                                                    name="dropdown"
+                                                    onClick={[Function]}
+                                                  >
+                                                    <i
+                                                      aria-hidden="true"
+                                                      className="dropdown icon"
+                                                      onClick={[Function]}
+                                                    />
+                                                  </Icon>
+                                                  <DropdownMenu>
+                                                    <div
+                                                      className="menu transition"
+                                                    />
+                                                  </DropdownMenu>
+                                                </div>
+                                              </RefFindNode>
+                                            </Ref>
+                                          </Dropdown>
+                                        </Select>
+                                      </div>
+                                    </FormField>
+                                  </FormSelect>
+                                  <FormField>
+                                    <div
+                                      className="field"
+                                    >
+                                      <label>
+                                        <Button
+                                          as="label"
+                                          basic={true}
+                                          htmlFor="file_upload_field"
+                                          id="fileUploadLabel"
+                                          secondary={true}
+                                        >
+                                          <Ref
+                                            innerRef={
+                                              Object {
+                                                "current": <label
+                                                  class="ui basic secondary button"
+                                                  for="file_upload_field"
+                                                  id="fileUploadLabel"
+                                                  role="button"
+                                                >
+                                                  Select a file...
+                                                </label>,
+                                              }
+                                            }
+                                          >
+                                            <RefFindNode
+                                              innerRef={
+                                                Object {
+                                                  "current": <label
+                                                    class="ui basic secondary button"
+                                                    for="file_upload_field"
+                                                    id="fileUploadLabel"
+                                                    role="button"
+                                                  >
+                                                    Select a file...
+                                                  </label>,
+                                                }
+                                              }
+                                            >
+                                              <label
+                                                className="ui basic secondary button"
+                                                htmlFor="file_upload_field"
+                                                id="fileUploadLabel"
+                                                onClick={[Function]}
+                                                role="button"
+                                              >
+                                                Select a file...
+                                              </label>
+                                            </RefFindNode>
+                                          </Ref>
+                                        </Button>
+                                      </label>
+                                      <input
+                                        id="file_upload_field"
+                                        onChange={[Function]}
+                                        style={
+                                          Object {
+                                            "display": "none",
+                                          }
+                                        }
+                                        type="file"
+                                      />
+                                    </div>
+                                  </FormField>
+                                  <FormButton
+                                    as={[Function]}
+                                    control={[Function]}
+                                    disabled={true}
+                                    id="uploadFileButton"
+                                    loading={false}
+                                    onClick={[Function]}
+                                  >
+                                    <FormField
+                                      control={[Function]}
+                                      disabled={true}
+                                      id="uploadFileButton"
+                                      loading={false}
+                                      onClick={[Function]}
+                                    >
+                                      <div
+                                        className="disabled field"
+                                      >
+                                        <Button
+                                          aria-describedby={null}
+                                          as="button"
+                                          disabled={true}
+                                          id="uploadFileButton"
+                                          loading={false}
+                                          onClick={[Function]}
+                                        >
+                                          <Ref
+                                            innerRef={
+                                              Object {
+                                                "current": <button
+                                                  class="ui disabled button"
+                                                  disabled=""
+                                                  id="uploadFileButton"
+                                                  tabindex="-1"
+                                                >
+                                                  Upload
+                                                </button>,
+                                              }
+                                            }
+                                          >
+                                            <RefFindNode
+                                              innerRef={
+                                                Object {
+                                                  "current": <button
+                                                    class="ui disabled button"
+                                                    disabled=""
+                                                    id="uploadFileButton"
+                                                    tabindex="-1"
+                                                  >
+                                                    Upload
+                                                  </button>,
+                                                }
+                                              }
+                                            >
+                                              <button
+                                                aria-describedby={null}
+                                                className="ui disabled button"
+                                                disabled={true}
+                                                id="uploadFileButton"
+                                                onClick={[Function]}
+                                                tabIndex={-1}
+                                              >
+                                                Upload
+                                              </button>
+                                            </RefFindNode>
+                                          </Ref>
+                                        </Button>
+                                      </div>
+                                    </FormField>
+                                  </FormButton>
+                                </form>
+                              </Form>
+                              <Header
+                                as="h4"
+                                style={
+                                  Object {
+                                    "display": "none",
+                                  }
+                                }
+                              >
+                                <h4
+                                  className="ui header"
+                                  style={
+                                    Object {
+                                      "display": "none",
+                                    }
+                                  }
+                                >
+                                  An error occurred, please try again
+                                </h4>
+                              </Header>
+                              <Button
+                                as="button"
+                                basic={true}
+                                floated="right"
+                                onClick={[Function]}
+                              >
+                                <Ref
+                                  innerRef={
+                                    Object {
+                                      "current": <button
+                                        class="ui basic right floated button"
+                                      >
+                                        Cancel
+                                      </button>,
+                                    }
+                                  }
+                                >
+                                  <RefFindNode
+                                    innerRef={
+                                      Object {
+                                        "current": <button
+                                          class="ui basic right floated button"
+                                        >
+                                          Cancel
+                                        </button>,
+                                      }
+                                    }
+                                  >
+                                    <button
+                                      className="ui basic right floated button"
+                                      onClick={[Function]}
+                                    >
+                                      Cancel
+                                    </button>
+                                  </RefFindNode>
+                                </Ref>
+                              </Button>
+                            </div>
+                          </ModalDescription>
+                        </div>
+                      </ModalContent>
+                    </div>
+                  </RefFindNode>
+                </Ref>
+              </div>
+            </RefFindNode>
+          </Ref>
+        </Portal>
+      </PortalInner>
+      <EventStack
+        name="mouseleave"
+        on={[Function]}
+        pool="Modal"
+        target={
+          Object {
+            "current": <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Upload a document
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <div
+                      class="ui header"
+                    >
+                      <div
+                        class="content"
+                      >
+                        Please select a document to upload
+                      </div>
+                      <div
+                        class="sub header"
+                        style="display: none;"
+                      >
+                        Please select a PDF file
+                      </div>
+                    </div>
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Section
+                        </label>
+                        <div
+                          aria-expanded="false"
+                          class="ui selection dropdown"
+                          role="listbox"
+                          tabindex="0"
+                        >
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                            class="default text"
+                            role="alert"
+                          >
+                            Section
+                          </div>
+                          <i
+                            aria-hidden="true"
+                            class="dropdown icon"
+                          />
+                          <div
+                            class="menu transition"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="field"
+                      >
+                        <label>
+                          <label
+                            class="ui basic secondary button"
+                            for="file_upload_field"
+                            id="fileUploadLabel"
+                            role="button"
+                          >
+                            Select a file...
+                          </label>
+                        </label>
+                        <input
+                          id="file_upload_field"
+                          style="display: none;"
+                          type="file"
+                        />
+                      </div>
+                      <div
+                        class="disabled field"
+                      >
+                        <button
+                          class="ui disabled button"
+                          disabled=""
+                          id="uploadFileButton"
+                          tabindex="-1"
+                        >
+                          Upload
+                        </button>
+                      </div>
+                    </form>
+                    <h4
+                      class="ui header"
+                      style="display: none;"
+                    >
+                      An error occurred, please try again
+                    </h4>
+                    <button
+                      class="ui basic right floated button"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>,
+          }
+        }
+      />
+      <EventStack
+        name="mouseenter"
+        on={[Function]}
+        pool="Modal"
+        target={
+          Object {
+            "current": <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Upload a document
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <div
+                      class="ui header"
+                    >
+                      <div
+                        class="content"
+                      >
+                        Please select a document to upload
+                      </div>
+                      <div
+                        class="sub header"
+                        style="display: none;"
+                      >
+                        Please select a PDF file
+                      </div>
+                    </div>
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Section
+                        </label>
+                        <div
+                          aria-expanded="false"
+                          class="ui selection dropdown"
+                          role="listbox"
+                          tabindex="0"
+                        >
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                            class="default text"
+                            role="alert"
+                          >
+                            Section
+                          </div>
+                          <i
+                            aria-hidden="true"
+                            class="dropdown icon"
+                          />
+                          <div
+                            class="menu transition"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="field"
+                      >
+                        <label>
+                          <label
+                            class="ui basic secondary button"
+                            for="file_upload_field"
+                            id="fileUploadLabel"
+                            role="button"
+                          >
+                            Select a file...
+                          </label>
+                        </label>
+                        <input
+                          id="file_upload_field"
+                          style="display: none;"
+                          type="file"
+                        />
+                      </div>
+                      <div
+                        class="disabled field"
+                      >
+                        <button
+                          class="ui disabled button"
+                          disabled=""
+                          id="uploadFileButton"
+                          tabindex="-1"
+                        >
+                          Upload
+                        </button>
+                      </div>
+                    </form>
+                    <h4
+                      class="ui header"
+                      style="display: none;"
+                    >
+                      An error occurred, please try again
+                    </h4>
+                    <button
+                      class="ui basic right floated button"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>,
+          }
+        }
+      />
+      <EventStack
+        name="mousedown"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+      <EventStack
+        name="click"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+      <EventStack
+        name="keydown"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+    </Portal>
+  </Modal>
+</FileModal>
+`;
+
+exports[`FileModal shows an alert when uploading fails 1`] = `"data:application/pdf;base64,YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYQ=="`;

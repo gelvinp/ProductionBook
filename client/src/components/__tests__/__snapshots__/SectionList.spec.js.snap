@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionList Renders provided sections 1`] = `
+<List
+  divided={true}
+  relaxed={true}
+  style={
+    Object {
+      "flexGrow": 1,
+      "height": "96%",
+      "overflowY": "auto",
+    }
+  }
+>
+  <ListItem
+    key="section-1"
+  >
+    <ListIcon
+      name="folder"
+    />
+    <ListContent>
+      Sample Section
+      <Connect(FileList)
+        section="1"
+      />
+    </ListContent>
+  </ListItem>
+</List>
+`;
