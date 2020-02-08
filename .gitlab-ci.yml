@@ -112,5 +112,5 @@ Deploy:
     - echo "$SSH_PRIVATE_KEY" | base64 -d > key
     - chmod 0600 key
     - ssh-add key
-    - ssh webapp@book.filmflow.app "./update.sh; exit"
+    - ssh -o StrictHostKeyChecking=no webapp@book.filmflow.app "./update.sh; exit"
     - rm key
