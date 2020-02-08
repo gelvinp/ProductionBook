@@ -109,5 +109,5 @@ Deploy:
   script:
     - 'which ssh-agent || ( apt-get install -qq openssh-client )'
     - eval $(ssh-agent -s)
-    - ssh-add <(base64 -d <(echo $SSH_PRIVATE_KEY))
+    - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)
     - ssh webapp@book.filmflow.app "./update.sh; exit"
