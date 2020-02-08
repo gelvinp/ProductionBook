@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :section do
-    name { "Unclassified" }
+    name { "Test Section" }
   end
 
   factory :otherSection, class: "Section" do
