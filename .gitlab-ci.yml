@@ -110,7 +110,7 @@ Deploy:
     - 'which ssh-agent || ( apt-get install -qq openssh-client )'
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | base64 -d > key
-    - chmod 0644 key
+    - chmod 0600 key
     - ssh-add key
     - ssh webapp@book.filmflow.app "./update.sh; exit"
     - rm key
