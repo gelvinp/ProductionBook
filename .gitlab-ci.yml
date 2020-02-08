@@ -12,6 +12,7 @@ variables:
 stages:
   - test
   - lint
+  - deploy
 
 API_Test:
   stage: test
@@ -19,10 +20,6 @@ API_Test:
     key: production-book-rails
     paths:
       - vendor/bundle
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
-      when: never
-    - when: always
   script:
     # database.yml.ci contains the configuration for the CI server
     - cp config/database.yml.ci config/database.yml
@@ -43,10 +40,6 @@ React_Test:
     key: production-book-node
     paths:
       - client/node_modules
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
-      when: never
-    - when: always
   script:
     # Install node and other deps
     - curl -sL https://deb.nodesource.com/setup_13.x | bash -
@@ -74,7 +67,7 @@ API_Lint:
   rules:
     - if: '$CI_COMMIT_REF_NAME == "master"'
       when: never
-    - when: always
+    - when: on_success
   allow_failure: true
   script:
     - bundle check || bundle install --jobs $(nproc)
@@ -89,7 +82,7 @@ React_Lint:
   rules:
     - if: '$CI_COMMIT_REF_NAME == "master"'
       when: never
-    - when: always
+    - when: on_success
   allow_failure: true
   script:
     # Install node and other deps
@@ -103,3 +96,18 @@ React_Lint:
     - apt-get install -y yarn git
     - yarn --cwd client install
     - yarn --cwd client lint
+
+Deploy:
+  stage: deploy
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+      when: manual
+    - when: never
+  environment:
+    name: production
+    url: https://book.filmflow.app
+  script:
+    - 'which ssh-agent || apt-get install -qq openssh-client )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(base64 -d <(echo $SSH_PRIVATE_KEY))
+    - ssh webapp@book.filmflow.app "./update.sh; exit"
