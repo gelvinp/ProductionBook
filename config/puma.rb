@@ -7,7 +7,7 @@ rackup DefaultRackup
 port        ENV.fetch('PORT') { 3000 }
 environment ENV.fetch('RACK_ENV') { 'development' }
 
-if ENV['RACK_ENV'] == 'production' and ENV['STAGING'] == 'true'
+if ENV['RACK_ENV'] == 'production'
   app_dir = File.expand_path("../..", __FILE__)
   shared_dir = "#{app_dir}/shared"
   bind "unix://#{shared_dir}/sockets/puma.sock"
