@@ -52,6 +52,12 @@ class SectionModal extends Component {
         this.setState({ confirmOpen: false, deleteError: true })
         return
       } else {
+        this.setState({
+          name: '',
+          confirmOpen: false,
+          nameFieldError: false,
+          deleteError: false,
+        })
         deleteSection(id)
       }
     })

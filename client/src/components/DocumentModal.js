@@ -32,31 +32,54 @@ class DocumentModal extends Component {
       func()
     }
   }
-  renameSection = () => {
-    const { nameField } = this.state
-    const { renameSection, id, name, submitRenameSection } = this.props
+  handleFormSubmit = () => {
+    const { nameField, section } = this.state
+    const {
+      closeModal,
+      name,
+      id,
+      uuid,
+      renameDocument,
+      moveDocument,
+    } = this.props
+    let changes = {}
     if (nameField !== name && nameField !== '') {
-      submitRenameSection(id, nameField).then(json => {
-        if (json.error || !json.data.success) {
-          this.setState({ nameFieldError: true })
-        } else {
-          renameSection(id, nameField)
-          this.closeModal()
-        }
-      })
+      changes['name'] = nameField
+    }
+    if (section !== id) {
+      changes['section'] = section
+    }
+    const keys = Object.keys(changes)
+    if (keys.length !== 0) {
+      // Do request
+      if (keys.includes('name')) {
+        renameDocument(id, uuid, nameField)
+      }
+      if (keys.includes('section')) {
+        moveDocument(id, uuid, section)
+      }
+      closeModal()
     }
   }
-  deleteSection = () => {
-    const { submitDeleteSection, deleteSection, id } = this.props
-    submitDeleteSection(id).then(json => {
-      console.log(json)
-      if (json.error || !json.data.success) {
-        this.setState({ confirmOpen: false, deleteError: true })
-        return
-      } else {
-        deleteSection(id)
-      }
+  deleteDocument = () => {
+    const { deleteDocument, id, uuid } = this.props
+    this.setState({
+      name: '',
+      confirmOpen: false,
+      nameFieldError: false,
+      deleteError: false,
+      section: -1,
     })
+    deleteDocument(id, uuid)
+    //submitDeleteSection(id).then(json => {
+    //console.log(json)
+    //if (json.error || !json.data.success) {
+    //this.setState({ confirmOpen: false, deleteError: true })
+    //return
+    //} else {
+    //deleteSection(id)
+    //}
+    //})
   }
   render() {
     const { modalOpen, sections } = this.props
@@ -84,7 +107,7 @@ class DocumentModal extends Component {
                 onChange={e => this.setState({ nameField: e.target.value })}
                 value={nameField}
                 error={nameFieldError}
-                onKeyDown={e => this.handleKeyDown(e, this.renameSection)}
+                onKeyDown={e => this.handleKeyDown(e, this.handleFormSubmit)}
               />
               <Form.Select
                 label="Section"
@@ -105,7 +128,7 @@ class DocumentModal extends Component {
                 open={confirmOpen}
                 size="mini"
                 onCancel={() => this.setState({ confirmOpen: false })}
-                onConfirm={this.deleteSection}
+                onConfirm={this.deleteDocument}
               />
               <Header
                 as="h4"
@@ -117,7 +140,7 @@ class DocumentModal extends Component {
             <Button basic floated="left" onClick={this.closeModal}>
               Cancel
             </Button>
-            <Button primary floated="right" onClick={this.renameSection}>
+            <Button primary floated="right" onClick={this.handleFormSubmit}>
               Save
             </Button>
           </Modal.Description>
