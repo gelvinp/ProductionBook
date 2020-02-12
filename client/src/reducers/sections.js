@@ -2,6 +2,8 @@ import {
   CREATE_SECTION,
   CREATE_DOCUMENT,
   LOAD_DOCUMENT,
+  RENAME_SECTION,
+  DELETE_SECTION,
 } from '../actions/sections.js'
 
 export function sections(state = {}, action) {
@@ -33,6 +35,14 @@ export function sections(state = {}, action) {
         },
       }
       return { ...state, [key]: { ...section, files: files } }
+    case RENAME_SECTION:
+      key = action.id
+      section = state[key]
+      return { ...state, [key]: { ...section, name: action.name } }
+    case DELETE_SECTION:
+      key = action.id
+      const { [key]: _, ...sections } = state
+      return sections
     default:
       return state
   }

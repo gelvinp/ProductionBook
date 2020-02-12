@@ -6,11 +6,13 @@ class SectionModal extends Component {
   state = {
     nameField: '',
     confirmOpen: false,
+    nameFieldError: false,
   }
   closeModal = () => {
     this.setState({
       name: '',
       confirmOpen: false,
+      nameFieldError: false,
     })
     const { closeModal } = this.props
     closeModal()
@@ -21,9 +23,29 @@ class SectionModal extends Component {
       this.setState({ nameField: name })
     }
   }
+  handleKeyDown = (e, func) => {
+    if (e.key === 'Enter') {
+      func()
+    }
+  }
+  renameSection = () => {
+    const { nameField } = this.state
+    const { renameSection, id } = this.props
+    if (nameField === '') {
+      this.setState({ nameFieldError: true })
+    } else {
+      renameSection(id, nameField)
+      this.closeModal()
+    }
+  }
+  deleteSection = () => {
+    const { deleteSection, id } = this.props
+    deleteSection(id)
+    this.closeModal()
+  }
   render() {
     const { modalOpen, name } = this.props
-    const { nameField, confirmOpen } = this.state
+    const { nameField, confirmOpen, nameFieldError } = this.state
     return (
       <Modal size="tiny" open={modalOpen} onClose={this.closeModal}>
         <Modal.Header>Section Settings</Modal.Header>
@@ -35,6 +57,8 @@ class SectionModal extends Component {
                 width={6}
                 onChange={e => this.setState({ nameField: e.target.value })}
                 value={nameField}
+                error={nameFieldError}
+                onKeyDown={e => this.handleKeyDown(e, this.renameSection)}
               />
               <Button
                 onClick={() => this.setState({ confirmOpen: true })}
@@ -49,13 +73,13 @@ class SectionModal extends Component {
                 content="This will delete all associated documents too!"
                 header="Are you sure?"
                 onCancel={() => this.setState({ confirmOpen: false })}
-                onConfirm={() => this.setState({ confirmOpen: false })}
+                onConfirm={this.deleteSection}
               />
             </Form>
             <Button basic floated="left" onClick={this.closeModal}>
               Cancel
             </Button>
-            <Button primary floated="right" onClick={this.closeModal}>
+            <Button primary floated="right" onClick={this.renameSection}>
               Save
             </Button>
           </Modal.Description>
@@ -69,6 +93,9 @@ SectionModal.propTypes = {
   modalOpen: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   closeModal: PropTypes.func.isRequired,
+  renameSection: PropTypes.func.isRequired,
+  deleteSection: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 }
 
 export default SectionModal
