@@ -8,7 +8,7 @@ import FileList from '../containers/FileListContainer.js'
 class SectionList extends Component {
   state = {}
   render() {
-    const { sections, mobile } = this.props
+    const { sections, mobile, openSection } = this.props
     const visibleSections = Object.entries(sections).map(([id, section]) => (
       <List.Item
         key={`section-${id}`}
@@ -26,6 +26,7 @@ class SectionList extends Component {
           floated="right"
           icon
           size="mini"
+          onClick={() => openSection(id)}
           style={
             this.state[id] || mobile
               ? { height: '2.75em', marginRight: '0.5em' }
@@ -53,6 +54,7 @@ class SectionList extends Component {
 SectionList.propTypes = {
   sections: PropTypes.object.isRequired,
   mobile: PropTypes.bool.isRequired,
+  openSection: PropTypes.func.isRequired,
 }
 
 export default SectionList

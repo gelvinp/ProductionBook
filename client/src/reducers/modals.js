@@ -1,7 +1,13 @@
-import { OPEN_UPLOAD, CLOSE_UPLOAD } from '../actions/modals.js'
+import {
+  OPEN_UPLOAD,
+  OPEN_SECTION,
+  CLOSE_UPLOAD,
+  CLOSE_SECTION,
+} from '../actions/modals.js'
 
 const initialState = {
   uploadOpen: false,
+  section: -1,
 }
 
 export function modals(state = initialState, action) {
@@ -10,6 +16,10 @@ export function modals(state = initialState, action) {
       return { ...state, uploadOpen: true }
     case CLOSE_UPLOAD:
       return { ...state, uploadOpen: false }
+    case OPEN_SECTION:
+      return { ...state, section: action.section }
+    case CLOSE_SECTION:
+      return { ...state, section: -1 }
     default:
       return state
   }

@@ -87,7 +87,7 @@ class UploadModal extends Component {
     }))
     const formReady = fileChosen && section !== -1
     return (
-      <Modal open={modalOpen} onClose={this.closeModal}>
+      <Modal size="tiny" open={modalOpen} onClose={this.closeModal}>
         <Modal.Header>Upload a document</Modal.Header>
         <Modal.Content>
           <Modal.Description style={{ paddingBottom: '2em' }}>

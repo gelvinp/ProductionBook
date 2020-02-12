@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Input, Icon, Button } from 'semantic-ui-react'
 import SectionList from '../containers/SectionListContainer.js'
 import UploadModal from '../containers/UploadModalContainer.js'
+import SectionModal from '../containers/SectionModalContainer.js'
 
 class DocumentColumn extends Component {
   state = {
@@ -75,6 +76,7 @@ class DocumentColumn extends Component {
           labelPosition="right"
         />
         <UploadModal />
+        <SectionModal />
       </div>
     )
   }
