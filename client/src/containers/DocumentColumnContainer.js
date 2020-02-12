@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(createSection(id, name))
     },
     submitSection: name => {
-      return APIRequest.json_request('section', 'post', { name: name })
+      return APIRequest.json_request('sections', 'post', { name: name })
     },
   }
 }

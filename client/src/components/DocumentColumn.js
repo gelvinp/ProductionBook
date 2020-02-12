@@ -4,6 +4,7 @@ import { Input, Icon, Button } from 'semantic-ui-react'
 import SectionList from '../containers/SectionListContainer.js'
 import UploadModal from '../containers/UploadModalContainer.js'
 import SectionModal from '../containers/SectionModalContainer.js'
+import DocumentModal from '../containers/DocumentModalContainer.js'
 
 class DocumentColumn extends Component {
   state = {
@@ -77,6 +78,7 @@ class DocumentColumn extends Component {
         />
         <UploadModal />
         <SectionModal />
+        <DocumentModal />
       </div>
     )
   }

@@ -7,6 +7,9 @@ class Document < ApplicationRecord
   before_create do
     self.uuid = SecureRandom.uuid
   end
+  before_destroy do
+    self.file.purge
+  end
   has_one_attached :file
 
   # Returns the attached PDF as a binary blob

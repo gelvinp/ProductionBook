@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/api', to: 'documents#index'
   get '/api/:section/:uuid', to: 'documents#show'
   post '/api', to: 'documents#create'
-  post '/api/section', to: 'sections#create'
+  scope '/api' do
+    resources :sections, only: [:create, :update, :destroy]
+  end
   root to: proc { [400, {}, []] }
 end

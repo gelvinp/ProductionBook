@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Header, Confirm, Modal, Form } from 'semantic-ui-react'
 
-class SectionModal extends Component {
+class DocumentModal extends Component {
   state = {
     nameField: '',
     confirmOpen: false,
     nameFieldError: false,
     deleteError: false,
+    section: -1,
   }
   closeModal = () => {
     this.setState({
@@ -15,14 +16,15 @@ class SectionModal extends Component {
       confirmOpen: false,
       nameFieldError: false,
       deleteError: false,
+      section: -1,
     })
     const { closeModal } = this.props
     closeModal()
   }
   componentDidUpdate(prevProps) {
     if (!prevProps.modalOpen && this.props.modalOpen) {
-      const { name } = this.props
-      this.setState({ nameField: name })
+      const { name, id } = this.props
+      this.setState({ section: id, nameField: name })
     }
   }
   handleKeyDown = (e, func) => {
@@ -57,8 +59,19 @@ class SectionModal extends Component {
     })
   }
   render() {
-    const { modalOpen } = this.props
-    const { nameField, confirmOpen, nameFieldError, deleteError } = this.state
+    const { modalOpen, sections } = this.props
+    const {
+      nameField,
+      confirmOpen,
+      section,
+      nameFieldError,
+      deleteError,
+    } = this.state
+    const options = Object.entries(sections).map(([key, value]) => ({
+      key,
+      text: value.name,
+      value: parseInt(key),
+    }))
     return (
       <Modal size="tiny" open={modalOpen} onClose={this.closeModal}>
         <Modal.Header>Section Settings</Modal.Header>
@@ -73,18 +86,24 @@ class SectionModal extends Component {
                 error={nameFieldError}
                 onKeyDown={e => this.handleKeyDown(e, this.renameSection)}
               />
+              <Form.Select
+                label="Section"
+                width={6}
+                options={options}
+                placeholder="Section"
+                value={section}
+                onChange={(e, { value }) => this.setState({ section: value })}
+              />
               <Button
                 onClick={() => this.setState({ confirmOpen: true })}
                 basic
                 color="red"
               >
-                Delete Section
+                Delete Document
               </Button>
               <Confirm
                 open={confirmOpen}
                 size="mini"
-                content="This will delete all associated documents too!"
-                header="Are you sure?"
                 onCancel={() => this.setState({ confirmOpen: false })}
                 onConfirm={this.deleteSection}
               />
@@ -108,15 +127,16 @@ class SectionModal extends Component {
   }
 }
 
-SectionModal.propTypes = {
+DocumentModal.propTypes = {
   modalOpen: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   closeModal: PropTypes.func.isRequired,
-  renameSection: PropTypes.func.isRequired,
-  submitRenameSection: PropTypes.func.isRequired,
-  submitDeleteSection: PropTypes.func.isRequired,
-  deleteSection: PropTypes.func.isRequired,
+  renameDocument: PropTypes.func.isRequired,
+  moveDocument: PropTypes.func.isRequired,
+  deleteDocument: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
+  uuid: PropTypes.string.isRequired,
+  sections: PropTypes.object.isRequired,
 }
 
-export default SectionModal
+export default DocumentModal

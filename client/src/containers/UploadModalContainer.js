@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     sendFile: body => {
       return APIRequest.json_request('', 'post', body)
     },
-    createDocument: (section, uuid, name, base64) => {
-      dispatch(createDocument(section, uuid, name, base64))
+    createDocument: (section, uuid, name, blob) => {
+      dispatch(createDocument(section, uuid, name, blob))
     },
   }
 }

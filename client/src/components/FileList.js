@@ -5,7 +5,7 @@ import { Icon, List, Button } from 'semantic-ui-react'
 class FileList extends Component {
   state = {}
   render() {
-    const { files, selectDocument, mobile } = this.props
+    const { files, selectDocument, openDocument, mobile } = this.props
     const visibleFiles = Object.entries(files).map(([uuid, file]) => (
       <List.Item
         style={{ display: 'flex', paddingTop: '0.4em', paddingBottom: '0.4em' }}
@@ -22,6 +22,7 @@ class FileList extends Component {
           icon
           basic
           size="mini"
+          onClick={() => openDocument(uuid)}
           style={
             this.state[uuid] || mobile
               ? {}
@@ -43,6 +44,7 @@ class FileList extends Component {
 FileList.propTypes = {
   files: PropTypes.object.isRequired,
   selectDocument: PropTypes.func.isRequired,
+  openDocument: PropTypes.func.isRequired,
   mobile: PropTypes.bool.isRequired,
 }
 

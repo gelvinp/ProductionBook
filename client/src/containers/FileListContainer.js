@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import FileList from '../components/FileList.js'
 import { selectDocument } from '../actions/documents.js'
+import { openDocument } from '../actions/modals.js'
 import PropTypes from 'prop-types'
 
 const mapStateToProps = (state, ownProps) => {
@@ -14,6 +15,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     selectDocument: uuid => {
       dispatch(selectDocument(ownProps.section, uuid))
+    },
+    openDocument: uuid => {
+      dispatch(openDocument(ownProps.section, uuid))
     },
   }
 }

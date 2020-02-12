@@ -9,6 +9,7 @@ class UploadModal extends Component {
     fileChosen: false,
     fileError: false,
     selectedFile: null,
+    fileBlob: null,
     fileUploading: false,
     uploadError: false,
   }
@@ -19,6 +20,7 @@ class UploadModal extends Component {
       fileChosen: false,
       fileError: false,
       selectedFile: null,
+      fileBlob: null,
       fileUploading: false,
       uploadError: false,
     })
@@ -49,10 +51,18 @@ class UploadModal extends Component {
         fileError: false,
         selectedFile: file,
       })
+      const reader = new FileReader()
+      reader.onload = e => {
+        const blob = new Blob([new Uint8Array(e.target.result)], {
+          type: file.type,
+        })
+        this.setState({ fileBlob: blob })
+      }
+      reader.readAsArrayBuffer(file)
     }
   }
   uploadFile = async () => {
-    const { selectedFile, section } = this.state
+    const { selectedFile, fileBlob, section } = this.state
     const { sendFile, createDocument } = this.props
     this.setState({ fileUploading: true })
     const result = await this.encodeBase64(selectedFile)
@@ -64,7 +74,15 @@ class UploadModal extends Component {
     this.setState({ fileUploading: false })
     if (json.data.success) {
       this.setState({ uploadError: false })
-      createDocument(section, json.data.uuid, selectedFile.name, result)
+      createDocument(
+        section,
+        json.data.uuid,
+        selectedFile.name
+          .split('.')
+          .slice(0, -1)
+          .join('.'),
+        fileBlob
+      )
       this.closeModal()
     } else {
       this.setState({ uploadError: true })

@@ -28,7 +28,7 @@ class DocumentsController < ApplicationController
   def create
     section = Section.where(id: params['section']).first
     if section
-      document = Document.create(section: section, name: params['name'])
+      document = Document.create(section: section, name: params['name'].split(".")[0..-2].join("."))
       tempfile = Tempfile.new('document')
       begin
         uri = URI::Data.new(params['file'])
