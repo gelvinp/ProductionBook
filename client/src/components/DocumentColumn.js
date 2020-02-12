@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Input, Icon, Button } from 'semantic-ui-react'
 import SectionList from '../containers/SectionListContainer.js'
-import FileModal from '../containers/FileModalContainer.js'
+import UploadModal from '../containers/UploadModalContainer.js'
 
 class DocumentColumn extends Component {
   state = {
@@ -27,7 +27,7 @@ class DocumentColumn extends Component {
     })
   }
   render() {
-    const { openFile, mobile } = this.props
+    const { openUpload, mobile } = this.props
     const { sectionField, sectionError } = this.state
     return (
       <div
@@ -43,7 +43,7 @@ class DocumentColumn extends Component {
         <SectionList mobile={mobile} />
         <Button
           id="openFileButton"
-          onClick={openFile}
+          onClick={openUpload}
           basic
           icon
           labelPosition="left"
@@ -74,14 +74,14 @@ class DocumentColumn extends Component {
           }
           labelPosition="right"
         />
-        <FileModal />
+        <UploadModal />
       </div>
     )
   }
 }
 
 DocumentColumn.propTypes = {
-  openFile: PropTypes.func.isRequired,
+  openUpload: PropTypes.func.isRequired,
   createSection: PropTypes.func.isRequired,
   submitSection: PropTypes.func.isRequired,
   mobile: PropTypes.bool,

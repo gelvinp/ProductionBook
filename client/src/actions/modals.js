@@ -1,10 +1,10 @@
-export const OPEN_FILE = 'OPEN_FILE'
-export const CLOSE_FILE = 'CLOSE_FILE'
+export const OPEN_UPLOAD = 'OPEN_UPLOAD'
+export const CLOSE_UPLOAD = 'CLOSE_UPLOAD'
 
-export function openFile() {
-  return { type: OPEN_FILE }
+export function openUpload() {
+  return { type: OPEN_UPLOAD }
 }
 
-export function closeFile() {
-  return { type: CLOSE_FILE }
+export function closeUpload() {
+  return { type: CLOSE_UPLOAD }
 }

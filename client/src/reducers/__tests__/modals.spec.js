@@ -1,31 +1,31 @@
 import { modals } from '../modals.js'
-import { OPEN_FILE, CLOSE_FILE } from '../../actions/modals.js'
+import { OPEN_UPLOAD, CLOSE_UPLOAD } from '../../actions/modals.js'
 
 describe('modals reducer', () => {
   const initialState = {
-    fileOpen: false,
+    uploadOpen: false,
   }
   const openState = {
     ...initialState,
-    fileOpen: true,
+    uploadOpen: true,
   }
 
   it('should return the initial state', () => {
     expect(modals(undefined, {})).toEqual(initialState)
   })
 
-  it('should handle OPEN_FILE', () => {
+  it('should handle OPEN_UPLOAD', () => {
     expect(
       modals(initialState, {
-        type: OPEN_FILE,
+        type: OPEN_UPLOAD,
       })
     ).toEqual(openState)
   })
 
-  it('should handle CLOSE_FILE', () => {
+  it('should handle CLOSE_UPLOAD', () => {
     expect(
       modals(openState, {
-        type: CLOSE_FILE,
+        type: CLOSE_UPLOAD,
       })
     ).toEqual(initialState)
   })

@@ -6,7 +6,7 @@ describe('DocumentColumn', () => {
   it('Displays correctly', () => {
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
       />
@@ -17,7 +17,7 @@ describe('DocumentColumn', () => {
   it('Enables the section submit button when text is entered', () => {
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
       />
@@ -34,7 +34,7 @@ describe('DocumentColumn', () => {
   it('Updates the sectionField', () => {
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
       />
@@ -45,17 +45,17 @@ describe('DocumentColumn', () => {
     expect(wrapper.state('sectionField')).toEqual('Test')
   })
 
-  it('Opens the file modal', () => {
-    const openFile = jest.fn()
+  it('Opens the upload modal', () => {
+    const openUpload = jest.fn()
     const wrapper = shallow(
       <DocumentColumn
-        openFile={openFile}
+        openUpload={openUpload}
         createSection={jest.fn()}
         submitSection={jest.fn()}
       />
     )
-    wrapper.find('#openFileButton').simulate('click')
-    expect(openFile).toHaveBeenCalled()
+    wrapper.find('#openUploadButton').simulate('click')
+    expect(openUpload).toHaveBeenCalled()
   })
 
   it('Handles a communication error', async () => {
@@ -68,7 +68,7 @@ describe('DocumentColumn', () => {
     })
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         submitSection={submitSection}
         createSection={jest.fn()}
       />
@@ -95,7 +95,7 @@ describe('DocumentColumn', () => {
     })
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         submitSection={submitSection}
         createSection={jest.fn()}
       />
@@ -126,7 +126,7 @@ describe('DocumentColumn', () => {
     })
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         submitSection={submitSection}
         createSection={createSection}
       />
@@ -149,7 +149,7 @@ describe('DocumentColumn', () => {
     })
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         submitSection={submitSection}
         createSection={jest.fn()}
       />
@@ -166,7 +166,7 @@ describe('DocumentColumn', () => {
     })
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         submitSection={submitSection}
         createSection={jest.fn()}
       />
@@ -178,7 +178,7 @@ describe('DocumentColumn', () => {
   it('Does not have padding on desktop', () => {
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
       />
@@ -189,7 +189,7 @@ describe('DocumentColumn', () => {
   it('Does have padding on mobile', () => {
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
         mobile

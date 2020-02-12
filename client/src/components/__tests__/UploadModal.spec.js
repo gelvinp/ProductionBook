@@ -1,8 +1,8 @@
 import React from 'react'
-import FileModal from '../FileModal.js'
+import UploadModal from '../UploadModal.js'
 import { shallow, mount } from 'enzyme'
 
-describe('FileModal', () => {
+describe('UploadModal', () => {
   let modalOpen, sections, closeModal, sendFile, createDocument
 
   it('Is hidden when closed', () => {
@@ -12,7 +12,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = mount(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -31,7 +31,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = mount(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -54,7 +54,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = mount(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -76,7 +76,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -95,7 +95,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -120,7 +120,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -150,7 +150,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -184,7 +184,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -214,7 +214,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -248,7 +248,7 @@ describe('FileModal', () => {
     })
     createDocument = jest.fn()
     wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -295,7 +295,7 @@ describe('FileModal', () => {
         expect(result).toEqual(base64)
       })
     wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}

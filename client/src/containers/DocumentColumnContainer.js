@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import DocumentColumn from '../components/DocumentColumn.js'
-import { openFile } from '../actions/modals.js'
+import { openUpload } from '../actions/modals.js'
 import { createSection } from '../actions/sections.js'
 import APIRequest from '../APIRequest.js'
 
@@ -12,8 +12,8 @@ const mapStateToProps = (dispatch, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    openFile: () => {
-      dispatch(openFile())
+    openUpload: () => {
+      dispatch(openUpload())
     },
     createSection: (id, name) => {
       dispatch(createSection(id, name))

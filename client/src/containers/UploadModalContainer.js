@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
-import FileModal from '../components/FileModal.js'
-import { closeFile } from '../actions/modals.js'
+import UploadModal from '../components/UploadModal.js'
+import { closeUpload } from '../actions/modals.js'
 import { createDocument } from '../actions/sections.js'
 import APIRequest from '../APIRequest.js'
 
 const mapStateToProps = state => {
   return {
-    modalOpen: state.modals.fileOpen,
+    modalOpen: state.modals.uploadOpen,
     sections: state.sections,
   }
 }
@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     closeModal: () => {
-      dispatch(closeFile())
+      dispatch(closeUpload())
     },
     sendFile: body => {
       return APIRequest.json_request('', 'post', body)
@@ -25,4 +25,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FileModal)
+export default connect(mapStateToProps, mapDispatchToProps)(UploadModal)

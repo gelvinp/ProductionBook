@@ -1,17 +1,22 @@
-import { OPEN_FILE, CLOSE_FILE, openFile, closeFile } from '../modals.js'
+import {
+  OPEN_UPLOAD,
+  CLOSE_UPLOAD,
+  openUpload,
+  closeUpload,
+} from '../modals.js'
 
 describe('modal actions', () => {
-  it('should create an action to open the file modal', () => {
+  it('should create an action to open the upload modal', () => {
     const expectedAction = {
-      type: OPEN_FILE,
+      type: OPEN_UPLOAD,
     }
-    expect(openFile()).toEqual(expectedAction)
+    expect(openUpload()).toEqual(expectedAction)
   })
 
-  it('should create an action to close the file modal', () => {
+  it('should create an action to close the upload modal', () => {
     const expectedAction = {
-      type: CLOSE_FILE,
+      type: CLOSE_UPLOAD,
     }
-    expect(closeFile()).toEqual(expectedAction)
+    expect(closeUpload()).toEqual(expectedAction)
   })
 })

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Header, Modal, Form } from 'semantic-ui-react'
 
-class FileModal extends Component {
+class UploadModal extends Component {
   state = {
     section: -1,
     buttonText: 'Select a file...',
@@ -154,7 +154,7 @@ class FileModal extends Component {
   }
 }
 
-FileModal.propTypes = {
+UploadModal.propTypes = {
   modalOpen: PropTypes.bool.isRequired,
   sections: PropTypes.object.isRequired,
   closeModal: PropTypes.func.isRequired,
@@ -162,4 +162,4 @@ FileModal.propTypes = {
   createDocument: PropTypes.func.isRequired,
 }
 
-export default FileModal
+export default UploadModal
