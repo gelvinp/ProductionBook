@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 const mapStateToProps = (state, ownProps) => {
   return {
     files: state.sections[ownProps.section].files,
+    mobile: ownProps.mobile || false,
   }
 }
 
@@ -21,6 +22,7 @@ const FileListContainer = connect(mapStateToProps, mapDispatchToProps)(FileList)
 
 FileList.propTypes = {
   section: PropTypes.string.isRequired,
+  mobile: PropTypes.bool.isRequired,
 }
 
 export default FileListContainer

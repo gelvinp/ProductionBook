@@ -1,21 +1,41 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { List } from 'semantic-ui-react'
+import { Button, Icon, List } from 'semantic-ui-react'
 import FileList from '../containers/FileListContainer.js'
 
 //TODO: Reject sections with no files, and display no files found instead if no
 //sections have any files
 class SectionList extends Component {
+  state = {}
   render() {
-    const { sections } = this.props
+    const { sections, mobile } = this.props
     const visibleSections = Object.entries(sections).map(([id, section]) => (
-      <List.Item key={`section-${id}`}>
+      <List.Item
+        key={`section-${id}`}
+        style={{ display: 'flex', paddingTop: '0.4em', paddingBottom: '0.4em' }}
+        onMouseEnter={() => this.setState({ [id]: true })}
+        onMouseLeave={() => this.setState({ [id]: false })}
+      >
         <List.Icon name="folder" />
         <List.Content>
           {section.name}
           {/* <Button icon="info circle" size="mini" floated="right" basic /> */}
-          <FileList section={id} />
+          <FileList section={id} mobile={mobile} />
         </List.Content>
+        <Button
+          floated="right"
+          icon
+          size="mini"
+          style={
+            this.state[id] || mobile
+              ? { height: '2.75em', marginRight: '0.5em' }
+              : {
+                  visibility: 'hidden',
+                }
+          }
+        >
+          <Icon name="info circle" />
+        </Button>
       </List.Item>
     ))
     return (
@@ -32,6 +52,7 @@ class SectionList extends Component {
 
 SectionList.propTypes = {
   sections: PropTypes.object.isRequired,
+  mobile: PropTypes.bool.isRequired,
 }
 
 export default SectionList

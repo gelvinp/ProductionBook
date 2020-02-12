@@ -33,13 +33,14 @@ class DocumentColumn extends Component {
       <div
         style={{
           height: '100%',
+          width: '100%',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
           ...(mobile ? { padding: '1em' } : {}),
         }}
       >
-        <SectionList />
+        <SectionList mobile={mobile} />
         <Button
           id="openFileButton"
           onClick={openFile}

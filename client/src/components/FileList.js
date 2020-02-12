@@ -1,14 +1,37 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { List } from 'semantic-ui-react'
+import { Icon, List, Button } from 'semantic-ui-react'
 
 class FileList extends Component {
+  state = {}
   render() {
-    const { files, selectDocument } = this.props
+    const { files, selectDocument, mobile } = this.props
     const visibleFiles = Object.entries(files).map(([uuid, file]) => (
-      <List.Item key={`file-${uuid}`} onClick={() => selectDocument(uuid)}>
+      <List.Item
+        style={{ display: 'flex', paddingTop: '0.4em', paddingBottom: '0.4em' }}
+        key={`file-${uuid}`}
+        onMouseEnter={() => this.setState({ [uuid]: true })}
+        onMouseLeave={() => this.setState({ [uuid]: false })}
+      >
         <List.Icon name="file" />
-        <List.Content>{file.name}</List.Content>
+        <List.Content onClick={() => selectDocument(uuid)}>
+          {file.name}
+        </List.Content>
+        <Button
+          floated="right"
+          icon
+          basic
+          size="mini"
+          style={
+            this.state[uuid] || mobile
+              ? {}
+              : {
+                  visibility: 'hidden',
+                }
+          }
+        >
+          <Icon name="info circle" />
+        </Button>
       </List.Item>
     ))
     return (
@@ -20,6 +43,7 @@ class FileList extends Component {
 FileList.propTypes = {
   files: PropTypes.object.isRequired,
   selectDocument: PropTypes.func.isRequired,
+  mobile: PropTypes.bool.isRequired,
 }
 
 export default FileList
