@@ -26,10 +26,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(deleteSection(id))
     },
     submitRenameSection: (id, name) => {
-      return APIRequest.json_request(`sections/${id}`, 'PATCH', { name: name })
+      return APIRequest.json_request(`${id}`, 'PATCH', { name: name })
     },
     submitDeleteSection: id => {
-      return APIRequest.json_request(`sections/${id}`, 'DELETE')
+      return APIRequest.json_request(`${id}`, 'DELETE')
     },
   }
 }

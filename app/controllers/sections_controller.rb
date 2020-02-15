@@ -24,7 +24,7 @@ class SectionsController < ApplicationController
   # @param name [String] New name for the section
   # @param id [Integer] ID of the section to rename
   #
-  # @note PATCH or PUT /api/section/:id
+  # @note PATCH or PUT /api/:id
   #
   # return JSON where success: true or false
   def update
@@ -40,7 +40,7 @@ class SectionsController < ApplicationController
   #
   # @param id [Integer] ID of the section to delete
   #
-  # @note DELETE /api/section/:id
+  # @note DELETE /api/:id
   #
   # return JSON where success: true or false
   def destroy

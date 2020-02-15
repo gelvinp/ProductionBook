@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Header, Confirm, Modal, Form } from 'semantic-ui-react'
+import {
+  Divider,
+  Button,
+  Header,
+  Confirm,
+  Modal,
+  Form,
+} from 'semantic-ui-react'
 
 class DocumentModal extends Component {
   state = {
     nameField: '',
     confirmOpen: false,
     nameFieldError: false,
+    sectionError: false,
     deleteError: false,
     section: -1,
   }
@@ -15,6 +23,7 @@ class DocumentModal extends Component {
       name: '',
       confirmOpen: false,
       nameFieldError: false,
+      sectionError: false,
       deleteError: false,
       section: -1,
     })
@@ -41,45 +50,62 @@ class DocumentModal extends Component {
       uuid,
       renameDocument,
       moveDocument,
+      submitUpdateDocument,
     } = this.props
     let changes = {}
     if (nameField !== name && nameField !== '') {
       changes['name'] = nameField
     }
     if (section !== id) {
-      changes['section'] = section
+      changes['new_section'] = section // Avoid conflict with section parameter in PATCH url
     }
     const keys = Object.keys(changes)
     if (keys.length !== 0) {
       // Do request
-      if (keys.includes('name')) {
-        renameDocument(id, uuid, nameField)
-      }
-      if (keys.includes('section')) {
-        moveDocument(id, uuid, section)
-      }
-      closeModal()
+      submitUpdateDocument(id, uuid, changes).then(json => {
+        if (json.error || json.data.error) {
+          this.setState({ nameFieldError: true, sectionError: true })
+        } else {
+          let success = true
+          if (keys.includes('name')) {
+            if (json.data.name) {
+              renameDocument(id, uuid, nameField)
+            } else {
+              this.setState({ nameFieldError: true })
+              success = false
+            }
+          }
+          if (keys.includes('new_section')) {
+            if (json.data.section) {
+              moveDocument(id, uuid, section)
+            } else {
+              this.setState({ sectionError: true })
+              success = false
+            }
+          }
+          if (success) {
+            closeModal()
+          }
+        }
+      })
     }
   }
   deleteDocument = () => {
-    const { deleteDocument, id, uuid } = this.props
-    this.setState({
-      name: '',
-      confirmOpen: false,
-      nameFieldError: false,
-      deleteError: false,
-      section: -1,
+    const { submitDeleteDocument, deleteDocument, id, uuid } = this.props
+    submitDeleteDocument(id, uuid).then(json => {
+      if (json.error || !json.data.success) {
+        this.setState({ deleteError: true, confirmOpen: false })
+      } else {
+        this.setState({
+          name: '',
+          confirmOpen: false,
+          nameFieldError: false,
+          deleteError: false,
+          section: -1,
+        })
+        deleteDocument(id, uuid)
+      }
     })
-    deleteDocument(id, uuid)
-    //submitDeleteSection(id).then(json => {
-    //console.log(json)
-    //if (json.error || !json.data.success) {
-    //this.setState({ confirmOpen: false, deleteError: true })
-    //return
-    //} else {
-    //deleteSection(id)
-    //}
-    //})
   }
   render() {
     const { modalOpen, sections } = this.props
@@ -89,6 +115,7 @@ class DocumentModal extends Component {
       section,
       nameFieldError,
       deleteError,
+      sectionError,
     } = this.state
     const options = Object.entries(sections).map(([key, value]) => ({
       key,
@@ -111,24 +138,12 @@ class DocumentModal extends Component {
               />
               <Form.Select
                 label="Section"
+                error={sectionError}
                 width={6}
                 options={options}
                 placeholder="Section"
                 value={section}
                 onChange={(e, { value }) => this.setState({ section: value })}
-              />
-              <Button
-                onClick={() => this.setState({ confirmOpen: true })}
-                basic
-                color="red"
-              >
-                Delete Document
-              </Button>
-              <Confirm
-                open={confirmOpen}
-                size="mini"
-                onCancel={() => this.setState({ confirmOpen: false })}
-                onConfirm={this.deleteDocument}
               />
               <Header
                 as="h4"
@@ -137,6 +152,20 @@ class DocumentModal extends Component {
                 An error occurred, please try again
               </Header>
             </Form>
+            <Button
+              onClick={() => this.setState({ confirmOpen: true })}
+              basic
+              color="red"
+            >
+              Delete Document
+            </Button>
+            <Confirm
+              open={confirmOpen}
+              size="mini"
+              onCancel={() => this.setState({ confirmOpen: false })}
+              onConfirm={this.deleteDocument}
+            />
+            <Divider hidden />
             <Button basic floated="left" onClick={this.closeModal}>
               Cancel
             </Button>
@@ -160,6 +189,8 @@ DocumentModal.propTypes = {
   id: PropTypes.number.isRequired,
   uuid: PropTypes.string.isRequired,
   sections: PropTypes.object.isRequired,
+  submitUpdateDocument: PropTypes.func.isRequired,
+  submitDeleteDocument: PropTypes.func.isRequired,
 }
 
 export default DocumentModal

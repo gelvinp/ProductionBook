@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Header, Confirm, Modal, Form } from 'semantic-ui-react'
+import {
+  Divider,
+  Button,
+  Header,
+  Confirm,
+  Modal,
+  Form,
+} from 'semantic-ui-react'
 
 class SectionModal extends Component {
   state = {
@@ -50,7 +57,6 @@ class SectionModal extends Component {
       console.log(json)
       if (json.error || !json.data.success) {
         this.setState({ confirmOpen: false, deleteError: true })
-        return
       } else {
         this.setState({
           name: '',
@@ -79,21 +85,6 @@ class SectionModal extends Component {
                 error={nameFieldError}
                 onKeyDown={e => this.handleKeyDown(e, this.renameSection)}
               />
-              <Button
-                onClick={() => this.setState({ confirmOpen: true })}
-                basic
-                color="red"
-              >
-                Delete Section
-              </Button>
-              <Confirm
-                open={confirmOpen}
-                size="mini"
-                content="This will delete all associated documents too!"
-                header="Are you sure?"
-                onCancel={() => this.setState({ confirmOpen: false })}
-                onConfirm={this.deleteSection}
-              />
               <Header
                 as="h4"
                 style={deleteError ? { color: 'red' } : { display: 'none' }}
@@ -101,6 +92,22 @@ class SectionModal extends Component {
                 An error occurred, please try again
               </Header>
             </Form>
+            <Button
+              onClick={() => this.setState({ confirmOpen: true })}
+              basic
+              color="red"
+            >
+              Delete Section
+            </Button>
+            <Confirm
+              open={confirmOpen}
+              size="mini"
+              content="This will delete all associated documents too!"
+              header="Are you sure?"
+              onCancel={() => this.setState({ confirmOpen: false })}
+              onConfirm={this.deleteSection}
+            />
+            <Divider hidden />
             <Button basic floated="left" onClick={this.closeModal}>
               Cancel
             </Button>

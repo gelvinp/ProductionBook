@@ -64,4 +64,52 @@ class DocumentsController < ApplicationController
     document = section&.documents&.where(uuid: params[:uuid])&.first
     send_data document.binary_blob, filename: document.name, type: 'application/pdf', disposition: 'attachment' if document
   end
+
+  # Accepts a new name and/or section for a specified document
+  #
+  # @param section [Integer] ID of the section
+  # @param uuid [String] UUID of the file to modify
+  # @param name [String] (optional) New name of the file
+  # @param new_section [Integer] (optional) ID of the new section
+  #
+  # @note PATCH or PUT /api/:section/:id
+  #
+  # @return JSON object where name and section: true if changed, false if not
+  def update
+    section = Section.where(id: params[:section]).first
+    document = section&.documents&.where(uuid: params[:uuid])&.first
+    changes = { name: false, section: false }
+    if document
+      changes[:name] = true if params["name"] && document.update(name: params["name"])
+      if params["new_section"] && section = Section.where(id: params["new_section"]).first
+        puts params["new_section"]
+        puts section.name
+        section.documents << document
+        section.save
+        puts document.reload.section.name
+        changes[:section] = true if document.reload.section == section
+      end
+    else
+      render json: { error: true }
+      return
+    end
+    render json: changes
+  end
+
+  # Deletes a specified document
+  #
+  # @param section [Integer] ID of the section
+  # @param uuid [String] UUID of the document
+  #
+  # @note DELETE /api/:section/:id
+  #
+  # @return JSON where success: true if deleted, false if not
+  def destroy
+    document = Section.where(id: params[:section]).first&.documents&.where(uuid: params[:uuid])&.first
+    if document && document.destroy
+      render json: { success: true }
+    else
+      render json: { success: false }
+    end
+  end
 end

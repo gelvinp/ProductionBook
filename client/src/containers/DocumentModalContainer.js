@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import DocumentModal from '../components/DocumentModal.js'
-import { closeDocument } from '../actions/modals.js'
+import { openDocument, closeDocument } from '../actions/modals.js'
 import {
   renameDocument,
   moveDocument,
@@ -10,13 +10,13 @@ import APIRequest from '../APIRequest.js'
 
 const mapStateToProps = state => {
   const modalOpen = Object.keys(state.modals.document).length !== 0
+  const doc = modalOpen
+    ? state.sections[state.modals.document.id].files[state.modals.document.uuid]
+    : null
+  const name = doc ? doc.name : ''
   return {
     modalOpen: modalOpen,
-    name: modalOpen
-      ? state.sections[state.modals.document.id].files[
-          state.modals.document.uuid
-        ].name
-      : '',
+    name: name,
     id: parseInt(state.modals.document.id) || -1,
     uuid: state.modals.document.uuid || '',
     sections: state.sections,
@@ -33,10 +33,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     moveDocument: (id, uuid, newID) => {
       dispatch(moveDocument(id, uuid, newID))
+      dispatch(openDocument(newID, uuid))
     },
     deleteDocument: (id, uuid) => {
       dispatch(closeDocument())
       dispatch(deleteDocument(id, uuid))
+    },
+    submitUpdateDocument: (id, uuid, changes) => {
+      return APIRequest.json_request(`${id}/${uuid}`, 'PATCH', changes)
+    },
+    submitDeleteDocument: (id, uuid) => {
+      return APIRequest.json_request(`${id}/${uuid}`, 'DELETE')
     },
   }
 }
