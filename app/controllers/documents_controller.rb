@@ -28,7 +28,7 @@ class DocumentsController < ApplicationController
   def create
     section = Section.where(id: params['section']).first
     if section
-      document = Document.create(section: section, name: params['name'].split(".")[0..-2].join("."))
+      document = Document.create(section: section, name: params['name'].split('.')[0..-2].join('.'))
       tempfile = Tempfile.new('document')
       begin
         uri = URI::Data.new(params['file'])
@@ -80,13 +80,9 @@ class DocumentsController < ApplicationController
     document = section&.documents&.where(uuid: params[:uuid])&.first
     changes = { name: false, section: false }
     if document
-      changes[:name] = true if params["name"] && document.update(name: params["name"])
-      if params["new_section"] && section = Section.where(id: params["new_section"]).first
-        puts params["new_section"]
-        puts section.name
+      changes[:name] = true if params['name'] && document.update(name: params['name'])
+      if params['new_section'] && (section = Section.where(id: params['new_section']).first)
         section.documents << document
-        section.save
-        puts document.reload.section.name
         changes[:section] = true if document.reload.section == section
       end
     else
@@ -106,7 +102,7 @@ class DocumentsController < ApplicationController
   # @return JSON where success: true if deleted, false if not
   def destroy
     document = Section.where(id: params[:section]).first&.documents&.where(uuid: params[:uuid])&.first
-    if document && document.destroy
+    if document&.destroy
       render json: { success: true }
     else
       render json: { success: false }

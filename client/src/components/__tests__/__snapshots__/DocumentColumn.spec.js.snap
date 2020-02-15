@@ -8,6 +8,7 @@ exports[`DocumentColumn Displays correctly 1`] = `
       "flexDirection": "column",
       "height": "100%",
       "overflow": "hidden",
+      "width": "100%",
     }
   }
 >
@@ -16,7 +17,7 @@ exports[`DocumentColumn Displays correctly 1`] = `
     as="button"
     basic={true}
     icon={true}
-    id="openFileButton"
+    id="openUploadButton"
     labelPosition="left"
     onClick={[MockFunction]}
     style={
@@ -53,6 +54,8 @@ exports[`DocumentColumn Displays correctly 1`] = `
     type="text"
     value=""
   />
-  <Connect(FileModal) />
+  <Connect(UploadModal) />
+  <Connect(SectionModal) />
+  <Connect(DocumentModal) />
 </div>
 `;

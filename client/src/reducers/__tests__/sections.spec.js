@@ -3,6 +3,11 @@ import {
   CREATE_SECTION,
   CREATE_DOCUMENT,
   LOAD_DOCUMENT,
+  RENAME_SECTION,
+  DELETE_SECTION,
+  RENAME_DOCUMENT,
+  MOVE_DOCUMENT,
+  DELETE_DOCUMENT,
 } from '../../actions/sections.js'
 
 describe('sections reducer', () => {
@@ -175,6 +180,166 @@ describe('sections reducer', () => {
         section: 1,
         uuid: 12,
         blob: blob,
+      })
+    ).toEqual(expectedState)
+  })
+
+  it('should handle RENAME_SECTION', () => {
+    const initialState = {
+      1: {
+        name: 'Initial Name',
+        files: {},
+      },
+    }
+    const newName = 'Test'
+    const expectedState = {
+      1: {
+        name: newName,
+        files: {},
+      },
+    }
+    expect(
+      sections(initialState, {
+        type: RENAME_SECTION,
+        id: 1,
+        name: newName,
+      })
+    ).toEqual(expectedState)
+  })
+
+  it('should handle DELETE_SECTION', () => {
+    let initialState = {
+      0: {
+        name: 'Test Section One',
+        files: {},
+      },
+      1: {
+        name: 'Test Section Two',
+        files: {},
+      },
+    }
+    let expectedState = {
+      0: {
+        name: 'Test Section One',
+        files: {},
+      },
+    }
+    expect(
+      sections(initialState, {
+        type: DELETE_SECTION,
+        id: 1,
+      })
+    ).toEqual(expectedState)
+  })
+
+  it('should handle RENAME_DOCUMENT', () => {
+    const initialState = {
+      1: {
+        name: 'Initial Name',
+        files: {
+          2: {
+            name: 'Initial Document',
+            blob: null,
+          },
+        },
+      },
+    }
+    const newName = 'Test'
+    const expectedState = {
+      1: {
+        name: 'Initial Name',
+        files: {
+          2: {
+            name: newName,
+            blob: null,
+          },
+        },
+      },
+    }
+    expect(
+      sections(initialState, {
+        type: RENAME_DOCUMENT,
+        id: 1,
+        uuid: 2,
+        name: newName,
+      })
+    ).toEqual(expectedState)
+  })
+
+  it('should handle MOVE_DOCUMENT', () => {
+    const initialState = {
+      0: {
+        name: 'Test Section One',
+        files: {
+          2: {
+            name: 'Test Document',
+            blob: null,
+          },
+        },
+      },
+      1: {
+        name: 'Test Section Two',
+        files: {},
+      },
+    }
+    const expectedState = {
+      0: {
+        name: 'Test Section One',
+        files: {},
+      },
+      1: {
+        name: 'Test Section Two',
+        files: {
+          2: {
+            name: 'Test Document',
+            blob: null,
+          },
+        },
+      },
+    }
+    expect(
+      sections(initialState, {
+        type: MOVE_DOCUMENT,
+        id: 0,
+        uuid: 2,
+        newID: 1,
+      })
+    ).toEqual(expectedState)
+  })
+
+  it('should handle DELETE_DOCUMENT', () => {
+    const initialState = {
+      1: {
+        name: 'Initial Name',
+        files: {
+          2: {
+            name: 'Initial Document',
+            blob: null,
+          },
+          3: {
+            name: 'Second Document',
+            blob: null,
+          },
+        },
+      },
+    }
+    const newName = 'Test'
+    const expectedState = {
+      1: {
+        name: 'Initial Name',
+        files: {
+          2: {
+            name: 'Initial Document',
+            blob: null,
+          },
+        },
+      },
+    }
+    expect(
+      sections(initialState, {
+        type: DELETE_DOCUMENT,
+        id: 1,
+        uuid: 3,
       })
     ).toEqual(expectedState)
   })

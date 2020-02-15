@@ -19,7 +19,9 @@ Object {
     },
   },
   "modals": Object {
-    "fileOpen": false,
+    "document": Object {},
+    "section": -1,
+    "uploadOpen": false,
   },
   "password": "",
   "sections": Object {},

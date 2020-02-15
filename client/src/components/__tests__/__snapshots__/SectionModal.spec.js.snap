@@ -1,0 +1,1027 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionModal Is visible when open 1`] = `
+<SectionModal
+  closeModal={[MockFunction]}
+  deleteSection={[MockFunction]}
+  id={1}
+  modalOpen={true}
+  name="test"
+  renameSection={[MockFunction]}
+  submitDeleteSection={[MockFunction]}
+  submitRenameSection={[MockFunction]}
+>
+  <Modal
+    centered={true}
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    eventPool="Modal"
+    onClose={[Function]}
+    open={true}
+    size="tiny"
+  >
+    <Portal
+      closeOnDocumentClick={false}
+      closeOnEscape={true}
+      eventPool="Modal"
+      mountNode={
+        <body
+          class="dimmable dimmed"
+        >
+          <div
+            class="ui page modals dimmer transition visible active"
+            style="display: flex;"
+          >
+            <div
+              class="ui tiny modal transition visible active"
+            >
+              <div
+                class="header"
+              >
+                Section Settings
+              </div>
+              <div
+                class="content"
+              >
+                <div
+                  class="description"
+                  style="padding-bottom: 2em;"
+                >
+                  <form
+                    class="ui form"
+                    style="padding-bottom: 1em;"
+                  >
+                    <div
+                      class="six wide field"
+                    >
+                      <label>
+                        Name
+                      </label>
+                      <div
+                        class="ui input"
+                      >
+                        <input
+                          aria-invalid="true"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <h4
+                      class="ui header"
+                      style="display: none;"
+                    >
+                      An error occurred, please try again
+                    </h4>
+                  </form>
+                  <button
+                    class="ui red basic button"
+                    id="deleteSectionButton"
+                  >
+                    Delete Section
+                  </button>
+                  <div
+                    class="ui hidden divider"
+                  />
+                  <button
+                    class="ui basic left floated button"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="ui primary right floated button"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+      onClose={[Function]}
+      onMount={[Function]}
+      onOpen={[Function]}
+      onUnmount={[Function]}
+      open={true}
+      openOnTriggerClick={true}
+    >
+      <PortalInner
+        innerRef={
+          Object {
+            "current": <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Section Settings
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Name
+                        </label>
+                        <div
+                          class="ui input"
+                        >
+                          <input
+                            aria-invalid="true"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                      <h4
+                        class="ui header"
+                        style="display: none;"
+                      >
+                        An error occurred, please try again
+                      </h4>
+                    </form>
+                    <button
+                      class="ui red basic button"
+                      id="deleteSectionButton"
+                    >
+                      Delete Section
+                    </button>
+                    <div
+                      class="ui hidden divider"
+                    />
+                    <button
+                      class="ui basic left floated button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      class="ui primary right floated button"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>,
+          }
+        }
+        mountNode={
+          <body
+            class="dimmable dimmed"
+          >
+            <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Section Settings
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Name
+                        </label>
+                        <div
+                          class="ui input"
+                        >
+                          <input
+                            aria-invalid="true"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                      <h4
+                        class="ui header"
+                        style="display: none;"
+                      >
+                        An error occurred, please try again
+                      </h4>
+                    </form>
+                    <button
+                      class="ui red basic button"
+                      id="deleteSectionButton"
+                    >
+                      Delete Section
+                    </button>
+                    <div
+                      class="ui hidden divider"
+                    />
+                    <button
+                      class="ui basic left floated button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      class="ui primary right floated button"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </body>
+        }
+        onMount={[Function]}
+        onUnmount={[Function]}
+      >
+        <Portal
+          containerInfo={
+            <body
+              class="dimmable dimmed"
+            >
+              <div
+                class="ui page modals dimmer transition visible active"
+                style="display: flex;"
+              >
+                <div
+                  class="ui tiny modal transition visible active"
+                >
+                  <div
+                    class="header"
+                  >
+                    Section Settings
+                  </div>
+                  <div
+                    class="content"
+                  >
+                    <div
+                      class="description"
+                      style="padding-bottom: 2em;"
+                    >
+                      <form
+                        class="ui form"
+                        style="padding-bottom: 1em;"
+                      >
+                        <div
+                          class="six wide field"
+                        >
+                          <label>
+                            Name
+                          </label>
+                          <div
+                            class="ui input"
+                          >
+                            <input
+                              aria-invalid="true"
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <h4
+                          class="ui header"
+                          style="display: none;"
+                        >
+                          An error occurred, please try again
+                        </h4>
+                      </form>
+                      <button
+                        class="ui red basic button"
+                        id="deleteSectionButton"
+                      >
+                        Delete Section
+                      </button>
+                      <div
+                        class="ui hidden divider"
+                      />
+                      <button
+                        class="ui basic left floated button"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        class="ui primary right floated button"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </body>
+          }
+        >
+          <Ref
+            innerRef={[Function]}
+          >
+            <RefFindNode
+              innerRef={[Function]}
+            >
+              <div
+                className="ui page modals dimmer transition visible active"
+              >
+                <Ref
+                  innerRef={
+                    Object {
+                      "current": <div
+                        class="ui tiny modal transition visible active"
+                      >
+                        <div
+                          class="header"
+                        >
+                          Section Settings
+                        </div>
+                        <div
+                          class="content"
+                        >
+                          <div
+                            class="description"
+                            style="padding-bottom: 2em;"
+                          >
+                            <form
+                              class="ui form"
+                              style="padding-bottom: 1em;"
+                            >
+                              <div
+                                class="six wide field"
+                              >
+                                <label>
+                                  Name
+                                </label>
+                                <div
+                                  class="ui input"
+                                >
+                                  <input
+                                    aria-invalid="true"
+                                    type="text"
+                                    value=""
+                                  />
+                                </div>
+                              </div>
+                              <h4
+                                class="ui header"
+                                style="display: none;"
+                              >
+                                An error occurred, please try again
+                              </h4>
+                            </form>
+                            <button
+                              class="ui red basic button"
+                              id="deleteSectionButton"
+                            >
+                              Delete Section
+                            </button>
+                            <div
+                              class="ui hidden divider"
+                            />
+                            <button
+                              class="ui basic left floated button"
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              class="ui primary right floated button"
+                            >
+                              Save
+                            </button>
+                          </div>
+                        </div>
+                      </div>,
+                    }
+                  }
+                >
+                  <RefFindNode
+                    innerRef={
+                      Object {
+                        "current": <div
+                          class="ui tiny modal transition visible active"
+                        >
+                          <div
+                            class="header"
+                          >
+                            Section Settings
+                          </div>
+                          <div
+                            class="content"
+                          >
+                            <div
+                              class="description"
+                              style="padding-bottom: 2em;"
+                            >
+                              <form
+                                class="ui form"
+                                style="padding-bottom: 1em;"
+                              >
+                                <div
+                                  class="six wide field"
+                                >
+                                  <label>
+                                    Name
+                                  </label>
+                                  <div
+                                    class="ui input"
+                                  >
+                                    <input
+                                      aria-invalid="true"
+                                      type="text"
+                                      value=""
+                                    />
+                                  </div>
+                                </div>
+                                <h4
+                                  class="ui header"
+                                  style="display: none;"
+                                >
+                                  An error occurred, please try again
+                                </h4>
+                              </form>
+                              <button
+                                class="ui red basic button"
+                                id="deleteSectionButton"
+                              >
+                                Delete Section
+                              </button>
+                              <div
+                                class="ui hidden divider"
+                              />
+                              <button
+                                class="ui basic left floated button"
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                class="ui primary right floated button"
+                              >
+                                Save
+                              </button>
+                            </div>
+                          </div>
+                        </div>,
+                      }
+                    }
+                  >
+                    <div
+                      className="ui tiny modal transition visible active"
+                      style={Object {}}
+                    >
+                      <MountNode
+                        className="dimmable dimmed"
+                      />
+                      <ModalHeader>
+                        <div
+                          className="header"
+                        >
+                          Section Settings
+                        </div>
+                      </ModalHeader>
+                      <ModalContent>
+                        <div
+                          className="content"
+                        >
+                          <ModalDescription
+                            style={
+                              Object {
+                                "paddingBottom": "2em",
+                              }
+                            }
+                          >
+                            <div
+                              className="description"
+                              style={
+                                Object {
+                                  "paddingBottom": "2em",
+                                }
+                              }
+                            >
+                              <Form
+                                as="form"
+                                style={
+                                  Object {
+                                    "paddingBottom": "1em",
+                                  }
+                                }
+                              >
+                                <form
+                                  className="ui form"
+                                  onSubmit={[Function]}
+                                  style={
+                                    Object {
+                                      "paddingBottom": "1em",
+                                    }
+                                  }
+                                >
+                                  <FormInput
+                                    as={[Function]}
+                                    control={[Function]}
+                                    error={false}
+                                    label="Name"
+                                    onChange={[Function]}
+                                    onKeyDown={[Function]}
+                                    value=""
+                                    width={6}
+                                  >
+                                    <FormField
+                                      control={[Function]}
+                                      error={false}
+                                      label="Name"
+                                      onChange={[Function]}
+                                      onKeyDown={[Function]}
+                                      value=""
+                                      width={6}
+                                    >
+                                      <div
+                                        className="six wide field"
+                                      >
+                                        <label>
+                                          Name
+                                        </label>
+                                        <Input
+                                          aria-describedby={null}
+                                          aria-invalid={true}
+                                          onChange={[Function]}
+                                          onKeyDown={[Function]}
+                                          type="text"
+                                          value=""
+                                        >
+                                          <div
+                                            className="ui input"
+                                          >
+                                            <input
+                                              aria-describedby={null}
+                                              aria-invalid={true}
+                                              onChange={[Function]}
+                                              onKeyDown={[Function]}
+                                              type="text"
+                                              value=""
+                                            />
+                                          </div>
+                                        </Input>
+                                      </div>
+                                    </FormField>
+                                  </FormInput>
+                                  <Header
+                                    as="h4"
+                                    style={
+                                      Object {
+                                        "display": "none",
+                                      }
+                                    }
+                                  >
+                                    <h4
+                                      className="ui header"
+                                      style={
+                                        Object {
+                                          "display": "none",
+                                        }
+                                      }
+                                    >
+                                      An error occurred, please try again
+                                    </h4>
+                                  </Header>
+                                </form>
+                              </Form>
+                              <Button
+                                as="button"
+                                basic={true}
+                                color="red"
+                                id="deleteSectionButton"
+                                onClick={[Function]}
+                              >
+                                <Ref
+                                  innerRef={
+                                    Object {
+                                      "current": <button
+                                        class="ui red basic button"
+                                        id="deleteSectionButton"
+                                      >
+                                        Delete Section
+                                      </button>,
+                                    }
+                                  }
+                                >
+                                  <RefFindNode
+                                    innerRef={
+                                      Object {
+                                        "current": <button
+                                          class="ui red basic button"
+                                          id="deleteSectionButton"
+                                        >
+                                          Delete Section
+                                        </button>,
+                                      }
+                                    }
+                                  >
+                                    <button
+                                      className="ui red basic button"
+                                      id="deleteSectionButton"
+                                      onClick={[Function]}
+                                    >
+                                      Delete Section
+                                    </button>
+                                  </RefFindNode>
+                                </Ref>
+                              </Button>
+                              <Confirm
+                                cancelButton="Cancel"
+                                confirmButton="OK"
+                                content="This will delete all associated documents too!"
+                                header="Are you sure?"
+                                onCancel={[Function]}
+                                onConfirm={[Function]}
+                                open={false}
+                                size="mini"
+                              >
+                                <Modal
+                                  centered={true}
+                                  closeOnDimmerClick={true}
+                                  closeOnDocumentClick={false}
+                                  dimmer={true}
+                                  eventPool="Modal"
+                                  onClose={[Function]}
+                                  open={false}
+                                  size="mini"
+                                >
+                                  <Portal
+                                    closeOnDocumentClick={false}
+                                    closeOnEscape={true}
+                                    eventPool="Modal"
+                                    mountNode={
+                                      <body
+                                        class="dimmable dimmed"
+                                      >
+                                        <div
+                                          class="ui page modals dimmer transition visible active"
+                                          style="display: flex;"
+                                        >
+                                          <div
+                                            class="ui tiny modal transition visible active"
+                                          >
+                                            <div
+                                              class="header"
+                                            >
+                                              Section Settings
+                                            </div>
+                                            <div
+                                              class="content"
+                                            >
+                                              <div
+                                                class="description"
+                                                style="padding-bottom: 2em;"
+                                              >
+                                                <form
+                                                  class="ui form"
+                                                  style="padding-bottom: 1em;"
+                                                >
+                                                  <div
+                                                    class="six wide field"
+                                                  >
+                                                    <label>
+                                                      Name
+                                                    </label>
+                                                    <div
+                                                      class="ui input"
+                                                    >
+                                                      <input
+                                                        aria-invalid="true"
+                                                        type="text"
+                                                        value=""
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <h4
+                                                    class="ui header"
+                                                    style="display: none;"
+                                                  >
+                                                    An error occurred, please try again
+                                                  </h4>
+                                                </form>
+                                                <button
+                                                  class="ui red basic button"
+                                                  id="deleteSectionButton"
+                                                >
+                                                  Delete Section
+                                                </button>
+                                                <div
+                                                  class="ui hidden divider"
+                                                />
+                                                <button
+                                                  class="ui basic left floated button"
+                                                >
+                                                  Cancel
+                                                </button>
+                                                <button
+                                                  class="ui primary right floated button"
+                                                >
+                                                  Save
+                                                </button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </body>
+                                    }
+                                    onClose={[Function]}
+                                    onMount={[Function]}
+                                    onOpen={[Function]}
+                                    onUnmount={[Function]}
+                                    open={false}
+                                    openOnTriggerClick={true}
+                                  />
+                                </Modal>
+                              </Confirm>
+                              <Divider
+                                hidden={true}
+                              >
+                                <div
+                                  className="ui hidden divider"
+                                />
+                              </Divider>
+                              <Button
+                                as="button"
+                                basic={true}
+                                floated="left"
+                                onClick={[Function]}
+                              >
+                                <Ref
+                                  innerRef={
+                                    Object {
+                                      "current": <button
+                                        class="ui basic left floated button"
+                                      >
+                                        Cancel
+                                      </button>,
+                                    }
+                                  }
+                                >
+                                  <RefFindNode
+                                    innerRef={
+                                      Object {
+                                        "current": <button
+                                          class="ui basic left floated button"
+                                        >
+                                          Cancel
+                                        </button>,
+                                      }
+                                    }
+                                  >
+                                    <button
+                                      className="ui basic left floated button"
+                                      onClick={[Function]}
+                                    >
+                                      Cancel
+                                    </button>
+                                  </RefFindNode>
+                                </Ref>
+                              </Button>
+                              <Button
+                                as="button"
+                                floated="right"
+                                onClick={[Function]}
+                                primary={true}
+                              >
+                                <Ref
+                                  innerRef={
+                                    Object {
+                                      "current": <button
+                                        class="ui primary right floated button"
+                                      >
+                                        Save
+                                      </button>,
+                                    }
+                                  }
+                                >
+                                  <RefFindNode
+                                    innerRef={
+                                      Object {
+                                        "current": <button
+                                          class="ui primary right floated button"
+                                        >
+                                          Save
+                                        </button>,
+                                      }
+                                    }
+                                  >
+                                    <button
+                                      className="ui primary right floated button"
+                                      onClick={[Function]}
+                                    >
+                                      Save
+                                    </button>
+                                  </RefFindNode>
+                                </Ref>
+                              </Button>
+                            </div>
+                          </ModalDescription>
+                        </div>
+                      </ModalContent>
+                    </div>
+                  </RefFindNode>
+                </Ref>
+              </div>
+            </RefFindNode>
+          </Ref>
+        </Portal>
+      </PortalInner>
+      <EventStack
+        name="mouseleave"
+        on={[Function]}
+        pool="Modal"
+        target={
+          Object {
+            "current": <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Section Settings
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Name
+                        </label>
+                        <div
+                          class="ui input"
+                        >
+                          <input
+                            aria-invalid="true"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                      <h4
+                        class="ui header"
+                        style="display: none;"
+                      >
+                        An error occurred, please try again
+                      </h4>
+                    </form>
+                    <button
+                      class="ui red basic button"
+                      id="deleteSectionButton"
+                    >
+                      Delete Section
+                    </button>
+                    <div
+                      class="ui hidden divider"
+                    />
+                    <button
+                      class="ui basic left floated button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      class="ui primary right floated button"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>,
+          }
+        }
+      />
+      <EventStack
+        name="mouseenter"
+        on={[Function]}
+        pool="Modal"
+        target={
+          Object {
+            "current": <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Section Settings
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Name
+                        </label>
+                        <div
+                          class="ui input"
+                        >
+                          <input
+                            aria-invalid="true"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                      <h4
+                        class="ui header"
+                        style="display: none;"
+                      >
+                        An error occurred, please try again
+                      </h4>
+                    </form>
+                    <button
+                      class="ui red basic button"
+                      id="deleteSectionButton"
+                    >
+                      Delete Section
+                    </button>
+                    <div
+                      class="ui hidden divider"
+                    />
+                    <button
+                      class="ui basic left floated button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      class="ui primary right floated button"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>,
+          }
+        }
+      />
+      <EventStack
+        name="mousedown"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+      <EventStack
+        name="click"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+      <EventStack
+        name="keydown"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+    </Portal>
+  </Modal>
+</SectionModal>
+`;

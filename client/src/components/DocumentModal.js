@@ -20,7 +20,7 @@ class DocumentModal extends Component {
   }
   closeModal = () => {
     this.setState({
-      name: '',
+      nameField: '',
       confirmOpen: false,
       nameFieldError: false,
       sectionError: false,
@@ -41,7 +41,7 @@ class DocumentModal extends Component {
       func()
     }
   }
-  handleFormSubmit = () => {
+  handleFormSubmit = async () => {
     const { nameField, section } = this.state
     const {
       closeModal,
@@ -56,7 +56,7 @@ class DocumentModal extends Component {
     if (nameField !== name && nameField !== '') {
       changes['name'] = nameField
     }
-    if (section !== id) {
+    if (section !== id && section !== -1) {
       changes['new_section'] = section // Avoid conflict with section parameter in PATCH url
     }
     const keys = Object.keys(changes)
@@ -90,7 +90,7 @@ class DocumentModal extends Component {
       })
     }
   }
-  deleteDocument = () => {
+  deleteDocument = async () => {
     const { submitDeleteDocument, deleteDocument, id, uuid } = this.props
     submitDeleteDocument(id, uuid).then(json => {
       if (json.error || !json.data.success) {
@@ -155,6 +155,7 @@ class DocumentModal extends Component {
             <Button
               onClick={() => this.setState({ confirmOpen: true })}
               basic
+              id="deleteDocumentButton"
               color="red"
             >
               Delete Document

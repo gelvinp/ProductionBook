@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FileModal Is visible when open 1`] = `
-<FileModal
+exports[`UploadModal Is visible when open 1`] = `
+<UploadModal
   closeModal={[MockFunction]}
   createDocument={[MockFunction]}
   modalOpen={true}
@@ -16,6 +16,7 @@ exports[`FileModal Is visible when open 1`] = `
     eventPool="Modal"
     onClose={[Function]}
     open={true}
+    size="tiny"
   >
     <Portal
       closeOnDocumentClick={false}
@@ -30,7 +31,7 @@ exports[`FileModal Is visible when open 1`] = `
             style="display: flex;"
           >
             <div
-              class="ui modal transition visible active"
+              class="ui tiny modal transition visible active"
             >
               <div
                 class="header"
@@ -156,7 +157,7 @@ exports[`FileModal Is visible when open 1`] = `
               style="display: flex;"
             >
               <div
-                class="ui modal transition visible active"
+                class="ui tiny modal transition visible active"
               >
                 <div
                   class="header"
@@ -276,7 +277,7 @@ exports[`FileModal Is visible when open 1`] = `
               style="display: flex;"
             >
               <div
-                class="ui modal transition visible active"
+                class="ui tiny modal transition visible active"
               >
                 <div
                   class="header"
@@ -400,7 +401,7 @@ exports[`FileModal Is visible when open 1`] = `
                 style="display: flex;"
               >
                 <div
-                  class="ui modal transition visible active"
+                  class="ui tiny modal transition visible active"
                 >
                   <div
                     class="header"
@@ -525,7 +526,7 @@ exports[`FileModal Is visible when open 1`] = `
                   innerRef={
                     Object {
                       "current": <div
-                        class="ui modal transition visible active"
+                        class="ui tiny modal transition visible active"
                       >
                         <div
                           class="header"
@@ -640,7 +641,7 @@ exports[`FileModal Is visible when open 1`] = `
                     innerRef={
                       Object {
                         "current": <div
-                          class="ui modal transition visible active"
+                          class="ui tiny modal transition visible active"
                         >
                           <div
                             class="header"
@@ -752,7 +753,7 @@ exports[`FileModal Is visible when open 1`] = `
                     }
                   >
                     <div
-                      className="ui modal transition visible active"
+                      className="ui tiny modal transition visible active"
                       style={Object {}}
                     >
                       <MountNode
@@ -1199,7 +1200,7 @@ exports[`FileModal Is visible when open 1`] = `
               style="display: flex;"
             >
               <div
-                class="ui modal transition visible active"
+                class="ui tiny modal transition visible active"
               >
                 <div
                   class="header"
@@ -1322,7 +1323,7 @@ exports[`FileModal Is visible when open 1`] = `
               style="display: flex;"
             >
               <div
-                class="ui modal transition visible active"
+                class="ui tiny modal transition visible active"
               >
                 <div
                   class="header"
@@ -1454,7 +1455,7 @@ exports[`FileModal Is visible when open 1`] = `
       />
     </Portal>
   </Modal>
-</FileModal>
+</UploadModal>
 `;
 
-exports[`FileModal shows an alert when uploading fails 1`] = `"data:application/pdf;base64,YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYQ=="`;
+exports[`UploadModal shows an alert when uploading fails 1`] = `"data:application/pdf;base64,YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYQ=="`;

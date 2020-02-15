@@ -67,7 +67,7 @@ RSpec.describe "Documents", type: :request do
       it "creates a new document" do
         document = Document.last
         expect(document.section).to eq(@section)
-        expect(document.name).to eq(@name)
+        expect(document.name).to eq(@name.split(".")[0..-2].join("."))
         expect(document.file.attached?).to be_truthy
         expect(document.binary_blob).to eq(@binaryBlob)
         expect(@section.documents.count).to eq(1)
@@ -169,6 +169,133 @@ RSpec.describe "Documents", type: :request do
 
       it "returns status 204" do
         expect(response).to have_http_status(204)
+      end
+    end
+  end
+
+  describe "DELETE /api/:section/:uuid" do
+    context "Document exists" do
+      before do
+        @section = create(:section)
+        @document = create(:document, section: @section)
+        delete "/api/#{@section.id}/#{@document.uuid}", headers: { Authorization: ENV['PASSWORD'] }
+      end
+
+      it "returns status 200" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "deletes the document" do
+        expect(Document.where(uuid: @document.uuid).first).to be_nil
+      end
+
+      it "returns true" do
+        expect(JSON.parse(response.body)["success"]).to be_truthy
+      end
+    end
+
+    context "Document does not exist" do
+      before do
+        delete "/api/99999/99999", headers: { Authorization: ENV['PASSWORD'] }
+      end
+
+      it "returns status 200" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "returns false" do
+        expect(JSON.parse(response.body)["success"]).to be_falsey
+      end
+    end
+  end
+
+  describe "PATCH /api/:section/:uuid" do
+    context "Document does not exist" do
+      before do
+        patch "/api/999999/99999", headers: { Authorization: ENV['PASSWORD'] }
+      end
+
+      it "returns status 200" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "returns an error" do
+        expect(JSON.parse(response.body)["error"]).to be_truthy
+      end
+    end
+
+    context "Document name is invalid" do
+      before do
+        @section = create(:section)
+        @document = create(:document, section: @section)
+        patch "/api/#{@section.id}/#{@document.uuid}", params: { name: '' }, headers: { Authorization: ENV['PASSWORD'] }
+      end
+
+      it "returns status 200" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "returns false" do
+        expect(JSON.parse(response.body)["name"]).to be_falsey
+      end
+    end
+
+    context "Document name is valid" do
+      before do
+        @new_name = "A new section name"
+        @section = create(:section)
+        @document = create(:document, section: @section)
+        patch "/api/#{@section.id}/#{@document.uuid}", params: { name: @new_name }, headers: { Authorization: ENV['PASSWORD'] }
+      end
+
+      it "returns status 200" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "returns true" do
+        expect(JSON.parse(response.body)["name"]).to be_truthy
+      end
+
+      it "renames the document" do
+        expect(@document.reload.name).to eq(@new_name)
+      end
+    end
+
+    context "Section is invalid" do
+      before do
+        @section = create(:section)
+        @document = create(:document, section: @section)
+        patch "/api/#{@section.id}/#{@document.uuid}", params: { new_section: 99999 }, headers: { Authorization: ENV['PASSWORD'] }
+      end
+
+      it "returns status 200" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "returns false" do
+        expect(JSON.parse(response.body)["section"]).to be_falsey
+      end
+    end
+
+    context "Section is valid" do
+      before do
+        @section_two = create(:otherSection)
+        @section = create(:section)
+        @document = create(:document, section: @section)
+        patch "/api/#{@section.id}/#{@document.uuid}", params: { new_section: @section_two.id }, headers: { Authorization: ENV['PASSWORD'] }
+      end
+
+      it "returns status 200" do
+        expect(response).to have_http_status(200)
+      end
+
+      it "returns true" do
+        expect(JSON.parse(response.body)["section"]).to be_truthy
+      end
+
+      it "moves the section" do
+        expect(@section.reload.documents).not_to include(@document)
+        expect(@section_two.reload.documents).to include(@document)
       end
     end
   end

@@ -1,0 +1,1668 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentModal Is visible when open 1`] = `
+<DocumentModal
+  closeModal={[MockFunction]}
+  deleteDocument={[MockFunction]}
+  id={1}
+  modalOpen={true}
+  moveDocument={[MockFunction]}
+  name="Test File"
+  renameDocument={[MockFunction]}
+  sections={
+    Object {
+      "1": Object {
+        "files": Object {
+          "2": Object {
+            "blob": null,
+            "name": "Test File",
+          },
+        },
+        "name": "Test section",
+      },
+    }
+  }
+  submitDeleteDocument={[MockFunction]}
+  submitUpdateDocument={[MockFunction]}
+  uuid="2"
+>
+  <Modal
+    centered={true}
+    closeOnDimmerClick={true}
+    closeOnDocumentClick={false}
+    dimmer={true}
+    eventPool="Modal"
+    onClose={[Function]}
+    open={true}
+    size="tiny"
+  >
+    <Portal
+      closeOnDocumentClick={false}
+      closeOnEscape={true}
+      eventPool="Modal"
+      mountNode={
+        <body
+          class="dimmable dimmed"
+        >
+          <div
+            class="ui page modals dimmer transition visible active"
+            style="display: flex;"
+          >
+            <div
+              class="ui tiny modal transition visible active"
+            >
+              <div
+                class="header"
+              >
+                Section Settings
+              </div>
+              <div
+                class="content"
+              >
+                <div
+                  class="description"
+                  style="padding-bottom: 2em;"
+                >
+                  <form
+                    class="ui form"
+                    style="padding-bottom: 1em;"
+                  >
+                    <div
+                      class="six wide field"
+                    >
+                      <label>
+                        Name
+                      </label>
+                      <div
+                        class="ui input"
+                      >
+                        <input
+                          aria-invalid="true"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="six wide field"
+                    >
+                      <label>
+                        Section
+                      </label>
+                      <div
+                        aria-expanded="false"
+                        aria-invalid="true"
+                        class="ui selection dropdown"
+                        role="listbox"
+                        tabindex="0"
+                      >
+                        <div
+                          aria-atomic="true"
+                          aria-live="polite"
+                          class="text"
+                          role="alert"
+                        />
+                        <i
+                          aria-hidden="true"
+                          class="dropdown icon"
+                        />
+                        <div
+                          class="menu transition"
+                        >
+                          <div
+                            aria-checked="false"
+                            aria-selected="true"
+                            class="selected item"
+                            role="option"
+                            style="pointer-events: all;"
+                          >
+                            <span
+                              class="text"
+                            >
+                              Test section
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <h4
+                      class="ui header"
+                      style="display: none;"
+                    >
+                      An error occurred, please try again
+                    </h4>
+                  </form>
+                  <button
+                    class="ui red basic button"
+                    id="deleteDocumentButton"
+                  >
+                    Delete Document
+                  </button>
+                  <div
+                    class="ui hidden divider"
+                  />
+                  <button
+                    class="ui basic left floated button"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    class="ui primary right floated button"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      }
+      onClose={[Function]}
+      onMount={[Function]}
+      onOpen={[Function]}
+      onUnmount={[Function]}
+      open={true}
+      openOnTriggerClick={true}
+    >
+      <PortalInner
+        innerRef={
+          Object {
+            "current": <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Section Settings
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Name
+                        </label>
+                        <div
+                          class="ui input"
+                        >
+                          <input
+                            aria-invalid="true"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Section
+                        </label>
+                        <div
+                          aria-expanded="false"
+                          aria-invalid="true"
+                          class="ui selection dropdown"
+                          role="listbox"
+                          tabindex="0"
+                        >
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                            class="text"
+                            role="alert"
+                          />
+                          <i
+                            aria-hidden="true"
+                            class="dropdown icon"
+                          />
+                          <div
+                            class="menu transition"
+                          >
+                            <div
+                              aria-checked="false"
+                              aria-selected="true"
+                              class="selected item"
+                              role="option"
+                              style="pointer-events: all;"
+                            >
+                              <span
+                                class="text"
+                              >
+                                Test section
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <h4
+                        class="ui header"
+                        style="display: none;"
+                      >
+                        An error occurred, please try again
+                      </h4>
+                    </form>
+                    <button
+                      class="ui red basic button"
+                      id="deleteDocumentButton"
+                    >
+                      Delete Document
+                    </button>
+                    <div
+                      class="ui hidden divider"
+                    />
+                    <button
+                      class="ui basic left floated button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      class="ui primary right floated button"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>,
+          }
+        }
+        mountNode={
+          <body
+            class="dimmable dimmed"
+          >
+            <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Section Settings
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Name
+                        </label>
+                        <div
+                          class="ui input"
+                        >
+                          <input
+                            aria-invalid="true"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Section
+                        </label>
+                        <div
+                          aria-expanded="false"
+                          aria-invalid="true"
+                          class="ui selection dropdown"
+                          role="listbox"
+                          tabindex="0"
+                        >
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                            class="text"
+                            role="alert"
+                          />
+                          <i
+                            aria-hidden="true"
+                            class="dropdown icon"
+                          />
+                          <div
+                            class="menu transition"
+                          >
+                            <div
+                              aria-checked="false"
+                              aria-selected="true"
+                              class="selected item"
+                              role="option"
+                              style="pointer-events: all;"
+                            >
+                              <span
+                                class="text"
+                              >
+                                Test section
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <h4
+                        class="ui header"
+                        style="display: none;"
+                      >
+                        An error occurred, please try again
+                      </h4>
+                    </form>
+                    <button
+                      class="ui red basic button"
+                      id="deleteDocumentButton"
+                    >
+                      Delete Document
+                    </button>
+                    <div
+                      class="ui hidden divider"
+                    />
+                    <button
+                      class="ui basic left floated button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      class="ui primary right floated button"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </body>
+        }
+        onMount={[Function]}
+        onUnmount={[Function]}
+      >
+        <Portal
+          containerInfo={
+            <body
+              class="dimmable dimmed"
+            >
+              <div
+                class="ui page modals dimmer transition visible active"
+                style="display: flex;"
+              >
+                <div
+                  class="ui tiny modal transition visible active"
+                >
+                  <div
+                    class="header"
+                  >
+                    Section Settings
+                  </div>
+                  <div
+                    class="content"
+                  >
+                    <div
+                      class="description"
+                      style="padding-bottom: 2em;"
+                    >
+                      <form
+                        class="ui form"
+                        style="padding-bottom: 1em;"
+                      >
+                        <div
+                          class="six wide field"
+                        >
+                          <label>
+                            Name
+                          </label>
+                          <div
+                            class="ui input"
+                          >
+                            <input
+                              aria-invalid="true"
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class="six wide field"
+                        >
+                          <label>
+                            Section
+                          </label>
+                          <div
+                            aria-expanded="false"
+                            aria-invalid="true"
+                            class="ui selection dropdown"
+                            role="listbox"
+                            tabindex="0"
+                          >
+                            <div
+                              aria-atomic="true"
+                              aria-live="polite"
+                              class="text"
+                              role="alert"
+                            />
+                            <i
+                              aria-hidden="true"
+                              class="dropdown icon"
+                            />
+                            <div
+                              class="menu transition"
+                            >
+                              <div
+                                aria-checked="false"
+                                aria-selected="true"
+                                class="selected item"
+                                role="option"
+                                style="pointer-events: all;"
+                              >
+                                <span
+                                  class="text"
+                                >
+                                  Test section
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <h4
+                          class="ui header"
+                          style="display: none;"
+                        >
+                          An error occurred, please try again
+                        </h4>
+                      </form>
+                      <button
+                        class="ui red basic button"
+                        id="deleteDocumentButton"
+                      >
+                        Delete Document
+                      </button>
+                      <div
+                        class="ui hidden divider"
+                      />
+                      <button
+                        class="ui basic left floated button"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        class="ui primary right floated button"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </body>
+          }
+        >
+          <Ref
+            innerRef={[Function]}
+          >
+            <RefFindNode
+              innerRef={[Function]}
+            >
+              <div
+                className="ui page modals dimmer transition visible active"
+              >
+                <Ref
+                  innerRef={
+                    Object {
+                      "current": <div
+                        class="ui tiny modal transition visible active"
+                      >
+                        <div
+                          class="header"
+                        >
+                          Section Settings
+                        </div>
+                        <div
+                          class="content"
+                        >
+                          <div
+                            class="description"
+                            style="padding-bottom: 2em;"
+                          >
+                            <form
+                              class="ui form"
+                              style="padding-bottom: 1em;"
+                            >
+                              <div
+                                class="six wide field"
+                              >
+                                <label>
+                                  Name
+                                </label>
+                                <div
+                                  class="ui input"
+                                >
+                                  <input
+                                    aria-invalid="true"
+                                    type="text"
+                                    value=""
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="six wide field"
+                              >
+                                <label>
+                                  Section
+                                </label>
+                                <div
+                                  aria-expanded="false"
+                                  aria-invalid="true"
+                                  class="ui selection dropdown"
+                                  role="listbox"
+                                  tabindex="0"
+                                >
+                                  <div
+                                    aria-atomic="true"
+                                    aria-live="polite"
+                                    class="text"
+                                    role="alert"
+                                  />
+                                  <i
+                                    aria-hidden="true"
+                                    class="dropdown icon"
+                                  />
+                                  <div
+                                    class="menu transition"
+                                  >
+                                    <div
+                                      aria-checked="false"
+                                      aria-selected="true"
+                                      class="selected item"
+                                      role="option"
+                                      style="pointer-events: all;"
+                                    >
+                                      <span
+                                        class="text"
+                                      >
+                                        Test section
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <h4
+                                class="ui header"
+                                style="display: none;"
+                              >
+                                An error occurred, please try again
+                              </h4>
+                            </form>
+                            <button
+                              class="ui red basic button"
+                              id="deleteDocumentButton"
+                            >
+                              Delete Document
+                            </button>
+                            <div
+                              class="ui hidden divider"
+                            />
+                            <button
+                              class="ui basic left floated button"
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              class="ui primary right floated button"
+                            >
+                              Save
+                            </button>
+                          </div>
+                        </div>
+                      </div>,
+                    }
+                  }
+                >
+                  <RefFindNode
+                    innerRef={
+                      Object {
+                        "current": <div
+                          class="ui tiny modal transition visible active"
+                        >
+                          <div
+                            class="header"
+                          >
+                            Section Settings
+                          </div>
+                          <div
+                            class="content"
+                          >
+                            <div
+                              class="description"
+                              style="padding-bottom: 2em;"
+                            >
+                              <form
+                                class="ui form"
+                                style="padding-bottom: 1em;"
+                              >
+                                <div
+                                  class="six wide field"
+                                >
+                                  <label>
+                                    Name
+                                  </label>
+                                  <div
+                                    class="ui input"
+                                  >
+                                    <input
+                                      aria-invalid="true"
+                                      type="text"
+                                      value=""
+                                    />
+                                  </div>
+                                </div>
+                                <div
+                                  class="six wide field"
+                                >
+                                  <label>
+                                    Section
+                                  </label>
+                                  <div
+                                    aria-expanded="false"
+                                    aria-invalid="true"
+                                    class="ui selection dropdown"
+                                    role="listbox"
+                                    tabindex="0"
+                                  >
+                                    <div
+                                      aria-atomic="true"
+                                      aria-live="polite"
+                                      class="text"
+                                      role="alert"
+                                    />
+                                    <i
+                                      aria-hidden="true"
+                                      class="dropdown icon"
+                                    />
+                                    <div
+                                      class="menu transition"
+                                    >
+                                      <div
+                                        aria-checked="false"
+                                        aria-selected="true"
+                                        class="selected item"
+                                        role="option"
+                                        style="pointer-events: all;"
+                                      >
+                                        <span
+                                          class="text"
+                                        >
+                                          Test section
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <h4
+                                  class="ui header"
+                                  style="display: none;"
+                                >
+                                  An error occurred, please try again
+                                </h4>
+                              </form>
+                              <button
+                                class="ui red basic button"
+                                id="deleteDocumentButton"
+                              >
+                                Delete Document
+                              </button>
+                              <div
+                                class="ui hidden divider"
+                              />
+                              <button
+                                class="ui basic left floated button"
+                              >
+                                Cancel
+                              </button>
+                              <button
+                                class="ui primary right floated button"
+                              >
+                                Save
+                              </button>
+                            </div>
+                          </div>
+                        </div>,
+                      }
+                    }
+                  >
+                    <div
+                      className="ui tiny modal transition visible active"
+                      style={Object {}}
+                    >
+                      <MountNode
+                        className="dimmable dimmed"
+                      />
+                      <ModalHeader>
+                        <div
+                          className="header"
+                        >
+                          Section Settings
+                        </div>
+                      </ModalHeader>
+                      <ModalContent>
+                        <div
+                          className="content"
+                        >
+                          <ModalDescription
+                            style={
+                              Object {
+                                "paddingBottom": "2em",
+                              }
+                            }
+                          >
+                            <div
+                              className="description"
+                              style={
+                                Object {
+                                  "paddingBottom": "2em",
+                                }
+                              }
+                            >
+                              <Form
+                                as="form"
+                                style={
+                                  Object {
+                                    "paddingBottom": "1em",
+                                  }
+                                }
+                              >
+                                <form
+                                  className="ui form"
+                                  onSubmit={[Function]}
+                                  style={
+                                    Object {
+                                      "paddingBottom": "1em",
+                                    }
+                                  }
+                                >
+                                  <FormInput
+                                    as={[Function]}
+                                    control={[Function]}
+                                    error={false}
+                                    label="Name"
+                                    onChange={[Function]}
+                                    onKeyDown={[Function]}
+                                    value=""
+                                    width={6}
+                                  >
+                                    <FormField
+                                      control={[Function]}
+                                      error={false}
+                                      label="Name"
+                                      onChange={[Function]}
+                                      onKeyDown={[Function]}
+                                      value=""
+                                      width={6}
+                                    >
+                                      <div
+                                        className="six wide field"
+                                      >
+                                        <label>
+                                          Name
+                                        </label>
+                                        <Input
+                                          aria-describedby={null}
+                                          aria-invalid={true}
+                                          onChange={[Function]}
+                                          onKeyDown={[Function]}
+                                          type="text"
+                                          value=""
+                                        >
+                                          <div
+                                            className="ui input"
+                                          >
+                                            <input
+                                              aria-describedby={null}
+                                              aria-invalid={true}
+                                              onChange={[Function]}
+                                              onKeyDown={[Function]}
+                                              type="text"
+                                              value=""
+                                            />
+                                          </div>
+                                        </Input>
+                                      </div>
+                                    </FormField>
+                                  </FormInput>
+                                  <FormSelect
+                                    as={[Function]}
+                                    control={[Function]}
+                                    error={false}
+                                    label="Section"
+                                    onChange={[Function]}
+                                    options={
+                                      Array [
+                                        Object {
+                                          "key": "1",
+                                          "text": "Test section",
+                                          "value": 1,
+                                        },
+                                      ]
+                                    }
+                                    placeholder="Section"
+                                    value={-1}
+                                    width={6}
+                                  >
+                                    <FormField
+                                      control={[Function]}
+                                      error={false}
+                                      label="Section"
+                                      onChange={[Function]}
+                                      options={
+                                        Array [
+                                          Object {
+                                            "key": "1",
+                                            "text": "Test section",
+                                            "value": 1,
+                                          },
+                                        ]
+                                      }
+                                      placeholder="Section"
+                                      value={-1}
+                                      width={6}
+                                    >
+                                      <div
+                                        className="six wide field"
+                                      >
+                                        <label>
+                                          Section
+                                        </label>
+                                        <Select
+                                          aria-describedby={null}
+                                          aria-invalid={true}
+                                          onChange={[Function]}
+                                          options={
+                                            Array [
+                                              Object {
+                                                "key": "1",
+                                                "text": "Test section",
+                                                "value": 1,
+                                              },
+                                            ]
+                                          }
+                                          placeholder="Section"
+                                          value={-1}
+                                        >
+                                          <Dropdown
+                                            additionLabel="Add "
+                                            additionPosition="top"
+                                            aria-describedby={null}
+                                            aria-invalid={true}
+                                            closeOnBlur={true}
+                                            closeOnEscape={true}
+                                            deburr={false}
+                                            icon="dropdown"
+                                            minCharacters={1}
+                                            noResultsMessage="No results found."
+                                            onChange={[Function]}
+                                            openOnFocus={true}
+                                            options={
+                                              Array [
+                                                Object {
+                                                  "key": "1",
+                                                  "text": "Test section",
+                                                  "value": 1,
+                                                },
+                                              ]
+                                            }
+                                            placeholder="Section"
+                                            renderLabel={[Function]}
+                                            searchInput="text"
+                                            selectOnBlur={true}
+                                            selectOnNavigation={true}
+                                            selection={true}
+                                            value={-1}
+                                            wrapSelection={true}
+                                          >
+                                            <Ref
+                                              innerRef={
+                                                Object {
+                                                  "current": <div
+                                                    aria-expanded="false"
+                                                    aria-invalid="true"
+                                                    class="ui selection dropdown"
+                                                    role="listbox"
+                                                    tabindex="0"
+                                                  >
+                                                    <div
+                                                      aria-atomic="true"
+                                                      aria-live="polite"
+                                                      class="text"
+                                                      role="alert"
+                                                    />
+                                                    <i
+                                                      aria-hidden="true"
+                                                      class="dropdown icon"
+                                                    />
+                                                    <div
+                                                      class="menu transition"
+                                                    >
+                                                      <div
+                                                        aria-checked="false"
+                                                        aria-selected="true"
+                                                        class="selected item"
+                                                        role="option"
+                                                        style="pointer-events: all;"
+                                                      >
+                                                        <span
+                                                          class="text"
+                                                        >
+                                                          Test section
+                                                        </span>
+                                                      </div>
+                                                    </div>
+                                                  </div>,
+                                                }
+                                              }
+                                            >
+                                              <RefFindNode
+                                                innerRef={
+                                                  Object {
+                                                    "current": <div
+                                                      aria-expanded="false"
+                                                      aria-invalid="true"
+                                                      class="ui selection dropdown"
+                                                      role="listbox"
+                                                      tabindex="0"
+                                                    >
+                                                      <div
+                                                        aria-atomic="true"
+                                                        aria-live="polite"
+                                                        class="text"
+                                                        role="alert"
+                                                      />
+                                                      <i
+                                                        aria-hidden="true"
+                                                        class="dropdown icon"
+                                                      />
+                                                      <div
+                                                        class="menu transition"
+                                                      >
+                                                        <div
+                                                          aria-checked="false"
+                                                          aria-selected="true"
+                                                          class="selected item"
+                                                          role="option"
+                                                          style="pointer-events: all;"
+                                                        >
+                                                          <span
+                                                            class="text"
+                                                          >
+                                                            Test section
+                                                          </span>
+                                                        </div>
+                                                      </div>
+                                                    </div>,
+                                                  }
+                                                }
+                                              >
+                                                <div
+                                                  aria-describedby={null}
+                                                  aria-expanded={false}
+                                                  aria-invalid={true}
+                                                  className="ui selection dropdown"
+                                                  onBlur={[Function]}
+                                                  onChange={[Function]}
+                                                  onClick={[Function]}
+                                                  onFocus={[Function]}
+                                                  onMouseDown={[Function]}
+                                                  role="listbox"
+                                                  tabIndex={0}
+                                                >
+                                                  <div
+                                                    aria-atomic={true}
+                                                    aria-live="polite"
+                                                    className="text"
+                                                    role="alert"
+                                                  />
+                                                  <Icon
+                                                    as="i"
+                                                    className=""
+                                                    name="dropdown"
+                                                    onClick={[Function]}
+                                                  >
+                                                    <i
+                                                      aria-hidden="true"
+                                                      className="dropdown icon"
+                                                      onClick={[Function]}
+                                                    />
+                                                  </Icon>
+                                                  <DropdownMenu>
+                                                    <div
+                                                      className="menu transition"
+                                                    >
+                                                      <DropdownItem
+                                                        active={false}
+                                                        key="1"
+                                                        onClick={[Function]}
+                                                        selected={true}
+                                                        style={
+                                                          Object {
+                                                            "pointerEvents": "all",
+                                                          }
+                                                        }
+                                                        text="Test section"
+                                                        value={1}
+                                                      >
+                                                        <div
+                                                          aria-checked={false}
+                                                          aria-selected={true}
+                                                          className="selected item"
+                                                          onClick={[Function]}
+                                                          role="option"
+                                                          style={
+                                                            Object {
+                                                              "pointerEvents": "all",
+                                                            }
+                                                          }
+                                                        >
+                                                          <span
+                                                            className="text"
+                                                          >
+                                                            Test section
+                                                          </span>
+                                                        </div>
+                                                      </DropdownItem>
+                                                    </div>
+                                                  </DropdownMenu>
+                                                </div>
+                                              </RefFindNode>
+                                            </Ref>
+                                          </Dropdown>
+                                        </Select>
+                                      </div>
+                                    </FormField>
+                                  </FormSelect>
+                                  <Header
+                                    as="h4"
+                                    style={
+                                      Object {
+                                        "display": "none",
+                                      }
+                                    }
+                                  >
+                                    <h4
+                                      className="ui header"
+                                      style={
+                                        Object {
+                                          "display": "none",
+                                        }
+                                      }
+                                    >
+                                      An error occurred, please try again
+                                    </h4>
+                                  </Header>
+                                </form>
+                              </Form>
+                              <Button
+                                as="button"
+                                basic={true}
+                                color="red"
+                                id="deleteDocumentButton"
+                                onClick={[Function]}
+                              >
+                                <Ref
+                                  innerRef={
+                                    Object {
+                                      "current": <button
+                                        class="ui red basic button"
+                                        id="deleteDocumentButton"
+                                      >
+                                        Delete Document
+                                      </button>,
+                                    }
+                                  }
+                                >
+                                  <RefFindNode
+                                    innerRef={
+                                      Object {
+                                        "current": <button
+                                          class="ui red basic button"
+                                          id="deleteDocumentButton"
+                                        >
+                                          Delete Document
+                                        </button>,
+                                      }
+                                    }
+                                  >
+                                    <button
+                                      className="ui red basic button"
+                                      id="deleteDocumentButton"
+                                      onClick={[Function]}
+                                    >
+                                      Delete Document
+                                    </button>
+                                  </RefFindNode>
+                                </Ref>
+                              </Button>
+                              <Confirm
+                                cancelButton="Cancel"
+                                confirmButton="OK"
+                                content="Are you sure?"
+                                onCancel={[Function]}
+                                onConfirm={[Function]}
+                                open={false}
+                                size="mini"
+                              >
+                                <Modal
+                                  centered={true}
+                                  closeOnDimmerClick={true}
+                                  closeOnDocumentClick={false}
+                                  dimmer={true}
+                                  eventPool="Modal"
+                                  onClose={[Function]}
+                                  open={false}
+                                  size="mini"
+                                >
+                                  <Portal
+                                    closeOnDocumentClick={false}
+                                    closeOnEscape={true}
+                                    eventPool="Modal"
+                                    mountNode={
+                                      <body
+                                        class="dimmable dimmed"
+                                      >
+                                        <div
+                                          class="ui page modals dimmer transition visible active"
+                                          style="display: flex;"
+                                        >
+                                          <div
+                                            class="ui tiny modal transition visible active"
+                                          >
+                                            <div
+                                              class="header"
+                                            >
+                                              Section Settings
+                                            </div>
+                                            <div
+                                              class="content"
+                                            >
+                                              <div
+                                                class="description"
+                                                style="padding-bottom: 2em;"
+                                              >
+                                                <form
+                                                  class="ui form"
+                                                  style="padding-bottom: 1em;"
+                                                >
+                                                  <div
+                                                    class="six wide field"
+                                                  >
+                                                    <label>
+                                                      Name
+                                                    </label>
+                                                    <div
+                                                      class="ui input"
+                                                    >
+                                                      <input
+                                                        aria-invalid="true"
+                                                        type="text"
+                                                        value=""
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div
+                                                    class="six wide field"
+                                                  >
+                                                    <label>
+                                                      Section
+                                                    </label>
+                                                    <div
+                                                      aria-expanded="false"
+                                                      aria-invalid="true"
+                                                      class="ui selection dropdown"
+                                                      role="listbox"
+                                                      tabindex="0"
+                                                    >
+                                                      <div
+                                                        aria-atomic="true"
+                                                        aria-live="polite"
+                                                        class="text"
+                                                        role="alert"
+                                                      />
+                                                      <i
+                                                        aria-hidden="true"
+                                                        class="dropdown icon"
+                                                      />
+                                                      <div
+                                                        class="menu transition"
+                                                      >
+                                                        <div
+                                                          aria-checked="false"
+                                                          aria-selected="true"
+                                                          class="selected item"
+                                                          role="option"
+                                                          style="pointer-events: all;"
+                                                        >
+                                                          <span
+                                                            class="text"
+                                                          >
+                                                            Test section
+                                                          </span>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <h4
+                                                    class="ui header"
+                                                    style="display: none;"
+                                                  >
+                                                    An error occurred, please try again
+                                                  </h4>
+                                                </form>
+                                                <button
+                                                  class="ui red basic button"
+                                                  id="deleteDocumentButton"
+                                                >
+                                                  Delete Document
+                                                </button>
+                                                <div
+                                                  class="ui hidden divider"
+                                                />
+                                                <button
+                                                  class="ui basic left floated button"
+                                                >
+                                                  Cancel
+                                                </button>
+                                                <button
+                                                  class="ui primary right floated button"
+                                                >
+                                                  Save
+                                                </button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </body>
+                                    }
+                                    onClose={[Function]}
+                                    onMount={[Function]}
+                                    onOpen={[Function]}
+                                    onUnmount={[Function]}
+                                    open={false}
+                                    openOnTriggerClick={true}
+                                  />
+                                </Modal>
+                              </Confirm>
+                              <Divider
+                                hidden={true}
+                              >
+                                <div
+                                  className="ui hidden divider"
+                                />
+                              </Divider>
+                              <Button
+                                as="button"
+                                basic={true}
+                                floated="left"
+                                onClick={[Function]}
+                              >
+                                <Ref
+                                  innerRef={
+                                    Object {
+                                      "current": <button
+                                        class="ui basic left floated button"
+                                      >
+                                        Cancel
+                                      </button>,
+                                    }
+                                  }
+                                >
+                                  <RefFindNode
+                                    innerRef={
+                                      Object {
+                                        "current": <button
+                                          class="ui basic left floated button"
+                                        >
+                                          Cancel
+                                        </button>,
+                                      }
+                                    }
+                                  >
+                                    <button
+                                      className="ui basic left floated button"
+                                      onClick={[Function]}
+                                    >
+                                      Cancel
+                                    </button>
+                                  </RefFindNode>
+                                </Ref>
+                              </Button>
+                              <Button
+                                as="button"
+                                floated="right"
+                                onClick={[Function]}
+                                primary={true}
+                              >
+                                <Ref
+                                  innerRef={
+                                    Object {
+                                      "current": <button
+                                        class="ui primary right floated button"
+                                      >
+                                        Save
+                                      </button>,
+                                    }
+                                  }
+                                >
+                                  <RefFindNode
+                                    innerRef={
+                                      Object {
+                                        "current": <button
+                                          class="ui primary right floated button"
+                                        >
+                                          Save
+                                        </button>,
+                                      }
+                                    }
+                                  >
+                                    <button
+                                      className="ui primary right floated button"
+                                      onClick={[Function]}
+                                    >
+                                      Save
+                                    </button>
+                                  </RefFindNode>
+                                </Ref>
+                              </Button>
+                            </div>
+                          </ModalDescription>
+                        </div>
+                      </ModalContent>
+                    </div>
+                  </RefFindNode>
+                </Ref>
+              </div>
+            </RefFindNode>
+          </Ref>
+        </Portal>
+      </PortalInner>
+      <EventStack
+        name="mouseleave"
+        on={[Function]}
+        pool="Modal"
+        target={
+          Object {
+            "current": <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Section Settings
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Name
+                        </label>
+                        <div
+                          class="ui input"
+                        >
+                          <input
+                            aria-invalid="true"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Section
+                        </label>
+                        <div
+                          aria-expanded="false"
+                          aria-invalid="true"
+                          class="ui selection dropdown"
+                          role="listbox"
+                          tabindex="0"
+                        >
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                            class="text"
+                            role="alert"
+                          />
+                          <i
+                            aria-hidden="true"
+                            class="dropdown icon"
+                          />
+                          <div
+                            class="menu transition"
+                          >
+                            <div
+                              aria-checked="false"
+                              aria-selected="true"
+                              class="selected item"
+                              role="option"
+                              style="pointer-events: all;"
+                            >
+                              <span
+                                class="text"
+                              >
+                                Test section
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <h4
+                        class="ui header"
+                        style="display: none;"
+                      >
+                        An error occurred, please try again
+                      </h4>
+                    </form>
+                    <button
+                      class="ui red basic button"
+                      id="deleteDocumentButton"
+                    >
+                      Delete Document
+                    </button>
+                    <div
+                      class="ui hidden divider"
+                    />
+                    <button
+                      class="ui basic left floated button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      class="ui primary right floated button"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>,
+          }
+        }
+      />
+      <EventStack
+        name="mouseenter"
+        on={[Function]}
+        pool="Modal"
+        target={
+          Object {
+            "current": <div
+              class="ui page modals dimmer transition visible active"
+              style="display: flex;"
+            >
+              <div
+                class="ui tiny modal transition visible active"
+              >
+                <div
+                  class="header"
+                >
+                  Section Settings
+                </div>
+                <div
+                  class="content"
+                >
+                  <div
+                    class="description"
+                    style="padding-bottom: 2em;"
+                  >
+                    <form
+                      class="ui form"
+                      style="padding-bottom: 1em;"
+                    >
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Name
+                        </label>
+                        <div
+                          class="ui input"
+                        >
+                          <input
+                            aria-invalid="true"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="six wide field"
+                      >
+                        <label>
+                          Section
+                        </label>
+                        <div
+                          aria-expanded="false"
+                          aria-invalid="true"
+                          class="ui selection dropdown"
+                          role="listbox"
+                          tabindex="0"
+                        >
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                            class="text"
+                            role="alert"
+                          />
+                          <i
+                            aria-hidden="true"
+                            class="dropdown icon"
+                          />
+                          <div
+                            class="menu transition"
+                          >
+                            <div
+                              aria-checked="false"
+                              aria-selected="true"
+                              class="selected item"
+                              role="option"
+                              style="pointer-events: all;"
+                            >
+                              <span
+                                class="text"
+                              >
+                                Test section
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <h4
+                        class="ui header"
+                        style="display: none;"
+                      >
+                        An error occurred, please try again
+                      </h4>
+                    </form>
+                    <button
+                      class="ui red basic button"
+                      id="deleteDocumentButton"
+                    >
+                      Delete Document
+                    </button>
+                    <div
+                      class="ui hidden divider"
+                    />
+                    <button
+                      class="ui basic left floated button"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      class="ui primary right floated button"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>,
+          }
+        }
+      />
+      <EventStack
+        name="mousedown"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+      <EventStack
+        name="click"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+      <EventStack
+        name="keydown"
+        on={[Function]}
+        pool="Modal"
+        target="document"
+      />
+    </Portal>
+  </Modal>
+</DocumentModal>
+`;

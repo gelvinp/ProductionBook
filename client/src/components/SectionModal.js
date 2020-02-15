@@ -18,7 +18,7 @@ class SectionModal extends Component {
   }
   closeModal = () => {
     this.setState({
-      name: '',
+      nameField: '',
       confirmOpen: false,
       nameFieldError: false,
       deleteError: false,
@@ -37,7 +37,7 @@ class SectionModal extends Component {
       func()
     }
   }
-  renameSection = () => {
+  renameSection = async () => {
     const { nameField } = this.state
     const { renameSection, id, name, submitRenameSection } = this.props
     if (nameField !== name && nameField !== '') {
@@ -51,10 +51,9 @@ class SectionModal extends Component {
       })
     }
   }
-  deleteSection = () => {
+  deleteSection = async () => {
     const { submitDeleteSection, deleteSection, id } = this.props
     submitDeleteSection(id).then(json => {
-      console.log(json)
       if (json.error || !json.data.success) {
         this.setState({ confirmOpen: false, deleteError: true })
       } else {
@@ -95,6 +94,7 @@ class SectionModal extends Component {
             <Button
               onClick={() => this.setState({ confirmOpen: true })}
               basic
+              id="deleteSectionButton"
               color="red"
             >
               Delete Section

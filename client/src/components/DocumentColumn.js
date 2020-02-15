@@ -44,7 +44,7 @@ class DocumentColumn extends Component {
       >
         <SectionList mobile={mobile} />
         <Button
-          id="openFileButton"
+          id="openUploadButton"
           onClick={openUpload}
           basic
           icon
