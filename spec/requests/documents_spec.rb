@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "Documents", type: :request do
+      after(:all) do
+        Dir.children(Rails.root.join('tmp', 'storage')).each do |f|
+          next if f == ".keep"
+          FileUtils.rm_r(Rails.root.join('tmp', 'storage', f))
+        end
+      end
+
   describe "GET /api" do
     before do
       @section = create(:section)
@@ -41,6 +48,7 @@ RSpec.describe "Documents", type: :request do
 
   describe "POST /api" do
     context "existing section" do
+
       before do
         @section = create(:section)
         file = File.open(Rails.root.join('spec', 'factories', 'documents', 'Resume.pdf'))
@@ -71,13 +79,6 @@ RSpec.describe "Documents", type: :request do
         expect(document.file.attached?).to be_truthy
         expect(document.binary_blob).to eq(@binaryBlob)
         expect(@section.documents.count).to eq(1)
-      end
-
-      after do
-        Dir.children(Rails.root.join('tmp', 'storage')).each do |f|
-          next if f == ".keep"
-          FileUtils.rm_r(Rails.root.join('tmp', 'storage', f))
-        end
       end
     end
 
