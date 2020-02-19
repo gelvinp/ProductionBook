@@ -4,10 +4,55 @@ exports[`MobileDisplay Displays correctly 1`] = `
 <div
   style={
     Object {
+      "display": "flex",
+      "flexDirection": "column",
       "height": "100%",
+      "width": "100%",
     }
   }
 >
+  <Segment
+    attached={true}
+    inverted={true}
+    style={
+      Object {
+        "marginBottom": 0,
+        "paddingBottom": "0.25em",
+        "paddingTop": "0.25em",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <p
+        style={
+          Object {
+            "marginBottom": 0,
+          }
+        }
+      >
+        Development
+         Production Book
+      </p>
+      <Button
+        as="button"
+        basic={true}
+        floated="right"
+        icon="close"
+        inverted={true}
+        onClick={[MockFunction]}
+        size="mini"
+      />
+    </div>
+  </Segment>
   <Connect(DocumentColumn)
     mobile={true}
   />

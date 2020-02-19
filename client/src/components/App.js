@@ -7,7 +7,7 @@ import {
   Input,
   Segment,
 } from 'semantic-ui-react'
-import DesktopDisplay from './DesktopDisplay.js'
+import DesktopDisplay from '../containers/DesktopDisplayContainer.js'
 import MobileDisplay from '../containers/MobileDisplayContainer.js'
 import PropTypes from 'prop-types'
 
@@ -29,20 +29,17 @@ class App extends Component {
     }
   }
   submitPassword = async () => {
-    const { setPassword, getIndex, createSection, createDocument } = this.props
+    const { attemptLogin } = this.props
     const { input } = this.state
-    setPassword(input)
-    const json = await getIndex()
-    if (json.error) {
+    const success = await attemptLogin(input)
+    this.setState({ input: '' })
+    if (!success) {
       this.setState({ error: true })
-    } else {
-      json.data.forEach(section => {
-        createSection(section.id, section.name)
-        section.files.forEach(file => {
-          createDocument(section.id, file.uuid, file.name)
-        })
-      })
     }
+  }
+  componentDidMount() {
+    const { attemptLogin } = this.props
+    attemptLogin()
   }
   render() {
     const { input, error } = this.state
@@ -63,7 +60,21 @@ class App extends Component {
         </Responsive>
       </Fragment>
     )
-    return passwordIsEmpty ? (
+    return error ? (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Segment style={{ width: 350 }}>
+          <Header>
+            There was an error, check your password and try again.
+          </Header>
+        </Segment>
+      </div>
+    ) : passwordIsEmpty ? (
       <div
         style={{
           display: 'flex',
@@ -92,20 +103,6 @@ class App extends Component {
           </Grid>
         </Segment>
       </div>
-    ) : error ? (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Segment style={{ width: 350 }}>
-          <Header>
-            There was an error, check your password and try again.
-          </Header>
-        </Segment>
-      </div>
     ) : (
       display
     )
@@ -114,10 +111,7 @@ class App extends Component {
 
 App.propTypes = {
   passwordIsEmpty: PropTypes.bool.isRequired,
-  setPassword: PropTypes.func.isRequired,
-  createSection: PropTypes.func.isRequired,
-  createDocument: PropTypes.func.isRequired,
-  getIndex: PropTypes.func.isRequired,
+  attemptLogin: PropTypes.func.isRequired,
 }
 
 export default App

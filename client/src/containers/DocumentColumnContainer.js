@@ -4,9 +4,10 @@ import { openUpload } from '../actions/modals.js'
 import { createSection } from '../actions/sections.js'
 import APIRequest from '../APIRequest.js'
 
-const mapStateToProps = (dispatch, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     mobile: ownProps.mobile,
+    loading: state.password !== '' && Object.keys(state.sections) === 0,
   }
 }
 

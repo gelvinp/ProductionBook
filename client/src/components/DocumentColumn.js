@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Input, Icon, Button } from 'semantic-ui-react'
+import { Segment, Loader, Input, Dimmer, Icon, Button } from 'semantic-ui-react'
 import SectionList from '../containers/SectionListContainer.js'
 import UploadModal from '../containers/UploadModalContainer.js'
 import SectionModal from '../containers/SectionModalContainer.js'
@@ -29,17 +29,18 @@ class DocumentColumn extends Component {
     })
   }
   render() {
-    const { openUpload, mobile } = this.props
+    const { openUpload, loading, mobile } = this.props
     const { sectionField, sectionError } = this.state
     return (
-      <div
+      <Dimmer.Dimmable
+        as={Segment}
         style={{
           height: '100%',
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
-          ...(mobile ? { padding: '1em' } : {}),
+          ...(mobile ? { padding: '1em', marginTop: 0 } : {}),
         }}
       >
         <SectionList mobile={mobile} />
@@ -79,7 +80,10 @@ class DocumentColumn extends Component {
         <UploadModal />
         <SectionModal />
         <DocumentModal />
-      </div>
+        <Dimmer active={loading}>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      </Dimmer.Dimmable>
     )
   }
 }
@@ -89,6 +93,7 @@ DocumentColumn.propTypes = {
   createSection: PropTypes.func.isRequired,
   submitSection: PropTypes.func.isRequired,
   mobile: PropTypes.bool,
+  loading: PropTypes.bool.isRequired,
 }
 
 export default DocumentColumn

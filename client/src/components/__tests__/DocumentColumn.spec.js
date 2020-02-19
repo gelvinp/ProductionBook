@@ -9,6 +9,7 @@ describe('DocumentColumn', () => {
         openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
       />
     )
     expect(wrapper).toMatchSnapshot()
@@ -20,6 +21,7 @@ describe('DocumentColumn', () => {
         openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
       />
     )
     expect(
@@ -37,6 +39,7 @@ describe('DocumentColumn', () => {
         openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
       />
     )
     wrapper
@@ -52,6 +55,7 @@ describe('DocumentColumn', () => {
         openUpload={openUpload}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
       />
     )
     wrapper.find('#openUploadButton').simulate('click')
@@ -70,6 +74,7 @@ describe('DocumentColumn', () => {
       <DocumentColumn
         openUpload={jest.fn()}
         submitSection={submitSection}
+        loading={false}
         createSection={jest.fn()}
       />
     )
@@ -97,6 +102,7 @@ describe('DocumentColumn', () => {
       <DocumentColumn
         openUpload={jest.fn()}
         submitSection={submitSection}
+        loading={false}
         createSection={jest.fn()}
       />
     )
@@ -128,6 +134,7 @@ describe('DocumentColumn', () => {
       <DocumentColumn
         openUpload={jest.fn()}
         submitSection={submitSection}
+        loading={false}
         createSection={createSection}
       />
     )
@@ -151,6 +158,7 @@ describe('DocumentColumn', () => {
       <DocumentColumn
         openUpload={jest.fn()}
         submitSection={submitSection}
+        loading={false}
         createSection={jest.fn()}
       />
     )
@@ -168,6 +176,7 @@ describe('DocumentColumn', () => {
       <DocumentColumn
         openUpload={jest.fn()}
         submitSection={submitSection}
+        loading={false}
         createSection={jest.fn()}
       />
     )
@@ -175,26 +184,39 @@ describe('DocumentColumn', () => {
     expect(submitSection).toHaveBeenCalled()
   })
 
-  it('Does not have padding on desktop', () => {
+  it('Does not have padding and top margin on desktop', () => {
     const wrapper = shallow(
       <DocumentColumn
         openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
       />
     )
-    expect(wrapper.find('div').props().style).not.toHaveProperty('padding')
+    expect(wrapper.find('DimmerDimmable').props().style).not.toHaveProperty(
+      'padding'
+    )
+    expect(wrapper.find('DimmerDimmable').props().style).not.toHaveProperty(
+      'marginTop'
+    )
   })
 
-  it('Does have padding on mobile', () => {
+  it('Does have padding and top margin on mobile', () => {
     const wrapper = shallow(
       <DocumentColumn
         openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
         mobile
       />
     )
-    expect(wrapper.find('div').props().style).toHaveProperty('padding', '1em')
+    expect(wrapper.find('DimmerDimmable').props().style).toHaveProperty(
+      'padding',
+      '1em'
+    )
+    expect(wrapper.find('DimmerDimmable').props().style).toHaveProperty(
+      'marginTop'
+    )
   })
 })

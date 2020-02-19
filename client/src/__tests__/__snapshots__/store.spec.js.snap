@@ -23,7 +23,7 @@ Object {
     "section": -1,
     "uploadOpen": false,
   },
-  "password": "",
+  "password": false,
   "sections": Object {},
 }
 `;

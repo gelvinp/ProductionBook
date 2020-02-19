@@ -12,7 +12,8 @@ RSpec.describe "Documents", type: :request do
     before do
       @section = create(:section)
       @document = create(:document, section: @section)
-      get "/api", headers: { Authorization: ENV['PASSWORD'] }
+        log_in
+      get "/api", headers: { Authorization: "Bearer #{@token}" }
     end
 
     it "returns status 200" do
@@ -57,7 +58,8 @@ RSpec.describe "Documents", type: :request do
         @binaryBlob = file.read.force_encoding('BINARY')
         @name = File.basename(file)
         file.close
-        post "/api", headers: { Authorization: ENV['PASSWORD'] }, params: { file: @dataURI, section: @section.id, name: @name }
+        log_in
+        post "/api", headers: { Authorization: "Bearer #{@token}" }, params: { file: @dataURI, section: @section.id, name: @name }
       end
 
       it "returns status 200" do
@@ -84,7 +86,8 @@ RSpec.describe "Documents", type: :request do
 
     context "non-existant section" do
       before do
-        post "/api", headers: { Authorization: ENV['PASSWORD'] }, params: { file: 'Broken', section: -1, name: 'Broken' }
+        log_in
+        post "/api", headers: { Authorization: "Bearer #{@token}" }, params: { file: 'Broken', section: -1, name: 'Broken' }
       end
 
       it "returns status 200" do
@@ -103,7 +106,8 @@ RSpec.describe "Documents", type: :request do
     context "invalid base64 data" do
       before do
         @section = create(:section)
-        post "/api", headers: { Authorization: ENV['PASSWORD'] }, params: { file: 'Broken', section: @section.id, name: 'Broken' }
+        log_in
+        post "/api", headers: { Authorization: "Bearer #{@token}" }, params: { file: 'Broken', section: @section.id, name: 'Broken' }
       end
 
       it "returns status 200" do
@@ -122,7 +126,8 @@ RSpec.describe "Documents", type: :request do
     context "non-pdf base64 data" do
       before do
         @section = create(:section)
-        post "/api", headers: { Authorization: ENV['PASSWORD'] }, params: { file: 'data:image/png;base64,Broken', section: @section.id, name: 'Broken' }
+        log_in
+        post "/api", headers: { Authorization: "Bearer #{@token}" }, params: { file: 'data:image/png;base64,Broken', section: @section.id, name: 'Broken' }
       end
 
       it "returns status 200" do
@@ -149,9 +154,10 @@ RSpec.describe "Documents", type: :request do
           @binaryBlob = file.read.force_encoding('BINARY')
           @name = File.basename(file)
           file.close
-          post "/api", headers: { Authorization: ENV['PASSWORD'] }, params: { file: @dataURI, section: @section.id, name: @name }
+        log_in
+          post "/api", headers: { Authorization: "Bearer #{@token}" }, params: { file: @dataURI, section: @section.id, name: @name }
           @document = Document.last
-          get "/api/#{@section.id}/#{@document.uuid}", headers: { Authorization: ENV['PASSWORD'] }
+          get "/api/#{@section.id}/#{@document.uuid}", headers: { Authorization: "Bearer #{@token}" }
       end
 
       it "returns status 200" do
@@ -165,7 +171,8 @@ RSpec.describe "Documents", type: :request do
 
     context "File does not exist" do
       before do
-        get "/api/-1/-1", headers: { Authorization: ENV['PASSWORD'] }
+        log_in
+        get "/api/-1/-1", headers: { Authorization: "Bearer #{@token}" }
       end
 
       it "returns status 204" do
@@ -179,7 +186,8 @@ RSpec.describe "Documents", type: :request do
       before do
         @section = create(:section)
         @document = create(:document, section: @section)
-        delete "/api/#{@section.id}/#{@document.uuid}", headers: { Authorization: ENV['PASSWORD'] }
+        log_in
+        delete "/api/#{@section.id}/#{@document.uuid}", headers: { Authorization: "Bearer #{@token}" }
       end
 
       it "returns status 200" do
@@ -197,7 +205,8 @@ RSpec.describe "Documents", type: :request do
 
     context "Document does not exist" do
       before do
-        delete "/api/99999/99999", headers: { Authorization: ENV['PASSWORD'] }
+        log_in
+        delete "/api/99999/99999", headers: { Authorization: "Bearer #{@token}" }
       end
 
       it "returns status 200" do
@@ -213,7 +222,8 @@ RSpec.describe "Documents", type: :request do
   describe "PATCH /api/:section/:uuid" do
     context "Document does not exist" do
       before do
-        patch "/api/999999/99999", headers: { Authorization: ENV['PASSWORD'] }
+        log_in
+        patch "/api/999999/99999", headers: { Authorization: "Bearer #{@token}" }
       end
 
       it "returns status 200" do
@@ -229,7 +239,8 @@ RSpec.describe "Documents", type: :request do
       before do
         @section = create(:section)
         @document = create(:document, section: @section)
-        patch "/api/#{@section.id}/#{@document.uuid}", params: { name: '' }, headers: { Authorization: ENV['PASSWORD'] }
+        log_in
+        patch "/api/#{@section.id}/#{@document.uuid}", params: { name: '' }, headers: { Authorization: "Bearer #{@token}" }
       end
 
       it "returns status 200" do
@@ -246,7 +257,8 @@ RSpec.describe "Documents", type: :request do
         @new_name = "A new section name"
         @section = create(:section)
         @document = create(:document, section: @section)
-        patch "/api/#{@section.id}/#{@document.uuid}", params: { name: @new_name }, headers: { Authorization: ENV['PASSWORD'] }
+        log_in
+        patch "/api/#{@section.id}/#{@document.uuid}", params: { name: @new_name }, headers: { Authorization: "Bearer #{@token}" }
       end
 
       it "returns status 200" do
@@ -266,7 +278,8 @@ RSpec.describe "Documents", type: :request do
       before do
         @section = create(:section)
         @document = create(:document, section: @section)
-        patch "/api/#{@section.id}/#{@document.uuid}", params: { new_section: 99999 }, headers: { Authorization: ENV['PASSWORD'] }
+        log_in
+        patch "/api/#{@section.id}/#{@document.uuid}", params: { new_section: 99999 }, headers: { Authorization: "Bearer #{@token}" }
       end
 
       it "returns status 200" do
@@ -283,7 +296,8 @@ RSpec.describe "Documents", type: :request do
         @section_two = create(:otherSection)
         @section = create(:section)
         @document = create(:document, section: @section)
-        patch "/api/#{@section.id}/#{@document.uuid}", params: { new_section: @section_two.id }, headers: { Authorization: ENV['PASSWORD'] }
+        log_in
+        patch "/api/#{@section.id}/#{@document.uuid}", params: { new_section: @section_two.id }, headers: { Authorization: "Bearer #{@token}" }
       end
 
       it "returns status 200" do

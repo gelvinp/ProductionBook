@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DocumentColumn Displays correctly 1`] = `
-<div
+<DimmerDimmable
+  as={[Function]}
   style={
     Object {
       "display": "flex",
@@ -57,5 +58,12 @@ exports[`DocumentColumn Displays correctly 1`] = `
   <Connect(UploadModal) />
   <Connect(SectionModal) />
   <Connect(DocumentModal) />
-</div>
+  <Dimmer
+    active={false}
+  >
+    <Loader>
+      Loading
+    </Loader>
+  </Dimmer>
+</DimmerDimmable>
 `;

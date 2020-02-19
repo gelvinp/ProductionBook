@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   patch '/api/:id', to: 'sections#update'
   delete '/api/:id', to: 'sections#destroy'
   delete '/api/:section/:uuid', to: 'documents#destroy'
+  post '/api/login', to: 'sessions#create'
+  post '/api/logout', to: 'sessions#destroy'
+  post '/api/refresh', to: 'sessions#update'
   root to: proc { [400, {}, []] }
 end

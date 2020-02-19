@@ -2,7 +2,7 @@ require 'data_uri'
 
 # Returns either a listing of sections and documents, or a specific document
 class DocumentsController < ApplicationController
-  before_action :authenticate_user
+  before_action :check_password
   # Returns a json object describing the available sections and the files
   # contained within
   #

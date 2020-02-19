@@ -6,7 +6,7 @@ exports[`App Shows the display 1`] = `
     getWidth={[Function]}
     minWidth={768}
   >
-    <DesktopDisplay />
+    <Connect(DesktopDisplay) />
   </Responsive>
   <Responsive
     getWidth={[Function]}

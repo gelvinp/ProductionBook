@@ -21,6 +21,8 @@ gem 'puma', '~> 3.11'
 gem 'rubocop', require: false
 gem 'simplecov', require: false, group: :test
 
+gem 'jwt'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

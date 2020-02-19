@@ -16,7 +16,7 @@ describe('App', () => {
         setPassword={jest.fn()}
         createSection={jest.fn()}
         createDocument={jest.fn()}
-        getIndex={jest.fn()}
+        attemptLogin={jest.fn()}
       />
     )
     expect(wrapper.instance().getWidth()).toBe(768)

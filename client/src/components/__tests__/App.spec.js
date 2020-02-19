@@ -10,7 +10,7 @@ describe('App', () => {
         setPassword={jest.fn()}
         createSection={jest.fn()}
         createDocument={jest.fn()}
-        getIndex={jest.fn()}
+        attemptLogin={jest.fn()}
       />
     )
     expect(wrapper.find('Input').exists()).toBeTruthy()
@@ -23,7 +23,7 @@ describe('App', () => {
         setPassword={jest.fn()}
         createSection={jest.fn()}
         createDocument={jest.fn()}
-        getIndex={jest.fn()}
+        attemptLogin={jest.fn()}
       />
     )
     wrapper.find('Input').simulate('change', { target: { value: 'Test' } })
@@ -31,10 +31,8 @@ describe('App', () => {
   })
 
   it('Submits password on button click', () => {
-    const getIndex = jest.fn().mockImplementation(() => {
-      return Promise.resolve({
-        error: true,
-      })
+    const attemptLogin = jest.fn().mockImplementation(() => {
+      return Promise.resolve(false)
     })
     const wrapper = shallow(
       <App
@@ -42,7 +40,7 @@ describe('App', () => {
         setPassword={jest.fn()}
         createSection={jest.fn()}
         createDocument={jest.fn()}
-        getIndex={getIndex}
+        attemptLogin={attemptLogin}
       />
     )
     wrapper.find('Button').simulate('click')
@@ -53,10 +51,8 @@ describe('App', () => {
   })
 
   it('Submits password on Enter key down', () => {
-    const getIndex = jest.fn().mockImplementation(() => {
-      return Promise.resolve({
-        error: true,
-      })
+    const attemptLogin = jest.fn().mockImplementation(() => {
+      return Promise.resolve(false)
     })
     const wrapper = shallow(
       <App
@@ -64,7 +60,7 @@ describe('App', () => {
         setPassword={jest.fn()}
         createSection={jest.fn()}
         createDocument={jest.fn()}
-        getIndex={getIndex}
+        attemptLogin={attemptLogin}
       />
     )
     wrapper.find('Input').simulate('keydown', { key: 'Enter' })
@@ -75,10 +71,8 @@ describe('App', () => {
   })
 
   it('Doesnt submit password on non Enter key down', () => {
-    const getIndex = jest.fn().mockImplementation(() => {
-      return Promise.resolve({
-        error: true,
-      })
+    const attemptLogin = jest.fn().mockImplementation(() => {
+      return Promise.resolve(false)
     })
     const wrapper = shallow(
       <App
@@ -86,7 +80,7 @@ describe('App', () => {
         setPassword={jest.fn()}
         createSection={jest.fn()}
         createDocument={jest.fn()}
-        getIndex={getIndex}
+        attemptLogin={attemptLogin}
       />
     )
     wrapper.find('Button').simulate('keydown', { key: 'Down' })
@@ -96,51 +90,26 @@ describe('App', () => {
     })
   })
 
-  it('Accepts a valid password and creates documents and sections', async () => {
-    const getIndex = jest.fn().mockImplementation(() => {
-      return Promise.resolve({
-        error: false,
-        data: [
-          {
-            id: 1,
-            name: 'Test Section',
-            files: [
-              {
-                uuid: 2,
-                name: 'Test File',
-              },
-            ],
-          },
-        ],
-      })
-    })
-    const setPassword = jest.fn().mockImplementation(pass => {
-      expect(pass).toEqual('Test')
-    })
-    const createSection = jest.fn().mockImplementation((id, name) => {
-      expect(id).toBe(1)
-      expect(name).toEqual('Test Section')
-    })
-    const createDocument = jest.fn().mockImplementation((id, uuid, name) => {
-      expect(id).toBe(1)
-      expect(uuid).toBe(2)
-      expect(name).toEqual('Test File')
+  it('Accepts a valid password', async () => {
+    let match = undefined
+    const attemptLogin = jest.fn().mockImplementation(pass => {
+      expect(pass).toEqual(match)
+      return Promise.resolve(true)
     })
     const wrapper = shallow(
       <App
         passwordIsEmpty={true}
-        setPassword={setPassword}
-        createSection={createSection}
-        createDocument={createDocument}
-        getIndex={getIndex}
+        setPassword={jest.fn()}
+        createSection={jest.fn()}
+        createDocument={jest.fn()}
+        attemptLogin={attemptLogin}
       />
     )
     wrapper.setState({ input: 'Test' })
+    match = 'Test'
     await wrapper.instance().submitPassword()
     expect(wrapper.state('error')).not.toBeTruthy()
-    expect(createSection).toHaveBeenCalled()
-    expect(createDocument).toHaveBeenCalled()
-    expect.assertions(9)
+    expect.assertions(3)
   })
 
   it('Shows an error page', () => {
@@ -150,7 +119,7 @@ describe('App', () => {
         setPassword={jest.fn()}
         createSection={jest.fn()}
         createDocument={jest.fn()}
-        getIndex={jest.fn()}
+        attemptLogin={jest.fn()}
       />
     )
     wrapper.setState({ error: true })
@@ -169,7 +138,7 @@ describe('App', () => {
         setPassword={jest.fn()}
         createSection={jest.fn()}
         createDocument={jest.fn()}
-        getIndex={jest.fn()}
+        attemptLogin={jest.fn()}
       />
     )
     expect(wrapper).toMatchSnapshot()
@@ -182,7 +151,7 @@ describe('App', () => {
         setPassword={jest.fn()}
         createSection={jest.fn()}
         createDocument={jest.fn()}
-        getIndex={jest.fn()}
+        attemptLogin={jest.fn()}
       />
     )
     expect(wrapper.instance().getWidth()).toBe(1024)
