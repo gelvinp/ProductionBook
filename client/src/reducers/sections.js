@@ -16,7 +16,7 @@ export function sections(state = {}, action) {
       var value = { name: action.name, files: {} }
       return { ...state, [key]: value }
     case CREATE_DOCUMENT:
-      var key = action.section
+      key = action.section
       var section = state[key]
       var files = {
         ...section.files,
@@ -27,9 +27,9 @@ export function sections(state = {}, action) {
       }
       return { ...state, [key]: { ...section, files: files } }
     case LOAD_DOCUMENT:
-      var key = action.section
-      var section = state[key]
-      var files = {
+      key = action.section
+      section = state[key]
+      files = {
         ...section.files,
         [action.uuid]: {
           ...section.files[action.uuid],
@@ -38,17 +38,17 @@ export function sections(state = {}, action) {
       }
       return { ...state, [key]: { ...section, files: files } }
     case RENAME_SECTION:
-      var key = action.id
-      var section = state[key]
+      key = action.id
+      section = state[key]
       return { ...state, [key]: { ...section, name: action.name } }
     case DELETE_SECTION:
-      var key = action.id
+      key = action.id
       var { [key]: _, ...sections } = state
       return sections
     case RENAME_DOCUMENT:
-      var key = action.id
-      var section = state[key]
-      var files = {
+      key = action.id
+      section = state[key]
+      files = {
         ...section.files,
         [action.uuid]: {
           ...section.files[action.uuid],
@@ -69,10 +69,10 @@ export function sections(state = {}, action) {
         [new_key]: { ...new_section, files: new_files },
       }
     case DELETE_DOCUMENT:
-      var key = action.id
-      var section = state[key]
-      var { [action.uuid]: _, ...files } = section.files
-      return { ...state, [key]: { ...section, files: files } }
+      key = action.id
+      section = state[key]
+      var { [action.uuid]: __, ...remainingFiles } = section.files
+      return { ...state, [key]: { ...section, files: remainingFiles } }
     default:
       return state
   }

@@ -4,7 +4,6 @@ import {
   Responsive,
   Button,
   Header,
-  Input,
   Segment,
   Form,
 } from 'semantic-ui-react'

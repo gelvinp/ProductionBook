@@ -28,7 +28,7 @@
 
 # Ignore secrets
 .env
-!/client/.env
+/client/.env
 
 # Ignore yard
 .yardoc
