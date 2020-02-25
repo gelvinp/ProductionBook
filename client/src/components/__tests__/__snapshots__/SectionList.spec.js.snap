@@ -14,6 +14,15 @@ exports[`SectionList Renders provided sections 1`] = `
 >
   <ListItem
     key="section-1"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "display": "flex",
+        "paddingBottom": "0.4em",
+        "paddingTop": "0.4em",
+      }
+    }
   >
     <ListIcon
       name="folder"
@@ -21,9 +30,27 @@ exports[`SectionList Renders provided sections 1`] = `
     <ListContent>
       Sample Section
       <Connect(FileList)
+        mobile={false}
         section="1"
       />
     </ListContent>
+    <Button
+      as="button"
+      floated="right"
+      icon={true}
+      onClick={[Function]}
+      size="mini"
+      style={
+        Object {
+          "visibility": "hidden",
+        }
+      }
+    >
+      <Icon
+        as="i"
+        name="info circle"
+      />
+    </Button>
   </ListItem>
 </List>
 `;

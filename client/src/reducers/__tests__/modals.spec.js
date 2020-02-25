@@ -1,31 +1,86 @@
 import { modals } from '../modals.js'
-import { OPEN_FILE, CLOSE_FILE } from '../../actions/modals.js'
+import {
+  OPEN_UPLOAD,
+  OPEN_SECTION,
+  OPEN_DOCUMENT,
+  CLOSE_UPLOAD,
+  CLOSE_SECTION,
+  CLOSE_DOCUMENT,
+} from '../../actions/modals.js'
 
 describe('modals reducer', () => {
   const initialState = {
-    fileOpen: false,
+    uploadOpen: false,
+    document: {},
+    section: -1,
   }
-  const openState = {
+  const uploadOpenState = {
     ...initialState,
-    fileOpen: true,
+    uploadOpen: true,
+  }
+  const sectionOpenState = {
+    ...initialState,
+    section: 1,
+  }
+  const documentOpenState = {
+    ...initialState,
+    document: {
+      id: 1,
+      uuid: 2,
+    },
   }
 
   it('should return the initial state', () => {
     expect(modals(undefined, {})).toEqual(initialState)
   })
 
-  it('should handle OPEN_FILE', () => {
+  it('should handle OPEN_UPLOAD', () => {
     expect(
       modals(initialState, {
-        type: OPEN_FILE,
+        type: OPEN_UPLOAD,
       })
-    ).toEqual(openState)
+    ).toEqual(uploadOpenState)
   })
 
-  it('should handle CLOSE_FILE', () => {
+  it('should handle CLOSE_UPLOAD', () => {
     expect(
-      modals(openState, {
-        type: CLOSE_FILE,
+      modals(uploadOpenState, {
+        type: CLOSE_UPLOAD,
+      })
+    ).toEqual(initialState)
+  })
+
+  it('should handle OPEN_SECTION', () => {
+    expect(
+      modals(initialState, {
+        type: OPEN_SECTION,
+        section: 1,
+      })
+    ).toEqual(sectionOpenState)
+  })
+
+  it('should handle CLOSE_SECTION', () => {
+    expect(
+      modals(sectionOpenState, {
+        type: CLOSE_SECTION,
+      })
+    ).toEqual(initialState)
+  })
+
+  it('should handle OPEN_DOCUMENT', () => {
+    expect(
+      modals(initialState, {
+        type: OPEN_DOCUMENT,
+        id: 1,
+        uuid: 2,
+      })
+    ).toEqual(documentOpenState)
+  })
+
+  it('should handle CLOSE_DOCUMENT', () => {
+    expect(
+      modals(documentOpenState, {
+        type: CLOSE_DOCUMENT,
       })
     ).toEqual(initialState)
   })

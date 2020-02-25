@@ -6,14 +6,42 @@ exports[`FileList Renders provided files 1`] = `
 >
   <ListItem
     key="file-1"
-    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "display": "flex",
+        "paddingBottom": "0.4em",
+        "paddingTop": "0.4em",
+      }
+    }
   >
     <ListIcon
       name="file"
     />
-    <ListContent>
+    <ListContent
+      onClick={[Function]}
+    >
       Sample File
     </ListContent>
+    <Button
+      as="button"
+      basic={true}
+      floated="right"
+      icon={true}
+      onClick={[Function]}
+      size="mini"
+      style={
+        Object {
+          "visibility": "hidden",
+        }
+      }
+    >
+      <Icon
+        as="i"
+        name="info circle"
+      />
+    </Button>
   </ListItem>
 </ListList>
 `;

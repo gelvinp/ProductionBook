@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Header, Modal, Form } from 'semantic-ui-react'
 
-class FileModal extends Component {
+class UploadModal extends Component {
   state = {
     section: -1,
     buttonText: 'Select a file...',
     fileChosen: false,
     fileError: false,
     selectedFile: null,
+    fileBlob: null,
     fileUploading: false,
     uploadError: false,
   }
@@ -19,6 +20,7 @@ class FileModal extends Component {
       fileChosen: false,
       fileError: false,
       selectedFile: null,
+      fileBlob: null,
       fileUploading: false,
       uploadError: false,
     })
@@ -49,10 +51,18 @@ class FileModal extends Component {
         fileError: false,
         selectedFile: file,
       })
+      const reader = new FileReader()
+      reader.onload = e => {
+        const blob = new Blob([new Uint8Array(e.target.result)], {
+          type: file.type,
+        })
+        this.setState({ fileBlob: blob })
+      }
+      reader.readAsArrayBuffer(file)
     }
   }
   uploadFile = async () => {
-    const { selectedFile, section } = this.state
+    const { selectedFile, fileBlob, section } = this.state
     const { sendFile, createDocument } = this.props
     this.setState({ fileUploading: true })
     const result = await this.encodeBase64(selectedFile)
@@ -62,12 +72,20 @@ class FileModal extends Component {
       name: selectedFile.name,
     })
     this.setState({ fileUploading: false })
-    if (json.data.success) {
-      this.setState({ uploadError: false })
-      createDocument(section, json.data.uuid, selectedFile.name, result)
-      this.closeModal()
-    } else {
+    if (json.error || !json.data.success) {
       this.setState({ uploadError: true })
+    } else {
+      this.setState({ uploadError: false })
+      createDocument(
+        section,
+        json.data.uuid,
+        selectedFile.name
+          .split('.')
+          .slice(0, -1)
+          .join('.'),
+        fileBlob
+      )
+      this.closeModal()
     }
   }
   render() {
@@ -87,7 +105,7 @@ class FileModal extends Component {
     }))
     const formReady = fileChosen && section !== -1
     return (
-      <Modal open={modalOpen} onClose={this.closeModal}>
+      <Modal size="tiny" open={modalOpen} onClose={this.closeModal}>
         <Modal.Header>Upload a document</Modal.Header>
         <Modal.Content>
           <Modal.Description style={{ paddingBottom: '2em' }}>
@@ -154,7 +172,7 @@ class FileModal extends Component {
   }
 }
 
-FileModal.propTypes = {
+UploadModal.propTypes = {
   modalOpen: PropTypes.bool.isRequired,
   sections: PropTypes.object.isRequired,
   closeModal: PropTypes.func.isRequired,
@@ -162,4 +180,4 @@ FileModal.propTypes = {
   createDocument: PropTypes.func.isRequired,
 }
 
-export default FileModal
+export default UploadModal

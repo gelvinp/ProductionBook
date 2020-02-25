@@ -1,12 +1,21 @@
 import React, { Fragment, Component } from 'react'
-import { Responsive, Button, Header, Input, Segment } from 'semantic-ui-react'
-import DesktopDisplay from './DesktopDisplay.js'
+import {
+  Grid,
+  Responsive,
+  Button,
+  Header,
+  Input,
+  Segment,
+  Form,
+} from 'semantic-ui-react'
+import DesktopDisplay from '../containers/DesktopDisplayContainer.js'
 import MobileDisplay from '../containers/MobileDisplayContainer.js'
 import PropTypes from 'prop-types'
 
 class App extends Component {
   state = {
-    input: '',
+    id: '',
+    password: '',
     error: false,
     section: '',
     sectionError: false,
@@ -22,23 +31,24 @@ class App extends Component {
     }
   }
   submitPassword = async () => {
-    const { setPassword, getIndex, createSection, createDocument } = this.props
-    const { input } = this.state
-    setPassword(input)
-    const json = await getIndex()
-    if (json.error) {
+    const { attemptLogin } = this.props
+    const { id, password } = this.state
+    if (id.length === 0 || password.length === 0) {
+      return
+    }
+    const loginInfo = { id: id, password: password }
+    const success = await attemptLogin(loginInfo)
+    this.setState({ id: '', password: '' })
+    if (!success) {
       this.setState({ error: true })
-    } else {
-      json.data.forEach(section => {
-        createSection(section.id, section.name)
-        section.files.forEach(file => {
-          createDocument(section.id, file.uuid, file.name)
-        })
-      })
     }
   }
+  componentDidMount() {
+    const { attemptLogin } = this.props
+    attemptLogin()
+  }
   render() {
-    const { input, error } = this.state
+    const { id, password, error } = this.state
     const { passwordIsEmpty } = this.props
     const display = (
       <Fragment>
@@ -56,26 +66,7 @@ class App extends Component {
         </Responsive>
       </Fragment>
     )
-    return passwordIsEmpty ? (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Segment style={{ width: 350 }}>
-          <Header>Password:</Header>
-          <Input
-            value={input}
-            onKeyDown={e => this.handleKeyDown(e, this.submitPassword)}
-            onChange={e => this.setState({ input: e.target.value })}
-            type="password"
-          />
-          <Button onClick={this.submitPassword}>Submit</Button>
-        </Segment>
-      </div>
-    ) : error ? (
+    return error ? (
       <div
         style={{
           display: 'flex',
@@ -89,6 +80,49 @@ class App extends Component {
           </Header>
         </Segment>
       </div>
+    ) : passwordIsEmpty ? (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Segment style={{ width: 350 }}>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column>
+                <Header>Login</Header>
+                <Form>
+                  <Form.Input
+                    label="ID"
+                    value={id}
+                    onChange={e => this.setState({ id: e.target.value })}
+                    onKeyDown={e => this.handleKeyDown(e, this.submitPassword)}
+                  />
+                  <Form.Input
+                    label="Password"
+                    value={password}
+                    type="password"
+                    onChange={e => this.setState({ password: e.target.value })}
+                    onKeyDown={e => this.handleKeyDown(e, this.submitPassword)}
+                  />
+                </Form>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <Button
+                  disabled={!(id.length !== 0 && password.length !== 0)}
+                  onClick={this.submitPassword}
+                >
+                  Submit
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment>
+      </div>
     ) : (
       display
     )
@@ -97,10 +131,7 @@ class App extends Component {
 
 App.propTypes = {
   passwordIsEmpty: PropTypes.bool.isRequired,
-  setPassword: PropTypes.func.isRequired,
-  createSection: PropTypes.func.isRequired,
-  createDocument: PropTypes.func.isRequired,
-  getIndex: PropTypes.func.isRequired,
+  attemptLogin: PropTypes.func.isRequired,
 }
 
 export default App

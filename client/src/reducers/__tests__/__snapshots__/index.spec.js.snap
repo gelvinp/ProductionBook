@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`root reducer should reset with password -1 1`] = `
+Object {
+  "documents": Object {
+    "selectedDocument": Object {
+      "section": -1,
+      "uuid": -1,
+    },
+  },
+  "modals": Object {
+    "document": Object {},
+    "section": -1,
+    "uploadOpen": false,
+  },
+  "password": -1,
+  "sections": Object {},
+}
+`;

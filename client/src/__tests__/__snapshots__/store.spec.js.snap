@@ -19,9 +19,11 @@ Object {
     },
   },
   "modals": Object {
-    "fileOpen": false,
+    "document": Object {},
+    "section": -1,
+    "uploadOpen": false,
   },
-  "password": "",
+  "password": -1,
   "sections": Object {},
 }
 `;

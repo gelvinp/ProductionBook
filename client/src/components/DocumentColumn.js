@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Input, Icon, Button } from 'semantic-ui-react'
+import { Segment, Loader, Input, Dimmer, Icon, Button } from 'semantic-ui-react'
 import SectionList from '../containers/SectionListContainer.js'
-import FileModal from '../containers/FileModalContainer.js'
+import UploadModal from '../containers/UploadModalContainer.js'
+import SectionModal from '../containers/SectionModalContainer.js'
+import DocumentModal from '../containers/DocumentModalContainer.js'
 
 class DocumentColumn extends Component {
   state = {
@@ -27,63 +29,81 @@ class DocumentColumn extends Component {
     })
   }
   render() {
-    const { openFile, mobile } = this.props
+    const { openUpload, loading, mobile, upload, modify } = this.props
     const { sectionField, sectionError } = this.state
     return (
-      <div
+      <Dimmer.Dimmable
+        as={Segment}
         style={{
           height: '100%',
+          width: '100%',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
-          ...(mobile ? { padding: '1em' } : {}),
+          ...(mobile ? { padding: '1em', marginTop: 0 } : {}),
         }}
       >
-        <SectionList />
-        <Button
-          id="openFileButton"
-          onClick={openFile}
-          basic
-          icon
-          labelPosition="left"
-          style={{
-            marginBottom: '0.5rem',
-            width: '12rem',
-            maxHeight: '6rem',
-          }}
-        >
-          <Icon name="upload" />
-          Upload File
-        </Button>
-        <Input
-          value={sectionField}
-          id="sectionFieldInput"
-          onChange={e => this.setState({ sectionField: e.target.value })}
-          placeholder="Add a section"
-          onKeyDown={e => this.handleKeyDown(e, this.handleCreateSection)}
-          error={sectionError}
-          label={
+        <SectionList mobile={mobile} />
+        {upload ? (
+          <Fragment>
             <Button
-              icon="plus"
-              id="submitSectionButton"
+              id="openUploadButton"
+              onClick={openUpload}
               basic
-              onClick={this.handleCreateSection}
-              disabled={!sectionField.length}
+              icon
+              labelPosition="left"
+              style={{
+                marginBottom: '0.5rem',
+                width: '12rem',
+                maxHeight: '6rem',
+              }}
+            >
+              <Icon name="upload" />
+              Upload File
+            </Button>
+            <UploadModal />
+          </Fragment>
+        ) : null}
+        {modify ? (
+          <Fragment>
+            <Input
+              value={sectionField}
+              id="sectionFieldInput"
+              onChange={e => this.setState({ sectionField: e.target.value })}
+              placeholder="Add a section"
+              onKeyDown={e => this.handleKeyDown(e, this.handleCreateSection)}
+              error={sectionError}
+              label={
+                <Button
+                  icon="plus"
+                  id="submitSectionButton"
+                  basic
+                  onClick={this.handleCreateSection}
+                  disabled={!sectionField.length}
+                />
+              }
+              labelPosition="right"
             />
-          }
-          labelPosition="right"
-        />
-        <FileModal />
-      </div>
+            <SectionModal />
+            <DocumentModal />
+          </Fragment>
+        ) : null}
+        <Dimmer active={loading}>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      </Dimmer.Dimmable>
     )
   }
 }
 
 DocumentColumn.propTypes = {
-  openFile: PropTypes.func.isRequired,
+  openUpload: PropTypes.func.isRequired,
   createSection: PropTypes.func.isRequired,
   submitSection: PropTypes.func.isRequired,
   mobile: PropTypes.bool,
+  upload: PropTypes.bool,
+  modify: PropTypes.bool,
+  loading: PropTypes.bool.isRequired,
 }
 
 export default DocumentColumn

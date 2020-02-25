@@ -1,11 +1,17 @@
 import { connect } from 'react-redux'
 import MobileDisplay from '../components/MobileDisplay.js'
 import { selectDocument } from '../actions/documents.js'
+import { setPassword } from '../actions/password.js'
+import APIRequest from '../APIRequest.js'
 
 const mapDispatchToProps = dispatch => {
   return {
     deselectDocument: () => {
       dispatch(selectDocument())
+    },
+    logOut: async () => {
+      await APIRequest.json_request('logout', 'post')
+      dispatch(setPassword(-1))
     },
   }
 }

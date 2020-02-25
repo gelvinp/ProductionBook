@@ -1,8 +1,8 @@
 import React from 'react'
-import FileModal from '../FileModal.js'
+import UploadModal from '../UploadModal.js'
 import { shallow, mount } from 'enzyme'
 
-describe('FileModal', () => {
+describe('UploadModal', () => {
   let modalOpen, sections, closeModal, sendFile, createDocument
 
   it('Is hidden when closed', () => {
@@ -12,7 +12,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = mount(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -31,7 +31,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = mount(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -54,7 +54,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = mount(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -76,7 +76,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -95,7 +95,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -120,7 +120,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -150,7 +150,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -158,15 +158,14 @@ describe('FileModal', () => {
         createDocument={createDocument}
       />
     )
-    const validFile = {
-      name: 'Valid.pdf',
-    }
+    let blob = new Blob(['a'.repeat(1024)], { type: 'application/pdf' })
+    let file = new File([blob], 'Valid.pdf', { type: blob.type })
     wrapper.setState({ section: 1 })
     wrapper
       .find('#file_upload_field')
-      .simulate('change', { target: { files: [validFile] } })
+      .simulate('change', { target: { files: [file] } })
     expect(wrapper.find('HeaderSubheader').prop('style').display).toBe('none')
-    expect(wrapper.state('selectedFile')).toEqual(validFile)
+    expect(wrapper.state('selectedFile')).toEqual(file)
     expect(wrapper.find('#fileUploadLabel').prop('color')).toBe('black')
     expect(
       wrapper
@@ -184,7 +183,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -214,7 +213,7 @@ describe('FileModal', () => {
     sendFile = jest.fn()
     createDocument = jest.fn()
     const wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -248,7 +247,7 @@ describe('FileModal', () => {
     })
     createDocument = jest.fn()
     wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -285,17 +284,16 @@ describe('FileModal', () => {
     })
     let blob = new Blob(['a'.repeat(1024)], { type: 'application/pdf' })
     blob.name = 'Valid.pdf'
-    let base64
     createDocument = jest
       .fn()
       .mockImplementation((section, uuid, name, result) => {
         expect(section).toBe(1)
         expect(uuid).toBe(1)
-        expect(name).toBe('Valid.pdf')
-        expect(result).toEqual(base64)
+        expect(name).toBe('Valid')
+        expect(result).toEqual(blob)
       })
     wrapper = shallow(
-      <FileModal
+      <UploadModal
         modalOpen={modalOpen}
         sections={sections}
         closeModal={closeModal}
@@ -303,8 +301,7 @@ describe('FileModal', () => {
         createDocument={createDocument}
       />
     )
-    base64 = await wrapper.instance().encodeBase64(blob)
-    wrapper.setState({ selectedFile: blob, section: 1 })
+    wrapper.setState({ selectedFile: blob, fileBlob: blob, section: 1 })
     await wrapper.instance().uploadFile()
     wrapper = wrapper.update()
     expect(sendFile.mock.calls.length).toBe(1)

@@ -1,13 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DocumentColumn Displays correctly 1`] = `
-<div
+<DimmerDimmable
+  as={[Function]}
   style={
     Object {
       "display": "flex",
       "flexDirection": "column",
       "height": "100%",
       "overflow": "hidden",
+      "width": "100%",
     }
   }
 >
@@ -16,7 +18,7 @@ exports[`DocumentColumn Displays correctly 1`] = `
     as="button"
     basic={true}
     icon={true}
-    id="openFileButton"
+    id="openUploadButton"
     labelPosition="left"
     onClick={[MockFunction]}
     style={
@@ -33,6 +35,7 @@ exports[`DocumentColumn Displays correctly 1`] = `
     />
     Upload File
   </Button>
+  <Connect(UploadModal) />
   <Input
     error={false}
     id="sectionFieldInput"
@@ -53,6 +56,14 @@ exports[`DocumentColumn Displays correctly 1`] = `
     type="text"
     value=""
   />
-  <Connect(FileModal) />
-</div>
+  <Connect(SectionModal) />
+  <Connect(DocumentModal) />
+  <Dimmer
+    active={false}
+  >
+    <Loader>
+      Loading
+    </Loader>
+  </Dimmer>
+</DimmerDimmable>
 `;

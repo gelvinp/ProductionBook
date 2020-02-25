@@ -2,28 +2,92 @@
 
 exports[`DocumentColumn Displays correctly 1`] = `
 <Grid
-  divided={true}
   style={
     Object {
+      "flexDirection": "column",
       "height": "100%",
       "margin": "unset",
     }
   }
 >
-  <GridColumn
+  <GridRow
     style={
       Object {
-        "height": "100%",
+        "flexGrow": 1,
       }
     }
-    width={4}
   >
-    <Connect(DocumentColumn) />
-  </GridColumn>
-  <GridColumn
-    width={12}
+    <GridColumn
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+      width={4}
+    >
+      <Connect(DocumentColumn) />
+    </GridColumn>
+    <GridColumn
+      width={12}
+    >
+      <Connect(PDFViewer) />
+    </GridColumn>
+  </GridRow>
+  <GridRow
+    style={
+      Object {
+        "padding": 0,
+      }
+    }
   >
-    <Connect(PDFViewer) />
-  </GridColumn>
+    <GridColumn
+      style={
+        Object {
+          "padding": 0,
+        }
+      }
+    >
+      <Segment
+        attached={true}
+        inverted={true}
+        style={
+          Object {
+            "padding": "0.5em",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+            }
+          }
+        >
+          <p
+            style={
+              Object {
+                "marginBottom": 0,
+              }
+            }
+          >
+            Development
+             Production Book
+          </p>
+          <Button
+            as="button"
+            basic={true}
+            floated="right"
+            inverted={true}
+            onClick={[MockFunction]}
+          >
+            Log Out
+          </Button>
+        </div>
+      </Segment>
+    </GridColumn>
+  </GridRow>
 </Grid>
 `;

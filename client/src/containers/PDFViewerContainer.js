@@ -21,7 +21,6 @@ const mapStateToProps = (state, ownProps) => {
   if (visible) {
     file =
       state.sections[selectedDocument.section].files[selectedDocument.uuid].blob
-    console.log(file)
     if (file === null) {
       visible = false
       file = {}

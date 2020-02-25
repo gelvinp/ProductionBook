@@ -6,9 +6,12 @@ describe('DocumentColumn', () => {
   it('Displays correctly', () => {
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
+        upload={true}
+        modify={true}
       />
     )
     expect(wrapper).toMatchSnapshot()
@@ -17,9 +20,12 @@ describe('DocumentColumn', () => {
   it('Enables the section submit button when text is entered', () => {
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
+        upload={true}
+        modify={true}
       />
     )
     expect(
@@ -34,9 +40,12 @@ describe('DocumentColumn', () => {
   it('Updates the sectionField', () => {
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
+        upload={true}
+        modify={true}
       />
     )
     wrapper
@@ -45,17 +54,20 @@ describe('DocumentColumn', () => {
     expect(wrapper.state('sectionField')).toEqual('Test')
   })
 
-  it('Opens the file modal', () => {
-    const openFile = jest.fn()
+  it('Opens the upload modal', () => {
+    const openUpload = jest.fn()
     const wrapper = shallow(
       <DocumentColumn
-        openFile={openFile}
+        openUpload={openUpload}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
+        upload={true}
+        modify={true}
       />
     )
-    wrapper.find('#openFileButton').simulate('click')
-    expect(openFile).toHaveBeenCalled()
+    wrapper.find('#openUploadButton').simulate('click')
+    expect(openUpload).toHaveBeenCalled()
   })
 
   it('Handles a communication error', async () => {
@@ -68,9 +80,12 @@ describe('DocumentColumn', () => {
     })
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         submitSection={submitSection}
+        loading={false}
         createSection={jest.fn()}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.setState({ sectionField: 'test' })
@@ -95,9 +110,12 @@ describe('DocumentColumn', () => {
     })
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         submitSection={submitSection}
+        loading={false}
         createSection={jest.fn()}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.setState({ sectionField: 'test' })
@@ -126,9 +144,12 @@ describe('DocumentColumn', () => {
     })
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         submitSection={submitSection}
+        loading={false}
         createSection={createSection}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.setState({ sectionField: 'test' })
@@ -149,9 +170,12 @@ describe('DocumentColumn', () => {
     })
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         submitSection={submitSection}
+        loading={false}
         createSection={jest.fn()}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.find('#sectionFieldInput').simulate('keydown', { key: 'Down' })
@@ -166,35 +190,85 @@ describe('DocumentColumn', () => {
     })
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         submitSection={submitSection}
+        loading={false}
         createSection={jest.fn()}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.find('#sectionFieldInput').simulate('keydown', { key: 'Enter' })
     expect(submitSection).toHaveBeenCalled()
   })
 
-  it('Does not have padding on desktop', () => {
+  it('Does not have padding and top margin on desktop', () => {
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
+        upload={true}
+        modify={true}
       />
     )
-    expect(wrapper.find('div').props().style).not.toHaveProperty('padding')
+    expect(wrapper.find('DimmerDimmable').props().style).not.toHaveProperty(
+      'padding'
+    )
+    expect(wrapper.find('DimmerDimmable').props().style).not.toHaveProperty(
+      'marginTop'
+    )
   })
 
-  it('Does have padding on mobile', () => {
+  it('Does have padding and top margin on mobile', () => {
     const wrapper = shallow(
       <DocumentColumn
-        openFile={jest.fn()}
+        openUpload={jest.fn()}
         createSection={jest.fn()}
         submitSection={jest.fn()}
+        loading={false}
         mobile
+        upload={true}
+        modify={true}
       />
     )
-    expect(wrapper.find('div').props().style).toHaveProperty('padding', '1em')
+    expect(wrapper.find('DimmerDimmable').props().style).toHaveProperty(
+      'padding',
+      '1em'
+    )
+    expect(wrapper.find('DimmerDimmable').props().style).toHaveProperty(
+      'marginTop'
+    )
+  })
+
+  it('Does not show a button when lacking permission', () => {
+    const wrapper = shallow(
+      <DocumentColumn
+        openUpload={jest.fn()}
+        createSection={jest.fn()}
+        submitSection={jest.fn()}
+        loading={false}
+        mobile
+        upload={false}
+        modify={true}
+      />
+    )
+    expect(wrapper.find('Button').length).toBe(0)
+  })
+
+  it('Does not show an input when lacking permission', () => {
+    const wrapper = shallow(
+      <DocumentColumn
+        openUpload={jest.fn()}
+        createSection={jest.fn()}
+        submitSection={jest.fn()}
+        loading={false}
+        mobile
+        upload={true}
+        modify={false}
+      />
+    )
+    expect(wrapper.find('Input').length).toBe(0)
   })
 })
