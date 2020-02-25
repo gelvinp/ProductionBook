@@ -27,7 +27,8 @@ API_Test:
     - bundle check || bundle install --jobs $(nproc)
     - bundle exec rails db:create RAILS_ENV=test
     - bundle exec rails db:schema:load RAILS_ENV=test
-    - EDITOR=false rails credentials:edit
+    - rm config/credentials.yml.enc
+    - EDITOR=false bundle exec rails credentials:edit
     - bundle exec rake
   artifacts:
     paths:
