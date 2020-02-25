@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     files: state.sections[ownProps.section].files,
     mobile: ownProps.mobile || false,
+    modify: state.password > 1,
   }
 }
 

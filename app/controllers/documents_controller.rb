@@ -3,6 +3,8 @@ require 'data_uri'
 # Returns either a listing of sections and documents, or a specific document
 class DocumentsController < ApplicationController
   before_action :check_password
+  before_action :check_upload, only: [:create]
+  before_action :check_modify, only: %i[update destroy]
   # Returns a json object describing the available sections and the files
   # contained within
   #

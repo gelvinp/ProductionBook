@@ -25,7 +25,8 @@ RSpec.describe "Sessions", type: :request do
   describe "POST /api/login" do
     context "valid password" do
       before do
-        post "/api/login", headers: { Authorization: get_pass }
+        @user_modify = create(:user_modify)
+        post "/api/login", params: { id: @user_modify.id, password: 'Passw0rd' }
       end
 
       it "returns status 200" do
@@ -41,7 +42,7 @@ RSpec.describe "Sessions", type: :request do
 
       it "sets a reset cookie" do
         refresh = JSON.parse(Base64.decode64(response.cookies['refresh'].split('.')[1]))
-        expect(refresh['id']).to eq('eventual_password_id_here')
+        expect(refresh['id']).to eq(@user_modify.id)
       end
     end
 
@@ -74,7 +75,8 @@ RSpec.describe "Sessions", type: :request do
   describe 'POST /api/refresh' do
     context 'Valid refresh token' do
       before do
-        post "/api/login", headers: { Authorization: get_pass }
+        @user_modify = create(:user_modify)
+        post "/api/login", params: { id: @user_modify.id, password: 'Passw0rd' }
         cookies['refresh'] = response.cookies['refresh']
         post '/api/refresh'
       end
@@ -94,6 +96,19 @@ RSpec.describe "Sessions", type: :request do
     context 'Invalid token' do
       before do
         cookies['refresh'] = { id: -1 }.to_json
+        post '/api/refresh'
+      end
+
+      it "returns a 400" do
+        expect(response).to have_http_status(400)
+      end
+    end
+
+    context 'Invalid ID' do
+      before do
+        payload = { id: -1 }
+        token = JWT.encode payload, Rails.application.credentials.secret_key_base, 'HS256'
+        cookies['refresh'] = token
         post '/api/refresh'
       end
 

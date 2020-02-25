@@ -2,8 +2,6 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
   # Returns a bad request unless request contains a valid token
-  #
-  # @param Authorization [String] The given token
   def check_password
     head :bad_request unless current_role
   end
@@ -14,8 +12,19 @@ class ApplicationController < ActionController::API
     @current_role ||= role_from_token
   end
 
+  # Returns a bad request unless current role is allowed to upload
+  def check_upload
+    head :bad_request unless current_role.positive?
+  end
+
+  # Returns a bad request unless current role is allowed to modify
+  def check_modify
+    head :bad_request unless current_role > 1
+  end
+
   private
 
+  # Decodes the token from the cookie store and extracts the auth info
   def role_from_token
     token = cookies[:token]
     begin

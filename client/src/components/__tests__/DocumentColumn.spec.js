@@ -10,6 +10,8 @@ describe('DocumentColumn', () => {
         createSection={jest.fn()}
         submitSection={jest.fn()}
         loading={false}
+        upload={true}
+        modify={true}
       />
     )
     expect(wrapper).toMatchSnapshot()
@@ -22,6 +24,8 @@ describe('DocumentColumn', () => {
         createSection={jest.fn()}
         submitSection={jest.fn()}
         loading={false}
+        upload={true}
+        modify={true}
       />
     )
     expect(
@@ -40,6 +44,8 @@ describe('DocumentColumn', () => {
         createSection={jest.fn()}
         submitSection={jest.fn()}
         loading={false}
+        upload={true}
+        modify={true}
       />
     )
     wrapper
@@ -56,6 +62,8 @@ describe('DocumentColumn', () => {
         createSection={jest.fn()}
         submitSection={jest.fn()}
         loading={false}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.find('#openUploadButton').simulate('click')
@@ -76,6 +84,8 @@ describe('DocumentColumn', () => {
         submitSection={submitSection}
         loading={false}
         createSection={jest.fn()}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.setState({ sectionField: 'test' })
@@ -104,6 +114,8 @@ describe('DocumentColumn', () => {
         submitSection={submitSection}
         loading={false}
         createSection={jest.fn()}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.setState({ sectionField: 'test' })
@@ -136,6 +148,8 @@ describe('DocumentColumn', () => {
         submitSection={submitSection}
         loading={false}
         createSection={createSection}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.setState({ sectionField: 'test' })
@@ -160,6 +174,8 @@ describe('DocumentColumn', () => {
         submitSection={submitSection}
         loading={false}
         createSection={jest.fn()}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.find('#sectionFieldInput').simulate('keydown', { key: 'Down' })
@@ -178,6 +194,8 @@ describe('DocumentColumn', () => {
         submitSection={submitSection}
         loading={false}
         createSection={jest.fn()}
+        upload={true}
+        modify={true}
       />
     )
     wrapper.find('#sectionFieldInput').simulate('keydown', { key: 'Enter' })
@@ -191,6 +209,8 @@ describe('DocumentColumn', () => {
         createSection={jest.fn()}
         submitSection={jest.fn()}
         loading={false}
+        upload={true}
+        modify={true}
       />
     )
     expect(wrapper.find('DimmerDimmable').props().style).not.toHaveProperty(
@@ -209,6 +229,8 @@ describe('DocumentColumn', () => {
         submitSection={jest.fn()}
         loading={false}
         mobile
+        upload={true}
+        modify={true}
       />
     )
     expect(wrapper.find('DimmerDimmable').props().style).toHaveProperty(
@@ -218,5 +240,35 @@ describe('DocumentColumn', () => {
     expect(wrapper.find('DimmerDimmable').props().style).toHaveProperty(
       'marginTop'
     )
+  })
+
+  it('Does not show a button when lacking permission', () => {
+    const wrapper = shallow(
+      <DocumentColumn
+        openUpload={jest.fn()}
+        createSection={jest.fn()}
+        submitSection={jest.fn()}
+        loading={false}
+        mobile
+        upload={false}
+        modify={true}
+      />
+    )
+    expect(wrapper.find('Button').length).toBe(0)
+  })
+
+  it('Does not show an input when lacking permission', () => {
+    const wrapper = shallow(
+      <DocumentColumn
+        openUpload={jest.fn()}
+        createSection={jest.fn()}
+        submitSection={jest.fn()}
+        loading={false}
+        mobile
+        upload={true}
+        modify={false}
+      />
+    )
+    expect(wrapper.find('Input').length).toBe(0)
   })
 })

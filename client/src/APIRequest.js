@@ -3,11 +3,12 @@
  */
 
 class APIRequest {
-  static async login_request(password) {
+  static async login_request(loginInfo) {
     try {
       const response = await fetch(`/api/login`, {
         method: `post`,
-        headers: { Authorization: password },
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(loginInfo),
       })
       if (response.ok) {
         const text = await response.text()

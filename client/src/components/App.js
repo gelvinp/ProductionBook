@@ -6,6 +6,7 @@ import {
   Header,
   Input,
   Segment,
+  Form,
 } from 'semantic-ui-react'
 import DesktopDisplay from '../containers/DesktopDisplayContainer.js'
 import MobileDisplay from '../containers/MobileDisplayContainer.js'
@@ -13,7 +14,8 @@ import PropTypes from 'prop-types'
 
 class App extends Component {
   state = {
-    input: '',
+    id: '',
+    password: '',
     error: false,
     section: '',
     sectionError: false,
@@ -30,9 +32,13 @@ class App extends Component {
   }
   submitPassword = async () => {
     const { attemptLogin } = this.props
-    const { input } = this.state
-    const success = await attemptLogin(input)
-    this.setState({ input: '' })
+    const { id, password } = this.state
+    if (id.length === 0 || password.length === 0) {
+      return
+    }
+    const loginInfo = { id: id, password: password }
+    const success = await attemptLogin(loginInfo)
+    this.setState({ id: '', password: '' })
     if (!success) {
       this.setState({ error: true })
     }
@@ -42,7 +48,7 @@ class App extends Component {
     attemptLogin()
   }
   render() {
-    const { input, error } = this.state
+    const { id, password, error } = this.state
     const { passwordIsEmpty } = this.props
     const display = (
       <Fragment>
@@ -86,18 +92,32 @@ class App extends Component {
           <Grid>
             <Grid.Row>
               <Grid.Column>
-                <Header>Password:</Header>
-                <Input
-                  value={input}
-                  onKeyDown={e => this.handleKeyDown(e, this.submitPassword)}
-                  onChange={e => this.setState({ input: e.target.value })}
-                  type="password"
-                />
+                <Header>Login</Header>
+                <Form>
+                  <Form.Input
+                    label="ID"
+                    value={id}
+                    onChange={e => this.setState({ id: e.target.value })}
+                    onKeyDown={e => this.handleKeyDown(e, this.submitPassword)}
+                  />
+                  <Form.Input
+                    label="Password"
+                    value={password}
+                    type="password"
+                    onChange={e => this.setState({ password: e.target.value })}
+                    onKeyDown={e => this.handleKeyDown(e, this.submitPassword)}
+                  />
+                </Form>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <Button onClick={this.submitPassword}>Submit</Button>
+                <Button
+                  disabled={!(id.length !== 0 && password.length !== 0)}
+                  onClick={this.submitPassword}
+                >
+                  Submit
+                </Button>
               </Grid.Column>
             </Grid.Row>
           </Grid>

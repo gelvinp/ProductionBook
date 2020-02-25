@@ -6,23 +6,23 @@ import APIRequest from '../APIRequest.js'
 
 const mapStateToProps = state => {
   return {
-    passwordIsEmpty: !state.password,
+    passwordIsEmpty: state.password === -1,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    attemptLogin: async password => {
+    attemptLogin: async loginInfo => {
       let json
-      if (password !== '' && typeof password !== 'undefined') {
-        json = await APIRequest.login_request(password)
+      if (typeof loginInfo !== 'undefined') {
+        json = await APIRequest.login_request(loginInfo)
       } else {
         json = await APIRequest.json_request('refresh', 'post')
       }
       if (json.error) {
         return false
       } else {
-        dispatch(setPassword(true))
+        dispatch(setPassword(json.data.auth))
         const sections = await APIRequest.json_request()
         if (sections.error) {
           return false

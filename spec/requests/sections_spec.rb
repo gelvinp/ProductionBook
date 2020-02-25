@@ -48,6 +48,17 @@ RSpec.describe "Sections", type: :request do
     end
   end
 
+  describe "Rejects unauthorized modifications" do
+    before do
+      log_in_upload
+      patch "/api/99999"
+    end
+
+    it "returns status 400" do
+      expect(response).to have_http_status(400)
+    end
+  end
+
   describe "DELETE /api/:id" do
     context "Section exists" do
       before do

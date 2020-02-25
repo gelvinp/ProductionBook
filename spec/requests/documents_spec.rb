@@ -47,6 +47,28 @@ RSpec.describe "Documents", type: :request do
     end
   end
 
+  describe "Rejects unauthorized uploads" do
+    before do
+      log_in_read
+      post "/api"
+    end
+
+    it "returns status 400" do
+      expect(response).to have_http_status(400)
+    end
+  end
+
+  describe "Rejects unauthorized modifications" do
+    before do
+      log_in_upload
+      patch "/api/99999/99999"
+    end
+
+    it "returns status 400" do
+      expect(response).to have_http_status(400)
+    end
+  end
+
   describe "POST /api" do
     context "existing section" do
 

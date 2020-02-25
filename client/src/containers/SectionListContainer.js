@@ -7,6 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     sections: state.sections,
     mobile: ownProps.mobile || false,
+    modify: state.password > 1,
   }
 }
 

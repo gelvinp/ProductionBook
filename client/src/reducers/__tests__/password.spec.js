@@ -3,7 +3,7 @@ import { SET_PASSWORD } from '../../actions/password.js'
 
 describe('password reducer', () => {
   it('should return the initial state', () => {
-    expect(password(undefined, {})).toEqual(false)
+    expect(password(undefined, {})).toEqual(-1)
   })
 
   it('should handle SET_PASSWORD', () => {

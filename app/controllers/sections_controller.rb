@@ -1,6 +1,7 @@
 # Handles creating and deleting sections
 class SectionsController < ApplicationController
   before_action :check_password
+  before_action :check_modify
 
   # Creates a new section and returns the ID (or -1 if error)
   #

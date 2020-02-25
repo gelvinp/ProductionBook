@@ -38,19 +38,40 @@ describe('PDFViewer', () => {
 
   it('Updates displayed files on update', () => {
     const update = jest.spyOn(PDFViewer.prototype, 'updateDisplayedFile')
+    const loadDocument = jest.fn()
     const wrapper = shallow(
       <PDFViewer
         backend={PDFJs}
         visible={false}
         section={-1}
         uuid={-1}
-        loadDocument={jest.fn()}
+        loadDocument={loadDocument}
         src={{}}
       />
     )
     update.mockClear()
     wrapper.setProps({ uuid: 1 })
     expect(update).toHaveBeenCalled()
+    expect(loadDocument).toHaveBeenCalled()
+  })
+
+  it('Handles a useless update', () => {
+    const update = jest.spyOn(PDFViewer.prototype, 'updateDisplayedFile')
+    const loadDocument = jest.fn()
+    const wrapper = shallow(
+      <PDFViewer
+        backend={PDFJs}
+        visible={false}
+        section={-1}
+        uuid={-1}
+        loadDocument={loadDocument}
+        src={{ test: true }}
+      />
+    )
+    update.mockClear()
+    wrapper.setProps({ uuid: 1 })
+    expect(update).toHaveBeenCalled()
+    expect(loadDocument).not.toHaveBeenCalled()
   })
 
   it('Initializes the file', () => {

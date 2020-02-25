@@ -212,11 +212,12 @@ describe('APIRequest', () => {
       expect(endpoint).toBe('/api/login')
       expect(request).toStrictEqual({
         method: 'post',
-        headers: { Authorization: 'Test' },
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ test: true }),
       })
       return mockFetchPromise
     })
-    return APIRequest.login_request('Test').then(json => {
+    return APIRequest.login_request({ test: true }).then(json => {
       expect(json).toStrictEqual({ data: mockSuccessfulResponse, error: false })
     })
   })
@@ -231,11 +232,12 @@ describe('APIRequest', () => {
       expect(endpoint).toBe('/api/login')
       expect(request).toStrictEqual({
         method: 'post',
-        headers: { Authorization: 'Test' },
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ test: true }),
       })
       return mockFetchPromise
     })
-    return APIRequest.login_request('Test').then(json => {
+    return APIRequest.login_request({ test: true }).then(json => {
       expect(json).toStrictEqual({ data: {}, error: false })
     })
   })
@@ -249,11 +251,12 @@ describe('APIRequest', () => {
       expect(endpoint).toBe('/api/login')
       expect(request).toStrictEqual({
         method: 'post',
-        headers: { Authorization: 'Test' },
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ test: true }),
       })
       return mockFetchPromise
     })
-    return APIRequest.login_request('Test').then(json => {
+    return APIRequest.login_request({ test: true }).then(json => {
       expect(json).toStrictEqual({ error: true })
     })
   })
@@ -268,11 +271,12 @@ describe('APIRequest', () => {
       expect(endpoint).toBe('/api/login')
       expect(request).toStrictEqual({
         method: 'post',
-        headers: { Authorization: 'Test' },
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ test: true }),
       })
       return mockFetchPromise
     })
-    return APIRequest.login_request('Test').then(json => {
+    return APIRequest.login_request({ test: true }).then(json => {
       expect(json).toStrictEqual({ error: true })
     })
   })

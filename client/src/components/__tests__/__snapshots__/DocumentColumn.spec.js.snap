@@ -35,6 +35,7 @@ exports[`DocumentColumn Displays correctly 1`] = `
     />
     Upload File
   </Button>
+  <Connect(UploadModal) />
   <Input
     error={false}
     id="sectionFieldInput"
@@ -55,7 +56,6 @@ exports[`DocumentColumn Displays correctly 1`] = `
     type="text"
     value=""
   />
-  <Connect(UploadModal) />
   <Connect(SectionModal) />
   <Connect(DocumentModal) />
   <Dimmer

@@ -98,12 +98,3 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
-
-def get_pass
-  @pass = ENV['PASSWORD']
-end
-
-def log_in
-  post "/api/login", headers: { Authorization: get_pass }
-  cookies['token'] = response.cookies['token']
-end

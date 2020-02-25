@@ -13,7 +13,7 @@ const combinedReducers = combineReducers({
 })
 
 const rootReducer = (state, action) => {
-  if (action.type == SET_PASSWORD && !action.pass) {
+  if (action.type === SET_PASSWORD && action.pass === -1) {
     return combinedReducers(undefined, {})
   }
   return combinedReducers(state, action)

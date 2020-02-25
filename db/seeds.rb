@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Section.create(name: 'Unclassified')
+User.create(id: '0000', password: 'Passw0rd', auth: 2)

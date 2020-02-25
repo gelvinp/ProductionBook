@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Segment, Loader, Input, Dimmer, Icon, Button } from 'semantic-ui-react'
 import SectionList from '../containers/SectionListContainer.js'
@@ -29,7 +29,7 @@ class DocumentColumn extends Component {
     })
   }
   render() {
-    const { openUpload, loading, mobile } = this.props
+    const { openUpload, loading, mobile, upload, modify } = this.props
     const { sectionField, sectionError } = this.state
     return (
       <Dimmer.Dimmable
@@ -44,42 +44,50 @@ class DocumentColumn extends Component {
         }}
       >
         <SectionList mobile={mobile} />
-        <Button
-          id="openUploadButton"
-          onClick={openUpload}
-          basic
-          icon
-          labelPosition="left"
-          style={{
-            marginBottom: '0.5rem',
-            width: '12rem',
-            maxHeight: '6rem',
-          }}
-        >
-          <Icon name="upload" />
-          Upload File
-        </Button>
-        <Input
-          value={sectionField}
-          id="sectionFieldInput"
-          onChange={e => this.setState({ sectionField: e.target.value })}
-          placeholder="Add a section"
-          onKeyDown={e => this.handleKeyDown(e, this.handleCreateSection)}
-          error={sectionError}
-          label={
+        {upload ? (
+          <Fragment>
             <Button
-              icon="plus"
-              id="submitSectionButton"
+              id="openUploadButton"
+              onClick={openUpload}
               basic
-              onClick={this.handleCreateSection}
-              disabled={!sectionField.length}
+              icon
+              labelPosition="left"
+              style={{
+                marginBottom: '0.5rem',
+                width: '12rem',
+                maxHeight: '6rem',
+              }}
+            >
+              <Icon name="upload" />
+              Upload File
+            </Button>
+            <UploadModal />
+          </Fragment>
+        ) : null}
+        {modify ? (
+          <Fragment>
+            <Input
+              value={sectionField}
+              id="sectionFieldInput"
+              onChange={e => this.setState({ sectionField: e.target.value })}
+              placeholder="Add a section"
+              onKeyDown={e => this.handleKeyDown(e, this.handleCreateSection)}
+              error={sectionError}
+              label={
+                <Button
+                  icon="plus"
+                  id="submitSectionButton"
+                  basic
+                  onClick={this.handleCreateSection}
+                  disabled={!sectionField.length}
+                />
+              }
+              labelPosition="right"
             />
-          }
-          labelPosition="right"
-        />
-        <UploadModal />
-        <SectionModal />
-        <DocumentModal />
+            <SectionModal />
+            <DocumentModal />
+          </Fragment>
+        ) : null}
         <Dimmer active={loading}>
           <Loader>Loading</Loader>
         </Dimmer>
@@ -93,6 +101,8 @@ DocumentColumn.propTypes = {
   createSection: PropTypes.func.isRequired,
   submitSection: PropTypes.func.isRequired,
   mobile: PropTypes.bool,
+  upload: PropTypes.bool,
+  modify: PropTypes.bool,
   loading: PropTypes.bool.isRequired,
 }
 

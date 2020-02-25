@@ -13,7 +13,7 @@ describe('App', () => {
         attemptLogin={jest.fn()}
       />
     )
-    expect(wrapper.find('Input').exists()).toBeTruthy()
+    expect(wrapper.find('FormInput').length).toBe(2)
   })
 
   it('Updates the password field', () => {
@@ -26,8 +26,16 @@ describe('App', () => {
         attemptLogin={jest.fn()}
       />
     )
-    wrapper.find('Input').simulate('change', { target: { value: 'Test' } })
-    expect(wrapper.state('input')).toEqual('Test')
+    wrapper
+      .find('FormInput')
+      .at(0)
+      .simulate('change', { target: { value: 'Test' } })
+    wrapper
+      .find('FormInput')
+      .at(1)
+      .simulate('change', { target: { value: 'TestTwo' } })
+    expect(wrapper.state('id')).toEqual('Test')
+    expect(wrapper.state('password')).toEqual('TestTwo')
   })
 
   it('Submits password on button click', () => {
@@ -43,6 +51,7 @@ describe('App', () => {
         attemptLogin={attemptLogin}
       />
     )
+    wrapper.setState({ id: 'a', password: 'a' })
     wrapper.find('Button').simulate('click')
     process.nextTick(() => {
       expect.assertions(1)
@@ -63,7 +72,11 @@ describe('App', () => {
         attemptLogin={attemptLogin}
       />
     )
-    wrapper.find('Input').simulate('keydown', { key: 'Enter' })
+    wrapper.setState({ id: 'a', password: 'a' })
+    wrapper
+      .find('FormInput')
+      .at(1)
+      .simulate('keydown', { key: 'Enter' })
     process.nextTick(() => {
       expect.assertions(1)
       expect(wrapper.state('error')).toBeTruthy()
@@ -83,7 +96,31 @@ describe('App', () => {
         attemptLogin={attemptLogin}
       />
     )
-    wrapper.find('Button').simulate('keydown', { key: 'Down' })
+    wrapper
+      .find('FormInput')
+      .at(0)
+      .simulate('keydown', { key: 'Down' })
+    process.nextTick(() => {
+      expect.assertions(1)
+      expect(wrapper.state('error')).not.toBeTruthy()
+    })
+  })
+
+  it('Doesnt submit password when id or password are empty', async () => {
+    const attemptLogin = jest.fn().mockImplementation(() => {
+      return Promise.resolve(false)
+    })
+    const wrapper = shallow(
+      <App
+        passwordIsEmpty={true}
+        setPassword={jest.fn()}
+        attemptLogin={attemptLogin}
+      />
+    )
+    wrapper.setState({ id: 'a' })
+    await wrapper.instance().submitPassword()
+    wrapper.setState({ id: '', password: 'a' })
+    await wrapper.instance().submitPassword()
     process.nextTick(() => {
       expect.assertions(1)
       expect(wrapper.state('error')).not.toBeTruthy()
@@ -97,16 +134,10 @@ describe('App', () => {
       return Promise.resolve(true)
     })
     const wrapper = shallow(
-      <App
-        passwordIsEmpty={true}
-        setPassword={jest.fn()}
-        createSection={jest.fn()}
-        createDocument={jest.fn()}
-        attemptLogin={attemptLogin}
-      />
+      <App passwordIsEmpty={true} attemptLogin={attemptLogin} />
     )
-    wrapper.setState({ input: 'Test' })
-    match = 'Test'
+    wrapper.setState({ id: 'Test', password: 'Password' })
+    match = { id: 'Test', password: 'Password' } // Put this down here because attemptLogin gets called on mount
     await wrapper.instance().submitPassword()
     expect(wrapper.state('error')).not.toBeTruthy()
     expect.assertions(3)

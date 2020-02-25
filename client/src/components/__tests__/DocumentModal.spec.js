@@ -622,6 +622,112 @@ describe('DocumentModal', () => {
     expect(closeModal).toHaveBeenCalled()
   })
 
+  it('Handles only one change 1/2', async () => {
+    expect.assertions(3)
+    modalOpen = false
+    name = 'Test File'
+    closeModal = jest.fn()
+    renameDocument = jest.fn()
+    submitUpdateDocument = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        error: false,
+        data: {
+          name: true,
+          section: false,
+        },
+      })
+    })
+    submitDeleteDocument = jest.fn()
+    deleteDocument = jest.fn()
+    moveDocument = jest.fn()
+    id = 1
+    uuid = '2'
+    sections = {
+      1: {
+        name: 'Test section',
+        files: {
+          2: {
+            name: 'Test File',
+            blob: null,
+          },
+        },
+      },
+    }
+    const wrapper = shallow(
+      <DocumentModal
+        modalOpen={modalOpen}
+        name={name}
+        closeModal={closeModal}
+        renameDocument={renameDocument}
+        submitUpdateDocument={submitUpdateDocument}
+        submitDeleteDocument={submitDeleteDocument}
+        deleteDocument={deleteDocument}
+        moveDocument={moveDocument}
+        id={id}
+        uuid={uuid}
+        sections={sections}
+      />
+    )
+    wrapper.setState({ nameField: 'Hello' })
+    await wrapper.instance().handleFormSubmit()
+    expect(renameDocument).toHaveBeenCalled()
+    expect(moveDocument).not.toHaveBeenCalled()
+    expect(closeModal).toHaveBeenCalled()
+  })
+
+  it('Handles only one change 2/2', async () => {
+    expect.assertions(3)
+    modalOpen = false
+    name = 'Test File'
+    closeModal = jest.fn()
+    renameDocument = jest.fn()
+    submitUpdateDocument = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        error: false,
+        data: {
+          name: false,
+          section: true,
+        },
+      })
+    })
+    submitDeleteDocument = jest.fn()
+    deleteDocument = jest.fn()
+    moveDocument = jest.fn()
+    id = 1
+    uuid = '2'
+    sections = {
+      1: {
+        name: 'Test section',
+        files: {
+          2: {
+            name: 'Test File',
+            blob: null,
+          },
+        },
+      },
+    }
+    const wrapper = shallow(
+      <DocumentModal
+        modalOpen={modalOpen}
+        name={name}
+        closeModal={closeModal}
+        renameDocument={renameDocument}
+        submitUpdateDocument={submitUpdateDocument}
+        submitDeleteDocument={submitDeleteDocument}
+        deleteDocument={deleteDocument}
+        moveDocument={moveDocument}
+        id={id}
+        uuid={uuid}
+        sections={sections}
+      />
+    )
+    wrapper.setState({ section: 2 })
+    await wrapper.instance().handleFormSubmit()
+    expect(renameDocument).not.toHaveBeenCalled()
+    expect(moveDocument).toHaveBeenCalled()
+    expect(closeModal).toHaveBeenCalled()
+  })
+
   it('(delete) Shows an error on error', async () => {
     modalOpen = false
     name = 'Test File'

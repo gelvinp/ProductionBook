@@ -7,7 +7,7 @@ const mapDispatchToProps = dispatch => {
   return {
     logOut: async () => {
       await APIRequest.json_request('logout', 'post')
-      dispatch(setPassword(false))
+      dispatch(setPassword(-1))
     },
   }
 }

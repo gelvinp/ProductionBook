@@ -17,6 +17,7 @@ describe('SectionList', () => {
         sections={sections}
         mobile={false}
         openSection={openButton}
+        modify={true}
       />
     )
     expect(wrapper.find('ListItem').key()).toBe('section-1')
@@ -41,12 +42,36 @@ describe('SectionList', () => {
       },
     }
     const wrapper = shallow(
-      <SectionList sections={sections} mobile={false} openSection={jest.fn()} />
+      <SectionList
+        modify={true}
+        sections={sections}
+        mobile={false}
+        openSection={jest.fn()}
+      />
     )
     expect(wrapper.find('Button').props().style.visibility).toEqual('hidden')
     wrapper.find('ListItem').simulate('mouseEnter')
     expect(wrapper.find('Button').props().style).not.toContain('visibility')
     wrapper.find('ListItem').simulate('mouseLeave')
     expect(wrapper.find('Button').props().style.visibility).toEqual('hidden')
+  })
+
+  it('Does not show a button when lacking permission', () => {
+    const name = 'Sample Section'
+    const sections = {
+      1: {
+        name,
+        files: {},
+      },
+    }
+    const wrapper = shallow(
+      <SectionList
+        modify={false}
+        sections={sections}
+        mobile={false}
+        openSection={jest.fn()}
+      />
+    )
+    expect(wrapper.find('Button').length).toBe(0)
   })
 })

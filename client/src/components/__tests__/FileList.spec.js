@@ -19,6 +19,7 @@ describe('FileList', () => {
         selectDocument={selectDocument}
         mobile={false}
         openDocument={openButton}
+        modify={true}
       />
     )
     expect(wrapper.find('ListItem').key()).toBe('file-1')
@@ -51,6 +52,7 @@ describe('FileList', () => {
         selectDocument={selectDocument}
         mobile={false}
         openDocument={jest.fn()}
+        modify={true}
       />
     )
     expect(wrapper.find('Button').props().style.visibility).toEqual('hidden')
@@ -58,5 +60,26 @@ describe('FileList', () => {
     expect(wrapper.find('Button').props().style).not.toContain('visibility')
     wrapper.find('ListItem').simulate('mouseLeave')
     expect(wrapper.find('Button').props().style.visibility).toEqual('hidden')
+  })
+
+  it('Does not show a button when lacking permission', () => {
+    const name = 'Sample File'
+    const uuid = '1'
+    const selectDocument = jest.fn()
+    const files = {
+      [uuid]: {
+        name,
+      },
+    }
+    const wrapper = shallow(
+      <FileList
+        files={files}
+        selectDocument={selectDocument}
+        mobile={false}
+        openDocument={jest.fn()}
+        modify={false}
+      />
+    )
+    expect(wrapper.find('Button').length).toBe(0)
   })
 })

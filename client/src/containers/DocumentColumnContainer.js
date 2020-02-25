@@ -7,7 +7,9 @@ import APIRequest from '../APIRequest.js'
 const mapStateToProps = (state, ownProps) => {
   return {
     mobile: ownProps.mobile,
-    loading: state.password !== '' && Object.keys(state.sections) === 0,
+    loading: state.password !== -1 && Object.keys(state.sections) === 0,
+    upload: state.password > 0,
+    modify: state.password > 1,
   }
 }
 

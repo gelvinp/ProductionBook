@@ -72,7 +72,9 @@ class UploadModal extends Component {
       name: selectedFile.name,
     })
     this.setState({ fileUploading: false })
-    if (json.data.success) {
+    if (json.error || !json.data.success) {
+      this.setState({ uploadError: true })
+    } else {
       this.setState({ uploadError: false })
       createDocument(
         section,
@@ -84,8 +86,6 @@ class UploadModal extends Component {
         fileBlob
       )
       this.closeModal()
-    } else {
-      this.setState({ uploadError: true })
     }
   }
   render() {
