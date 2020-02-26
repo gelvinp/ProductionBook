@@ -22,7 +22,7 @@ export default class PDFViewer extends React.Component {
       } else {
         this.backend.init(src, element)
       }
-    } else if (Object.keys(src).length === 0) {
+    } else if (src !== null && Object.keys(src).length === 0) {
       loadDocument(section, uuid)
     }
   }

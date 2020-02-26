@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import DocumentModal from '../components/DocumentModal.js'
+import { documentDeleted } from '../actions/documents.js'
 import { openDocument, closeDocument } from '../actions/modals.js'
 import {
   renameDocument,
@@ -37,6 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     deleteDocument: (id, uuid) => {
       dispatch(closeDocument())
+      dispatch(documentDeleted(id, uuid))
       dispatch(deleteDocument(id, uuid))
     },
     submitUpdateDocument: (id, uuid, changes) => {

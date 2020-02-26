@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import SectionModal from '../components/SectionModal.js'
 import { closeSection } from '../actions/modals.js'
 import { deleteSection, renameSection } from '../actions/sections.js'
+import { sectionDeleted } from '../actions/documents.js'
 import APIRequest from '../APIRequest.js'
 
 const mapStateToProps = state => {
@@ -23,6 +24,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     deleteSection: id => {
       dispatch(closeSection())
+      dispatch(sectionDeleted(id))
       dispatch(deleteSection(id))
     },
     submitRenameSection: (id, name) => {

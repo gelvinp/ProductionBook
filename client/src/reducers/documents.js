@@ -1,4 +1,8 @@
-import { SELECT_DOCUMENT } from '../actions/documents.js'
+import {
+  SELECT_DOCUMENT,
+  DOCUMENT_DELETED,
+  SECTION_DELETED,
+} from '../actions/documents.js'
 
 const initialState = {
   selectedDocument: {
@@ -17,6 +21,23 @@ export function documents(state = initialState, action) {
           ...state,
           selectedDocument: { section: action.section, uuid: action.uuid },
         }
+      }
+    case DOCUMENT_DELETED:
+      if (
+        parseInt(action.section) === parseInt(state.selectedDocument.section) &&
+        action.uuid === state.selectedDocument.uuid
+      ) {
+        return { ...state, selectedDocument: initialState.selectedDocument }
+      } else {
+        return state
+      }
+    case SECTION_DELETED:
+      if (
+        parseInt(action.section) === parseInt(state.selectedDocument.section)
+      ) {
+        return { ...state, selectedDocument: initialState.selectedDocument }
+      } else {
+        return state
       }
     default:
       return state
