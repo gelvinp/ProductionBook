@@ -6,5 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Section.create(name: 'Unclassified')
-User.create(id: '0000', password: 'Passw0rd', auth: 2)
+unless Rails.env == "test" do
+  Section.create(name: 'Unclassified')
+  User.create(id: '0000', password: 'Passw0rd', auth: 2)
+end
